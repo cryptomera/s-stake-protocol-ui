@@ -1,13 +1,11 @@
 import { createTheme } from "@mui/material/styles";
 
 declare module "@mui/material/styles" {
-  interface Palette
-  {
-    neutral: Palette[ "primary" ];
+  interface Palette {
+    neutral: Palette["primary"];
   }
-  interface PaletteOptions
-  {
-    neutral: PaletteOptions[ "primary" ];
+  interface PaletteOptions {
+    neutral: PaletteOptions["primary"];
   }
 }
 
@@ -28,40 +26,41 @@ const theme = createTheme({
       paper: "#212121",
     },
     text: {
-      secondary: '#FBF1C2',
-      primary: '#FFFFFC'
-    }
+      secondary: "#FBF1C2",
+      primary: "#FFFFFC",
+    },
   },
   typography: {
     fontFamily: [
-      "Abadi",
       "Century-Gothic",
       "Suissnord",
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"', ].join(","),
+      "Abadi",
+      "-apple-system",
+      "BlinkMacSystemFont",
+      "Segoe UI",
+      "Roboto",
+      "Helvetica Neue",
+      "Arial",
+      "sans-serif",
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      "Segoe UI Symbol",
+    ].join(","),
   },
   components: {
     MuiCssBaseline: {
       styleOverrides: `
       @font-face{
-        font-family: 'Abadi';
-        font-weight: bold;
-        font-style: normal;
-        src: url('/fonts/abadi/AbadiMTProExtraBold.otf');
-      }
-      @font-face{
         font-family: 'Century-Gothic';
         font-weight: normal;
         font-style: normal;
         src: url('/fonts/centuryGothic/CenturyGothic.ttf');
+      }
+      @font-face{
+        font-family: 'Abadi';
+        font-weight: bold;
+        font-style: normal;
+        src: url('/fonts/abadi/abadi_mt_std_extra_bold.ttf');
       }
       @font-face{
         font-family: 'Century-Gothic';

@@ -7,16 +7,13 @@ import Toolbar from "@mui/material/Toolbar";
 
 const drawerWidth = 240;
 
-const PageContainer = (props: { children: ReactNode }) =>
-{
-  // @dev DELETE WHEN TOGGLE-HIDE LOGIC IS IMPLEMENTED FROM HERE
-  const [ mobileOpen, setMobileOpen ] = useState<boolean>(true);
+const PageContainer = (props: { children: ReactNode }) => {
+  const [mobileOpen, setMobileOpen] = useState<boolean>(true);
 
-  const handleDrawerToggle = useCallback(() =>
-  {
-    setMobileOpen(p => !p);
-  }, [ setMobileOpen ]);
-  // TO HERE
+  const handleDrawerToggle = useCallback(() => {
+    setMobileOpen((p) => !p);
+  }, [setMobileOpen]);
+
   return (
     <>
       <Box sx={{ display: "flex" }}>
