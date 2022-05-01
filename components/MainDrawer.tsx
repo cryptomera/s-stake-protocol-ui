@@ -91,7 +91,7 @@ function ResponsiveDrawer(props: MainDrawerProps)
                 sx={{ my: 2 }}
                 style={{ fontFamily: "Suissnord" }}
               >
-                STAKE: 1.0000
+                STAKE: 1.00
               </Typography>
               <Divider />
               <Stack

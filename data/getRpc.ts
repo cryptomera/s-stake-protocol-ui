@@ -1,6 +1,6 @@
-import sample from "lodash/sample";
+import sample from "lodash/sample"
 
-export const nodes: { [chain: number]: Array<string> } = {
+export const nodes: { [ chain: number ]: Array<string> } = {
   56: [
     "https://bsc-dataseed.binance.org/",
     "https://bsc-dataseed1.defibit.io/",
@@ -14,6 +14,7 @@ export const nodes: { [chain: number]: Array<string> } = {
   ],
 };
 
-export function getRpcUrl(chainId: number) {
-  return sample(nodes[chainId]);
+export function getRpcUrl(chainId: number)
+{
+  return sample(nodes[ chainId ]);
 }
