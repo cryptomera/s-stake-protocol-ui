@@ -1,5 +1,6 @@
 // React
 import { ReactNode } from "react";
+import { useRouter } from 'next/router';
 // Material
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
@@ -37,6 +38,11 @@ function ResponsiveDrawer(props: MainDrawerProps)
 {
   const { open, toggleOpen } = props;
   const isSm = useMediaQuery("(min-width:600px)");
+  const router = useRouter();
+
+  const gotoLink = (href: string) => {
+    router.push(href);
+  }
 
   return (
     <>
@@ -75,7 +81,7 @@ function ResponsiveDrawer(props: MainDrawerProps)
               <List>
                 {menuItems.map((item, index) => (
                   //@dev add the naviagion link for each button here
-                  <ListItem button key={`nav-${item.name}-${index}`} href={item.href} disabled={item.disabled}>
+                  <ListItem button onClick={() => gotoLink(item.href)} key={`nav-${item.name}-${index}`} href={item.href} disabled={item.disabled}>
                     <ListItemIcon>
                       {item.icon || <MailIcon color="secondary" />}
                     </ListItemIcon>
@@ -131,14 +137,14 @@ const menuItems: Array<MenuItemType> = [
   {
     name: "Swap",
     icon: <SwapHorizontalCircleIcon color="secondary" />,
-    href: "",
-    disabled: true,
+    href: "/swap",
+    disabled: false,
   },
   {
     name: "Stake",
     icon: <ShieldMoonIcon color="secondary" />,
-    href: "",
-    disabled: true,
+    href: "/stake",
+    disabled: false,
   },
   {
     name: "Docs",
