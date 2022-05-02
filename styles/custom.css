@@ -1,0 +1,18 @@
+:root {
+  --onboard-connect-sidebar-background: black;
+  --onboard-connect-sidebar-color: black;
+  --onboard-connect-sidebar-progress-background: black;
+  --onboard-connect-sidebar-progress-color: black;
+  --onboard-connect-header-background: black;
+  --onboard-connect-header-color: black;
+  --onboard-link-color: black;
+  --onboard-close-button-background: black;
+  --onboard-close-button-color: black;
+  --onboard-checkbox-background: black;
+  --onboard-checkbox-color: black;
+  --onboard-wallet-button-background: black;
+  --onboard-wallet-button-background-hover: black;
+  --onboard-wallet-button-color: black;
+  --onboard-wallet-button-border-color: black;
+  --onboard-wallet-app-icon-border-color: black;
+}

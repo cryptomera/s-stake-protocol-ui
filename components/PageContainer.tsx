@@ -25,7 +25,7 @@ const onboard = Onboard({
   appMetadata: {
     name: 'staking app',
     icon: '/logos/Logo_1.png',
-    logo: '/logos/Logo_1.png',
+    logo: '/logos/Logo_2.png',
     description: 'My app using Onboard'
   }
 });
@@ -65,3 +65,4 @@ const PageContainer = (props: { children: ReactNode }) => {
   );
 };
 export default PageContainer;
+
