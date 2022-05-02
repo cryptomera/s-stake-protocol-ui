@@ -30,7 +30,7 @@ export const useAuth = () => {
             error instanceof UserRejectedRequestErrorWalletConnect &&
             connector instanceof WalletConnectConnector
           )
-            connector.walletConnectProvider = null;
+            connector.walletConnectProvider = undefined;
           if (error)
             setTimeout(
               () => window.localStorage.setItem("connectorId", ""),

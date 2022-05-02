@@ -7,9 +7,10 @@ import PrivateCard from "components/private/PrivateCard";
 //Utils
 import Head from "next/head";
 import Image from "next/image";
+import { useEagerConnect } from "hooks/useAuth";
 
-const PrivateSale = () =>
-{
+const PrivateSale = () => {
+  useEagerConnect();
   return (
     <>
       <Head>

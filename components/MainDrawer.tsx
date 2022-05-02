@@ -24,7 +24,7 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import IconButton from "@mui/material/IconButton";
 import MediumIcon from "components/svg/MediumIcon";
-import PaidIcon from '@mui/icons-material/Paid';
+import PaidIcon from "@mui/icons-material/Paid";
 
 const drawerWidth = 240;
 
@@ -33,8 +33,7 @@ type MainDrawerProps = {
   toggleOpen: () => void;
 };
 
-function ResponsiveDrawer(props: MainDrawerProps)
-{
+function ResponsiveDrawer(props: MainDrawerProps) {
   const { open, toggleOpen } = props;
   const isSm = useMediaQuery("(min-width:600px)");
 
@@ -71,19 +70,27 @@ function ResponsiveDrawer(props: MainDrawerProps)
                 />
               </div>
             </Stack>
-            <Typography sx={(theme) => ({ color: theme.palette.neutral.main })}>
-              <List>
-                {menuItems.map((item, index) => (
-                  //@dev add the naviagion link for each button here
-                  <ListItem button key={`nav-${item.name}-${index}`} href={item.href} disabled={item.disabled}>
-                    <ListItemIcon>
-                      {item.icon || <MailIcon color="secondary" />}
-                    </ListItemIcon>
-                    <ListItemText primary={item.name} />
-                  </ListItem>
-                ))}
-              </List>
-            </Typography>
+
+            <List>
+              {menuItems.map((item, index) => (
+                //@dev add the naviagion link for each button here
+                <ListItem
+                  button
+                  key={`nav-${item.name}-${index}`}
+                  href={item.href}
+                  disabled={item.disabled}
+                >
+                  <ListItemIcon>
+                    {item.icon || <MailIcon color="secondary" />}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={item.name}
+                    sx={(theme) => ({ color: theme.palette.neutral.main })}
+                  />
+                </ListItem>
+              ))}
+            </List>
+
             <Box position="absolute" sx={{ bottom: 0, width: `239px` }}>
               <Typography
                 color="textPrimary"

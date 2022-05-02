@@ -6,10 +6,25 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
+// Hooks
+import { useMemo } from "react";
+import { useAuth, ConnectorNames } from "hooks/useAuth";
+
 const drawerWidth = 240;
 
 const MainHeader = (props: { toggleMenuOpen: () => void }) => {
   const { toggleMenuOpen } = props;
+  const { login, account } = useAuth();
+
+  const shortAddress = (address: string) => {
+    const addressChars = address.split("");
+    const itemsToDelete = addressChars.length - 8;
+    if (itemsToDelete <= 0) return address;
+    addressChars.splice(4, itemsToDelete, "...");
+    return addressChars.join("");
+  };
+  const displayAccount = useMemo(() => shortAddress(account || ""), [account]);
+
   return (
     <AppBar
       position="fixed"
@@ -30,9 +45,13 @@ const MainHeader = (props: { toggleMenuOpen: () => void }) => {
         >
           <MenuIcon />
         </Fab>
-        <Button variant="contained" color="secondary">
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => login(ConnectorNames.INJECTED)}
+        >
           <Typography style={{ fontFamily: "Century-Gothic" }}>
-            Connect
+            {account ? displayAccount : "Connect"}
           </Typography>
         </Button>
       </Toolbar>
