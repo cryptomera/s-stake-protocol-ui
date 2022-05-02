@@ -25,27 +25,29 @@ const onboard = Onboard({
   appMetadata: {
     name: 'staking app',
     icon: '/logos/Logo_1.png',
+    logo: '/logos/Logo_1.png',
     description: 'My app using Onboard'
   }
 });
 
 const PageContainer = (props: { children: ReactNode }) => {
   const [mobileOpen, setMobileOpen] = useState<boolean>(true);
-  const [openConnectDlg, setOpenConnectDlg] = useState<boolean>(false);
+  // const [openConnectDlg, setOpenConnectDlg] = useState<boolean>(false);
+  const [userAccount, setUserAccount] = useState<any>();
   const handleDrawerToggle = useCallback(() => {
     setMobileOpen((p) => !p);
   }, [setMobileOpen]);
 
   const connectWallet = async () => {
     const wallets = await onboard.connectWallet();
-    console.log(wallets);
+    setUserAccount(wallets[0]);
   }
 
   return (
     <>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-        <MainHeader toggleMenuOpen={handleDrawerToggle} connectWallet={() => connectWallet()} />
+        <MainHeader userAccount={userAccount} toggleMenuOpen={handleDrawerToggle} connectWallet={() => connectWallet()} />
         <MainDrawer open={mobileOpen} toggleOpen={handleDrawerToggle} />
         <Box
           component="main"
