@@ -8,6 +8,7 @@ import theme from "styles/theme";
 import createEmotionCache from "styles/createEmotionCache";
 //Stake-Protocol-UI
 import ContextProvider from "components/ContextProviders";
+import '../styles/custom.css';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
