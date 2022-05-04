@@ -1,13 +1,33 @@
-import { Box, IconButton, Button } from '@mui/material';
+import { Box, IconButton, Button, buttonBaseClasses } from '@mui/material';
 import * as React from 'react';
 // icons
 import RefreshIcon from '@mui/icons-material/Refresh';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+//  components
+import TokenDlg from 'components/common/TokenDlg';
 
 const SwapTab = () => {
+  const [openTokenDlg, setOpenTokenDlg] = React.useState(true);
+  const [tokenList, setTokenList] = React.useState([
+    {
+      name: 'bnb',
+      symbol: 'BNB'
+    },
+    {
+      name: 'stake',
+      symbol: 'STK'
+    }
+  ])
   return (
     <>
+      {/* token select dialog */}
+      <TokenDlg 
+        open={openTokenDlg} 
+        handleClose={() => setOpenTokenDlg(false)}
+        tokens={tokenList}
+      />
       <Box
         sx={{
           position: 'relative',
@@ -83,9 +103,44 @@ const SwapTab = () => {
                 height: '120px',
                 backgroundColor: 'background.default',
                 borderRadius: '16px',
-                boxShadow: 'rgb(0 0 0) 5px 5px 7px -5px'
+                boxShadow: 'rgb(0 0 0) 5px 5px 7px -5px',
+                padding: '20px'
               }}
             >
+              {/* label */}
+              <Box>
+                From :
+              </Box>
+              {/* select token */}
+              <Box
+                sx={{
+                  display: 'flex',
+                  marginTop: '20px'
+                }}
+              >
+                {/* input amount */}
+                <Box>
+                  <input
+                    style={{
+                      border: 'none',
+                      outline: 'none',
+                      height: '30px',
+                      fontSize: '20px',
+                      backgroundColor: 'transparent',
+                      color: 'white'
+                    }}
+                  />
+                </Box>
+                <Box sx={{ flexGrow: 1 }}></Box>
+                <Box>
+                  <Button sx={{ display: 'flex', color: 'text.primary', paddingTop: 0, fontWeight: 'bold', fontSize: '18px' }}>
+                    <Box>BNB</Box>
+                    <Box sx={{ paddingTop: '10px' }}>
+                      <KeyboardArrowDownIcon />
+                    </Box>
+                  </Button>
+                </Box>
+              </Box>
             </Box>
             {/* change button */}
             <Box
@@ -94,8 +149,8 @@ const SwapTab = () => {
                 justifyContent: 'center'
               }}
             >
-              <IconButton sx={{color: 'primary.main'}}>
-                <ArrowDownwardIcon/>
+              <IconButton sx={{ color: 'primary.main' }}>
+                <ArrowDownwardIcon />
               </IconButton>
             </Box>
             {/* select target token */}
@@ -106,14 +161,49 @@ const SwapTab = () => {
                 backgroundColor: 'background.default',
                 borderRadius: '16px',
                 boxShadow: 'rgb(0 0 0) 5px 5px 7px -5px',
+                padding: '20px'
               }}
             >
+              {/* label */}
+              <Box>
+                To :
+              </Box>
+              {/* select token */}
+              <Box
+                sx={{
+                  display: 'flex',
+                  marginTop: '20px'
+                }}
+              >
+                {/* input amount */}
+                <Box>
+                  <input
+                    style={{
+                      border: 'none',
+                      outline: 'none',
+                      height: '30px',
+                      fontSize: '20px',
+                      backgroundColor: 'transparent',
+                      color: 'white'
+                    }}
+                  />
+                </Box>
+                <Box sx={{ flexGrow: 1 }}></Box>
+                <Box>
+                  <Button sx={{ display: 'flex', color: 'text.primary', paddingTop: 0, fontWeight: 'bold', fontSize: '18px' }}>
+                    <Box>BNB</Box>
+                    <Box sx={{ paddingTop: '10px' }}>
+                      <KeyboardArrowDownIcon />
+                    </Box>
+                  </Button>
+                </Box>
+              </Box>
             </Box>
           </Box>
           <Box
-            sx={{marginTop: '25px'}}
+            sx={{ marginTop: '25px' }}
           >
-            <Button fullWidth 
+            <Button fullWidth
               variant="contained"
               sx={{
                 height: '60px',

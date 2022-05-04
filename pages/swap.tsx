@@ -27,8 +27,8 @@ const Swap: NextPage = () => {
             }}
           >
             <TabList value={tabValue} onChange={tabHandler}>
-              <Tab label="Swap" value="0" />
-              <Tab label="Add Liquidity" value="1" />
+              <Tab sx={{ fontSize: 'h6.fontSize'}} label="Swap" value="0" />
+              <Tab sx={{ fontSize: 'h6.fontSize'}} label="Add Liquidity" value="1" />
             </TabList>
           </Box>
           <TabPanel value="0">
