@@ -9,7 +9,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import TokenDlg from 'components/common/TokenDlg';
 
 const SwapTab = () => {
-  const [openTokenDlg, setOpenTokenDlg] = React.useState(true);
+  const [openTokenDlg, setOpenTokenDlg] = React.useState(false);
   const [tokenList, setTokenList] = React.useState([
     {
       name: 'bnb',
