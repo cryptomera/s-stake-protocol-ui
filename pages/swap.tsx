@@ -11,10 +11,6 @@ import SwapTab from '../components/swap/SwapTab';
 import Link from '@mui/material/Link';
 
 const Swap: NextPage = () => {
-  const [tabValue, setTabValue] = React.useState("0");
-  const tabHandler = (event: React.SyntheticEvent, newValue: string) => {
-    setTabValue(newValue);
-  }
   return (
     <PageContainer>
       <div style={{ width: '100%' }}>
