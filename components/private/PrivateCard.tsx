@@ -16,8 +16,7 @@ import { getContracts } from "data/contracts";
 import { useAuth, useContract } from "hooks/useAuth";
 import { useState, useCallback, useEffect, KeyboardEvent } from "react";
 
-const PrivateCard = () =>
-{
+const PrivateCard = () => {
   // blockchain
   const { account, chainId, login } = useAuth();
   const presaleContract = getContracts("TokenPresale", chainId);
@@ -26,13 +25,13 @@ const PrivateCard = () =>
     presaleContract.address
   );
 
-  const [ BNBAmount, setBNBAmount ] = useState<number>(0);
-  const [ fillPercent, setFillPercent ] = useState<number>(0);
-  const [ presaleState, setPresaleState ] = useState<{
+  const [BNBAmount, setBNBAmount] = useState<number>(0);
+  const [fillPercent, setFillPercent] = useState<number>(0);
+  const [presaleState, setPresaleState] = useState<{
     hardcap: BigNumber;
     raised: BigNumber;
   }>({ hardcap: new BigNumber(0), raised: new BigNumber(0) });
-  const [ userInfo, setUserInfo ] = useState<{
+  const [userInfo, setUserInfo] = useState<{
     bought: BigNumber;
     claimed: boolean;
   }>({ bought: new BigNumber(0), claimed: false });
@@ -41,12 +40,11 @@ const PrivateCard = () =>
   const presaleStarted = true;
   const presaleActive = false;
   // Presale state
-  const getPresaleState = useCallback(async () =>
-  {
+  const getPresaleState = useCallback(async () => {
     if (!presaleMethods || !account) return;
     const userInfoFromMap = await presaleMethods.userInfo(account).call();
     const totalRaised = new BigNumber(
-      await presaleMethods.totalRaised().call()
+      await presaleMethods.totalRaise().call()
     ).div(10 ** 18);
     const hardcap = new BigNumber(await presaleMethods.HARD_CAP().call()).div(
       10 ** 18
@@ -59,34 +57,29 @@ const PrivateCard = () =>
       parseFloat(totalRaised.div(hardcap).times(100).toFixed(2, 1))
     );
     setPresaleState({ hardcap: hardcap, raised: totalRaised });
-  }, [ account, presaleMethods, setFillPercent ]);
+  }, [account, presaleMethods, setFillPercent]);
 
-  useEffect(() =>
-  {
+  useEffect(() => {
     if (!account || !chainId || !presaleMethods) return;
     getPresaleState();
-  }, [ account, chainId, getPresaleState, presaleMethods ]);
+  }, [account, chainId, getPresaleState, presaleMethods]);
 
-  useEffect(() =>
-  {
+  useEffect(() => {
     if (!account || !chainId) return;
     const interval = setInterval(getPresaleState, 10000);
-    return () =>
-    {
+    return () => {
       clearInterval(interval);
     };
-  }, [ account, chainId, getPresaleState ]);
+  }, [account, chainId, getPresaleState]);
 
-  const buyNow = useCallback(async () =>
-  {
+  const buyNow = useCallback(async () => {
     if (!BNBAmount || !account || !presaleMethods) return;
     await presaleMethods
       .buyToken()
       .send({ from: account, value: toWei(BNBAmount.toString()) });
-  }, [ account, presaleMethods, BNBAmount ]);
+  }, [account, presaleMethods, BNBAmount]);
 
-  const claimNow = useCallback(async () =>
-  {
+  const claimNow = useCallback(async () => {
     if (
       userInfo.claimed == true ||
       userInfo.bought.isEqualTo(0) ||
@@ -95,7 +88,7 @@ const PrivateCard = () =>
     )
       return;
     await presaleMethods.claimToken();
-  }, [ account, presaleMethods, userInfo ]);
+  }, [account, presaleMethods, userInfo]);
 
   return (
     <Card
@@ -118,16 +111,17 @@ const PrivateCard = () =>
               mb: 2,
             })}
           >
-            TOTAL RAISED
+            TOTAL RAISED - CAP REACHED
           </Typography>
           <LinearProgress
             variant="determinate"
             color="secondary"
-            value={fillPercent}
+            value={100}
             sx={{ height: 12, borderRadius: 4 }}
           />
-          {presaleState.raised.toFixed(2, 1).toString()} /{" "}
-          {presaleState.hardcap.toFixed(2, 1).toString()} BNB
+          {/* {presaleState.raised.toFixed(2, 1).toString()} /{" "}
+          {presaleState.hardcap.toFixed(2, 1).toString()} BNB */}
+          75 / 75 BNB
         </Box>
         <Typography
           component="div"
@@ -136,7 +130,6 @@ const PrivateCard = () =>
         >
           Stake Protocol seeks to have the best of some of the successful
           protocols in Defi. $STAKE is the official currency of Stake Protocol.
-          This is a private sale that will allow you to buy this token.
           <Typography
             align="center"
             sx={(theme) => ({
@@ -164,40 +157,43 @@ const PrivateCard = () =>
         {/* SALE ENDS IN 24 HOURS 1651575600000 TIMESTAMP IN MILISECONDS FOR TUESDAY 5/3/2022 AT 5AM */}
         <Countdown
           date={1651489200000}
-          renderer={({ days, hours, minutes, seconds, completed }) =>
-          {
+          renderer={({ days, hours, minutes, seconds, completed }) => {
             return completed ? (
               <Stack direction="column" alignItems="center">
-                <Typography
-                  sx={(theme) => ({
-                    color: theme.palette.primary.main,
-                    fontFamily: "Century-Gothic",
-                    mb: 2,
-                    whiteSpace: "pre-line",
-                  })}
-                >
-                  {userInfo.claimed === false ? "BOUGHT:" : "CLAIMED:"}
-                  {"\n"}{" "}
-                  {userInfo.bought
-                    .div(10 ** 18)
-                    .times(525)
-                    .toFixed(2, 1)
-                    .toString()}{" "}
-                  $STAKE FOR{" "}
-                  {userInfo.bought
-                    .div(10 ** 18)
-                    .toFixed(2, 1)
-                    .toString()}{" "}
-                  BNB
-                </Typography>
-                BUY:
+                {account && (
+                  <Typography
+                    sx={(theme) => ({
+                      color: theme.palette.primary.main,
+                      fontFamily: "Century-Gothic",
+                      mb: 2,
+                      whiteSpace: "pre-line",
+                    })}
+                  >
+                    {userInfo.claimed === false ? "BOUGHT:" : "CLAIMED:"}
+                    {"\n"}{" "}
+                    {userInfo.bought
+                      .div(10 ** 18)
+                      .times(525)
+                      .toFixed(2, 1)
+                      .toString()}{" "}
+                    $STAKE FOR{" "}
+                    {userInfo.bought
+                      .div(10 ** 18)
+                      .toFixed(2, 1)
+                      .toString()}{" "}
+                    BNB
+                  </Typography>
+                )}
+                {/* BUY:
                 <Stack
                   direction="row"
                   alignItems="center"
                   sx={{ mb: 1, mt: 2 }}
                 >
                   <TextField
-                    error={false}
+                    error={!BNBAmount}
+                    disabled={true}
+                    color="primary" focused
                     value={BNBAmount}
                     type="number"
                     id="filled-error-helper-text"
@@ -224,7 +220,14 @@ const PrivateCard = () =>
                   />
                   BNB
                 </Stack>
-                FOR {totalToBuy.toFixed(2)} $STAKE
+                FOR {totalToBuy.toFixed(2)} $STAKE */}
+                <Typography
+                  variant="h6"
+                  fontFamily="Suissnord"
+                  color="textSecondary"
+                >
+                  CAP REACHED
+                </Typography>
                 <Stack direction="row" alignItems="center" sx={{ mt: 2 }}>
                   <Image
                     src="/logos/Logo_4.png"
@@ -233,18 +236,27 @@ const PrivateCard = () =>
                     alt="Stake Protocol Logo 4"
                   />
                   <Stack direction="column" gap={2}>
-                    <Button
+                    {/* <Button
                       variant="contained"
                       color="secondary"
                       sx={{ mx: 1.5 }}
                       onClick={buyNow}
+                      disabled
                     >
                       BUY NOW
-                    </Button>
+                    </Button> */}
                     <Button
                       variant="contained"
                       color="secondary"
-                      disabled={true}
+                      disabled={
+                        !(
+                          userInfo.bought.isGreaterThan(0) &&
+                          presaleMethods &&
+                          !userInfo.claimed
+                        )
+                          ? true
+                          : false
+                      }
                       sx={{ mx: 1.5 }}
                       onClick={claimNow}
                     >

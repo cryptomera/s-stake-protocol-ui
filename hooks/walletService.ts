@@ -8,7 +8,7 @@ import portisModule from '@web3-onboard/portis'
 import magicModule from '@web3-onboard/magic'
 import fortmaticModule from '@web3-onboard/fortmatic'
 import torusModule from '@web3-onboard/torus'
-import keepkeyModule from '@web3-onboard/keepkey'
+// import keepkeyModule from '@web3-onboard/keepkey'
 import gnosisModule from '@web3-onboard/gnosis'
 
 const injected = injectedModule()
@@ -21,7 +21,7 @@ const trezorOptions = {
 const trezor = trezorModule(trezorOptions)
 const torus = torusModule()
 const ledger = ledgerModule()
-const keepkey = keepkeyModule()
+// const keepkey = keepkeyModule()
 const gnosis = gnosisModule()
 const magic = magicModule({
   apiKey: 'pk_live_02207D744E81C2BA'
@@ -43,7 +43,7 @@ export const initWeb3Onboard = init({
     gnosis,
     magic,
     fortmatic,
-    keepkey,
+    // keepkey,
     portis,
     torus
   ],

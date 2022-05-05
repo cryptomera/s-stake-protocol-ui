@@ -9,7 +9,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import TokenDlg from 'components/common/TokenDlg';
 
 const SwapTab = () => {
-  const [openTokenDlg, setOpenTokenDlg] = React.useState(true);
+  const [openTokenDlg, setOpenTokenDlg] = React.useState(false);
   const [tokenList, setTokenList] = React.useState([
     {
       name: 'bnb',
@@ -25,7 +25,7 @@ const SwapTab = () => {
       <Box
         sx={{
           height: '100%',
-          padding: '40px',
+          paddingTop: '40px',
         }}
       >
         {/* token select dialog */}

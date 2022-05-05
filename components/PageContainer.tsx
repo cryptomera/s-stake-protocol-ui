@@ -39,12 +39,6 @@ const onboard = Onboard({
       rpcUrl: 'https://bsc-dataseed.binance.org/'
     },
     {
-      id: '0x38',
-      token: 'BNB',
-      label: 'Binance Smart Chain',
-      rpcUrl: 'https://bsc-dataseed.binance.org/'
-    },
-    {
       id: '0xfa',
       token: 'FTM',
       label: 'Fantom Mainnet',
