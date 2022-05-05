@@ -8,14 +8,18 @@ interface TokenDlgProps {
 }
 
 const TokenDlg = (props: TokenDlgProps) => {
-  const {open, handleClose, tokens} = props;
+  const { open, handleClose, tokens } = props;
   return (
-    <Dialog open={open} onClose={handleClose}>
+    <Dialog
+      open={open}
+      onClose={handleClose}
+    >
       <Box
         sx={{
           width: '400px',
           height: '600px',
-          borderRadius: '16px'
+          borderRadius: '16px',
+          positin: 'absolute'
         }}
       >
       </Box>

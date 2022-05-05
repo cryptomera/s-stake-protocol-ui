@@ -21,7 +21,10 @@ const Swap: NextPage = () => {
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            position: 'absolute',
+            width: '100%',
+            left: 0,
           }}
         >
           <ButtonGroup variant="contained" aria-label="outlined primary button group">

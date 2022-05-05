@@ -9,7 +9,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import TokenDlg from 'components/common/TokenDlg';
 
 const SwapTab = () => {
-  const [openTokenDlg, setOpenTokenDlg] = React.useState(false);
+  const [openTokenDlg, setOpenTokenDlg] = React.useState(true);
   const [tokenList, setTokenList] = React.useState([
     {
       name: 'bnb',
@@ -22,19 +22,18 @@ const SwapTab = () => {
   ])
   return (
     <>
-      {/* token select dialog */}
-      <TokenDlg 
-        open={openTokenDlg} 
-        handleClose={() => setOpenTokenDlg(false)}
-        tokens={tokenList}
-      />
       <Box
         sx={{
-          position: 'relative',
           height: '100%',
-          paddingTop: '40px'
+          padding: '40px',
         }}
       >
+        {/* token select dialog */}
+        <TokenDlg
+          open={openTokenDlg}
+          handleClose={() => setOpenTokenDlg(false)}
+          tokens={tokenList}
+        />
         <Box
           sx={{
             position: 'absolute',
@@ -133,7 +132,7 @@ const SwapTab = () => {
                 </Box>
                 <Box sx={{ flexGrow: 1 }}></Box>
                 <Box>
-                  <Button sx={{ display: 'flex', color: 'text.primary', paddingTop: 0, fontWeight: 'bold', fontSize: '18px' }}>
+                  <Button onClick={() => setOpenTokenDlg(true)} sx={{ display: 'flex', color: 'text.primary', paddingTop: 0, fontWeight: 'bold', fontSize: '18px' }}>
                     <Box>BNB</Box>
                     <Box sx={{ paddingTop: '10px' }}>
                       <KeyboardArrowDownIcon />
