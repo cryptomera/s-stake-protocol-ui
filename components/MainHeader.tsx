@@ -12,8 +12,9 @@ import { useAuth, ConnectorNames } from "hooks/useAuth";
 
 const drawerWidth = 240;
 
-const MainHeader = (props: { toggleMenuOpen: () => void }) => {
-  const { toggleMenuOpen } = props;
+
+const MainHeader = (props: { userAccount: any, toggleMenuOpen: () => void, connectWallet: () => void }) => {
+  const { toggleMenuOpen, connectWallet, userAccount } = props;
   const { login, account } = useAuth();
 
   const shortAddress = (address: string) => {
@@ -45,15 +46,20 @@ const MainHeader = (props: { toggleMenuOpen: () => void }) => {
         >
           <MenuIcon />
         </Fab>
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={() => login(ConnectorNames.INJECTED)}
-        >
-          <Typography style={{ fontFamily: "Century-Gothic" }}>
-            {account ? displayAccount : "Connect"}
-          </Typography>
-        </Button>
+        {
+          !userAccount && (
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={connectWallet}
+            >
+              <Typography style={{ fontFamily: "Century-Gothic" }}>
+                {account ? displayAccount : "Connect"}
+              </Typography>
+            </Button>
+          )
+        }
+        
       </Toolbar>
     </AppBar>
   );
