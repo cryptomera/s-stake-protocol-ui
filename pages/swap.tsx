@@ -11,16 +11,17 @@ import SwapTab from '../components/swap/SwapTab';
 import Link from '@mui/material/Link';
 
 const Swap: NextPage = () => {
+  const [tabValue, setTabValue] = React.useState("0");
+  const tabHandler = (event: React.SyntheticEvent, newValue: string) => {
+    setTabValue(newValue);
+  }
   return (
     <PageContainer>
       <div style={{ width: '100%' }}>
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'center',
-            position: 'absolute',
-            width: '100%',
-            left: 0,
+            justifyContent: 'center'
           }}
         >
           <ButtonGroup variant="contained" aria-label="outlined primary button group">

@@ -27,7 +27,6 @@ import IconButton from "@mui/material/IconButton";
 import MediumIcon from "components/svg/MediumIcon";
 import PaidIcon from "@mui/icons-material/Paid";
 
-
 const drawerWidth = 240;
 
 type MainDrawerProps = {
