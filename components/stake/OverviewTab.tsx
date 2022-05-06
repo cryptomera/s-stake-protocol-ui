@@ -5,6 +5,7 @@ import SellIcon from '@mui/icons-material/Sell';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import SimpleAreaChart from '../common/SimpleAreaChart';
 
+
 const OverviewTab = () => {
   return (
     <Box>
@@ -288,6 +289,9 @@ const OverviewTab = () => {
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
               (Net Elastic Rebase Depletion)
             </Box>
+            <Box>
+              
+            </Box>
           </Box>
         </Grid>
         <Grid
@@ -532,7 +536,7 @@ const OverviewTab = () => {
               borderRadius: '16px'
             }}
           >
-            <SimpleAreaChart/>
+            <SimpleAreaChart />
           </Box>
         </Grid>
       </Grid>
