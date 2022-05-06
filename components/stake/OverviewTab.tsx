@@ -3,6 +3,7 @@ import * as React from 'react';
 import CustomInput from './CustomInput';
 import SellIcon from '@mui/icons-material/Sell';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import SimpleAreaChart from '../common/SimpleAreaChart';
 
 const OverviewTab = () => {
   return (
@@ -522,7 +523,7 @@ const OverviewTab = () => {
         </Grid>
         <Grid
           item
-          xs={6}
+          xs={12}
         >
           <Box
             sx={{
@@ -531,7 +532,7 @@ const OverviewTab = () => {
               borderRadius: '16px'
             }}
           >
-            card
+            <SimpleAreaChart/>
           </Box>
         </Grid>
       </Grid>
