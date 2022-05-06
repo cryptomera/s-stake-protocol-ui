@@ -6,6 +6,7 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel'
+import OverviewTab from 'components/stake/OverviewTab';
 
 
 const Stake: NextPage = () => {
@@ -28,15 +29,21 @@ const Stake: NextPage = () => {
             }}
           >
             <TabList onChange={handleTab}>
-              <Tab label="Overview" value="1" />
-              <Tab label="Treasury" value="2" />
-              <Tab label="Revenue" value="3" />
+              <Tab sx={{fontSize: '18px', fontWeight: 'bold'}} label="Overview" value="1" />
+              <Tab sx={{fontSize: '18px', fontWeight: 'bold'}} label="Faucet" value="2" />
+              <Tab sx={{fontSize: '18px', fontWeight: 'bold'}} label="Rebase" value="3" />
+              <Tab sx={{fontSize: '18px', fontWeight: 'bold'}} label="Reservoir" value="4" />
+              <Tab sx={{fontSize: '18px', fontWeight: 'bold'}} label="Downline" value="5" />
             </TabList>
           </Box>
           <Box>
-            <TabPanel value="1">overview</TabPanel>
-            <TabPanel value="2">Treasury</TabPanel>
-            <TabPanel value="3">Revenue</TabPanel>
+            <TabPanel value="1">
+              <OverviewTab />
+            </TabPanel>
+            <TabPanel value="2">faucet</TabPanel>
+            <TabPanel value="3">Rebase</TabPanel>
+            <TabPanel value="4">Reservoir</TabPanel>
+            <TabPanel value="5">Downline</TabPanel>
           </Box>
         </TabContext>
       </Box>
