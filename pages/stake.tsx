@@ -8,6 +8,7 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel'
 import OverviewTab from 'components/stake/OverviewTab';
 import FaucetTab from 'components/stake/FaucetTab';
+import RebaseTab from 'components/stake/RebaseTab';
 
 
 const Stake: NextPage = () => {
@@ -44,7 +45,9 @@ const Stake: NextPage = () => {
             <TabPanel value="2">
               <FaucetTab />
             </TabPanel>
-            <TabPanel value="3">Rebase</TabPanel>
+            <TabPanel value="3">
+              <RebaseTab />
+            </TabPanel>
             <TabPanel value="4">Reservoir</TabPanel>
             <TabPanel value="5">Downline</TabPanel>
           </Box>
