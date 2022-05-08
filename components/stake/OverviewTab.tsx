@@ -40,7 +40,7 @@ const OverviewTab = () => {
           >
             <Box
               sx={{
-                fontSize: '20px',
+                fontSize: '28px',
                 fontWeight: 'bold',
                 display: 'flex',
                 justifyContent: 'center',
@@ -81,18 +81,18 @@ const OverviewTab = () => {
                   width: '50%'
                 }}
               >
-                <Button size="large" fullWidth variant="contained">Claim all</Button>
+                <Button size="large" color="secondary" fullWidth variant="contained">Claim all</Button>
               </Box>
               <Box
                 sx={{
                   width: '50%'
                 }}
               >
-                <Button size="large" fullWidth variant="contained">Compound all</Button>
+                <Button size="large" color="secondary" fullWidth variant="contained">Compound all</Button>
               </Box>
             </Box>
             <Box sx={{ marginTop: '20px' }}>
-              <Button size="large" fullWidth variant="contained">Deposit</Button>
+              <Button size="large" color="secondary" fullWidth variant="contained">Deposit</Button>
             </Box>
           </Box>
         </Grid>
@@ -111,51 +111,53 @@ const OverviewTab = () => {
             <Box
               sx={{
                 display: 'flex',
-              }}
-            >
-              <Box>
-                Sell Stake
-              </Box>
-              <Box sx={{ flexGrow: 1 }}></Box>
-              <Box>Stake Balance: 65,707</Box>
-            </Box>
-            <Box
-              sx={{
-                display: 'flex',
                 justifyContent: 'center',
                 marginBottom: '10px'
               }}
             >
-              <CustomInput icon={<SellIcon />} />
-            </Box>
-            <Box sx={{ display: 'flex', justifyContent: 'right' }}>
-              <Button variant="contained">Sell</Button>
+              <Box>
+                <Box
+                  sx={{
+                    display: 'flex',
+                  }}
+                >
+                  <Box>
+                    Sell Stake
+                  </Box>
+                  <Box sx={{ flexGrow: 1 }}></Box>
+                  <Box>Stake Balance: 65,707</Box>
+                </Box>
+                <CustomInput width="500px" icon={<SellIcon />} />
+                <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
+                  <Button color="secondary" variant="contained">Sell</Button>
+                </Box>
+              </Box>
             </Box>
             {/* buy */}
             <Box
               sx={{
                 display: 'flex',
-                paddingLeft: '40px',
-                paddingRight: '40px'
-              }}
-            >
-              <Box>
-                Buy Stake
-              </Box>
-              <Box sx={{ flexGrow: 1 }}></Box>
-              <Box>BNB Balance: 1.452</Box>
-            </Box>
-            <Box
-              sx={{
-                display: 'flex',
                 justifyContent: 'center',
                 marginBottom: '10px'
               }}
             >
-              <CustomInput icon={<ShoppingBagIcon />} />
-            </Box>
-            <Box sx={{ display: 'flex', justifyContent: 'right' }}>
-              <Button variant="contained">Buy</Button>
+              <Box>
+                <Box
+                  sx={{
+                    display: 'flex',
+                  }}
+                >
+                  <Box>
+                    Buy Stake
+                  </Box>
+                  <Box sx={{ flexGrow: 1 }}></Box>
+                  <Box>BNB Balance: 1.452</Box>
+                </Box>
+                <CustomInput width="500px" icon={<ShoppingBagIcon />} />
+                <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
+                  <Button color="secondary" variant="contained">Buy</Button>
+                </Box>
+              </Box>
             </Box>
           </Box>
         </Grid>
@@ -290,7 +292,7 @@ const OverviewTab = () => {
               (Net Elastic Rebase Depletion)
             </Box>
             <Box>
-              
+
             </Box>
           </Box>
         </Grid>
