@@ -26,6 +26,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import IconButton from "@mui/material/IconButton";
 import MediumIcon from "components/svg/MediumIcon";
 import PaidIcon from "@mui/icons-material/Paid";
+import FoundationIcon from '@mui/icons-material/Foundation';
 
 const drawerWidth = 240;
 
@@ -152,6 +153,12 @@ const menuItems: Array<MenuItemType> = [
     icon: <ShieldMoonIcon color="secondary" />,
     href: "/stake",
     disabled: false,
+  },
+  {
+    name: 'Foundation',
+    icon: <FoundationIcon color="secondary"/>,
+    href: '/foundation',
+    disabled: false
   },
   {
     name: "Docs",

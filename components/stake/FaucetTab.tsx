@@ -22,7 +22,8 @@ const FaucetTab = () => {
               display: 'flex',
               justifyContent: 'center',
               fontWeight: 'bold',
-              fontSize: '20px'
+              fontSize: '20px',
+              marginBottom: '30px'
             }}
           >
             Net Faucet Value (NFV)

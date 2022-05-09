@@ -210,6 +210,7 @@ const RebaseTab = () => {
                 buttonColor="lightBlue"
                 buttonTextColor="white"
                 placeHolder="0xc70dAF7356bC5f2eF6008E0FaA7e076C47C6e7f"
+                width="600px"
               />
             </Grid>
             <Grid sx={{ fontSize: '20px' }} item xs={4}>
@@ -273,7 +274,7 @@ const RebaseTab = () => {
                   buttonColor="primary"
                   buttonTextColor="white"
                   placeHolder="0xc70dAF7356bC5f2eF6008E0FaA7e076C47C6e7f"
-                  width="800px"
+                  width="600px"
                 />
                 <Box
                   sx={{

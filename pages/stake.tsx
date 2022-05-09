@@ -9,13 +9,17 @@ import TabPanel from '@mui/lab/TabPanel'
 import OverviewTab from 'components/stake/OverviewTab';
 import FaucetTab from 'components/stake/FaucetTab';
 import RebaseTab from 'components/stake/RebaseTab';
-
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import ReferralTab from 'components/stake/ReferralTab';
 
 const Stake: NextPage = () => {
   const [tabValue, setTabValue] = React.useState('1');
-  const handleTab = (event: React.SyntheticEvent, newValue: string) => {
-    setTabValue(newValue);
-  }
+  const router = useRouter();
+  // handle router
+  React.useEffect(() => {
+    setTabValue(String(router.query.tab))
+  }, [router]);
   return (
     <PageContainer>
       <Box
@@ -30,13 +34,69 @@ const Stake: NextPage = () => {
               justifyContent: 'center',
             }}
           >
-            <TabList onChange={handleTab}>
-              <Tab sx={{fontSize: '18px', fontWeight: 'bold'}} label="Overview" value="1" />
-              <Tab sx={{fontSize: '18px', fontWeight: 'bold'}} label="Faucet" value="2" />
-              <Tab sx={{fontSize: '18px', fontWeight: 'bold'}} label="Rebase" value="3" />
-              <Tab sx={{fontSize: '18px', fontWeight: 'bold'}} label="Reservoir" value="4" />
-              <Tab sx={{fontSize: '18px', fontWeight: 'bold'}} label="Downline" value="5" />
-            </TabList>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center'
+              }}
+            >
+              <Link href="/stake?tab=1">
+                <a
+                  style={{
+                    fontSize: '20px',
+                    textDecoration: 'none',
+                    fontWeight: 'bold',
+                    color: '#FFFFFC',
+                    margin: '10px',
+                    borderBottom: tabValue === '1' ? 'solid 3px' : ''
+                  }}
+                >
+                  Overview
+                </a>
+              </Link>
+              <Link href="/stake?tab=2">
+                <a
+                  style={{
+                    fontSize: '20px',
+                    textDecoration: 'none',
+                    fontWeight: 'bold',
+                    color: '#FFFFFC',
+                    margin: '10px',
+                    borderBottom: tabValue === '2' ? 'solid 3px' : ''
+                  }}
+                >
+                  Faucet
+                </a>
+              </Link>
+              <Link href="/stake?tab=3">
+                <a
+                  style={{
+                    fontSize: '20px',
+                    textDecoration: 'none',
+                    fontWeight: 'bold',
+                    color: '#FFFFFC',
+                    margin: '10px',
+                    borderBottom: tabValue === '3' ? 'solid 3px' : ''
+                  }}
+                >
+                  Rebase
+                </a>
+              </Link>
+              <Link href="/stake?tab=4">
+                <a
+                  style={{
+                    fontSize: '20px',
+                    textDecoration: 'none',
+                    fontWeight: 'bold',
+                    color: '#FFFFFC',
+                    margin: '10px',
+                    borderBottom: tabValue === '4' ? 'solid 3px' : ''
+                  }}
+                >
+                  Referral
+                </a>
+              </Link>
+            </Box>
           </Box>
           <Box>
             <TabPanel value="1">
@@ -48,8 +108,9 @@ const Stake: NextPage = () => {
             <TabPanel value="3">
               <RebaseTab />
             </TabPanel>
-            <TabPanel value="4">Reservoir</TabPanel>
-            <TabPanel value="5">Downline</TabPanel>
+            <TabPanel value="4">
+              <ReferralTab/>
+            </TabPanel>
           </Box>
         </TabContext>
       </Box>

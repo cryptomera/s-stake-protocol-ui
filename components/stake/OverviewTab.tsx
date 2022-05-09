@@ -538,7 +538,7 @@ const OverviewTab = () => {
               borderRadius: '16px'
             }}
           >
-            <SimpleAreaChart />
+            {/* <SimpleAreaChart /> */}
           </Box>
         </Grid>
       </Grid>
