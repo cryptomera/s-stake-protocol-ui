@@ -119,13 +119,13 @@ const FaucetTab = () => {
             </Grid>
             {/* buttons */}
             <Grid item xs={4}>
-              <Button fullWidth variant="contained">Claim</Button>
+              <Button color="secondary" fullWidth variant="contained">Claim</Button>
             </Grid>
             <Grid item xs={4}>
-              <Button fullWidth variant="contained">Compound</Button>
+              <Button color="secondary" fullWidth variant="contained">Compound</Button>
             </Grid>
             <Grid item xs={4}>
-              <Button fullWidth variant="contained">Deposit</Button>
+              <Button color="secondary" fullWidth variant="contained">Deposit</Button>
             </Grid>
           </Grid>
         </Box>
@@ -142,51 +142,51 @@ const FaucetTab = () => {
           <Box
             sx={{
               display: 'flex',
+              justifyContent: 'center',
             }}
           >
             <Box>
-              Sell Stake
+              <Box
+                sx={{
+                  display: 'flex',
+                }}
+              >
+                <Box>
+                  Sell Stake
+                </Box>
+                <Box sx={{ flexGrow: 1 }}></Box>
+                <Box>Stake Balance: 65,707</Box>
+              </Box>
+              <CustomInput width="500px" icon={<SellIcon />} />
+              <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
+                <Button color="secondary" variant="contained">Sell</Button>
+              </Box>
             </Box>
-            <Box sx={{ flexGrow: 1 }}></Box>
-            <Box>Stake Balance: 65,707</Box>
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              marginBottom: '10px'
-            }}
-          >
-            <CustomInput icon={<SellIcon />} />
-          </Box>
-          <Box sx={{ display: 'flex', justifyContent: 'right' }}>
-            <Button variant="contained">Sell</Button>
           </Box>
           {/* buy */}
           <Box
             sx={{
               display: 'flex',
-              paddingLeft: '40px',
-              paddingRight: '40px'
+              justifyContent: 'center',
             }}
           >
             <Box>
-              Buy Stake
+              <Box
+                sx={{
+                  display: 'flex',
+                }}
+              >
+                <Box>
+                  Buy Stake
+                </Box>
+                <Box sx={{ flexGrow: 1 }}></Box>
+                <Box>BNB Balance: 1.452</Box>
+              </Box>
+              <CustomInput width="500px" icon={<ShoppingBagIcon />} />
+              <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
+                <Button color="secondary" variant="contained">Buy</Button>
+              </Box>
             </Box>
-            <Box sx={{ flexGrow: 1 }}></Box>
-            <Box>BNB Balance: 1.452</Box>
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              marginBottom: '10px'
-            }}
-          >
-            <CustomInput icon={<ShoppingBagIcon />} />
-          </Box>
-          <Box sx={{ display: 'flex', justifyContent: 'right' }}>
-            <Button variant="contained">Buy</Button>
           </Box>
         </Box>
       </Grid>
@@ -239,10 +239,10 @@ const FaucetTab = () => {
                 </Grid>
                 <Grid item xs={6}>
                   <Box>
-                  Current Rebase Rate
+                    Current Rebase Rate
                   </Box>
                   <Box
-                    sx={{paddingLeft: '50px'}}
+                    sx={{ paddingLeft: '50px' }}
                   >
                     (daily)
                   </Box>
