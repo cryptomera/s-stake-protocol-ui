@@ -83,20 +83,6 @@ const Stake: NextPage = () => {
                   Rebase
                 </a>
               </Link>
-              <Link href="/stake?tab=referral">
-                <a
-                  style={{
-                    fontSize: '20px',
-                    textDecoration: 'none',
-                    fontWeight: 'bold',
-                    color: '#FFFFFC',
-                    margin: '10px',
-                    borderBottom: tabValue === 'referral' ? 'solid 3px' : ''
-                  }}
-                >
-                  Referral
-                </a>
-              </Link>
               <Link href="/stake?tab=downline">
                 <a
                   style={{
@@ -123,11 +109,8 @@ const Stake: NextPage = () => {
             <TabPanel value="rebase">
               <RebaseTab />
             </TabPanel>
-            <TabPanel value="referral">
-              <ReferralTab/>
-            </TabPanel>
             <TabPanel value="downline">
-              <DownlineTab/>
+              <ReferralTab/>
             </TabPanel>
           </Box>
         </TabContext>
