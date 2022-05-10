@@ -205,8 +205,9 @@ const SwapTab = () => {
           >
             <Button fullWidth
               variant="contained"
+              color="secondary"
               sx={{
-                height: '60px',
+                height: '50px',
                 borderRadius: '16px',
                 fontWeight: 'bold',
                 color: 'text.primary',

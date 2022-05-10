@@ -10,7 +10,7 @@ const Home: NextPage = () =>
   const router = useRouter();
   useEffect(() => {
     if(router.pathname === '/') {
-      router.push('/stake');
+      router.push({pathname: '/stake', query: {tab: 'overview'}});
     }
   }, [])
   return (

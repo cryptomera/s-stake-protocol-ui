@@ -283,7 +283,7 @@ const RebaseTab = () => {
                     marginTop: '10px'
                   }}
                 >
-                  <ButtonGroup variant="contained">
+                  <ButtonGroup color="secondary" variant="contained">
                     <Button>My address</Button>
                     <Button>viw all</Button>
                   </ButtonGroup>

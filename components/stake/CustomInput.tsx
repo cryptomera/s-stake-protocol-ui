@@ -24,12 +24,12 @@ const CustomInput = (props: ButtonProps) => {
         sx={{ ml: 1, flex: 1, color: 'white' }}
         inputProps={{ 'aria-label': 'search google maps' }}
       />
-      <Box sx={{ background: 'lightBlue', display: 'flex', borderRadius: '5px' }}>
+      <Box sx={{ background: 'lightBlue', display: 'flex', borderRadius: '0px 5px 5px 0px' }}>
         <Button type="submit" sx={{ p: '10px', color: 'black', fontWeight: 'bold' }}>
           max
         </Button>
         <Divider sx={{ height: 34, m: 0.5 }} orientation="vertical" />
-        <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
+        <IconButton sx={{ p: '10px', color: 'black' }} aria-label="directions">
           {icon}
         </IconButton>
       </Box>

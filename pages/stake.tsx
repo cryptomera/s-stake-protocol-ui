@@ -12,6 +12,7 @@ import RebaseTab from 'components/stake/RebaseTab';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import ReferralTab from 'components/stake/ReferralTab';
+import DownlineTab from 'components/stake/DownlineTab';
 
 const Stake: NextPage = () => {
   const [tabValue, setTabValue] = React.useState('1');
@@ -40,7 +41,7 @@ const Stake: NextPage = () => {
                 justifyContent: 'center'
               }}
             >
-              <Link href="/stake?tab=1">
+              <Link href="/stake?tab=overview">
                 <a
                   style={{
                     fontSize: '20px',
@@ -48,13 +49,13 @@ const Stake: NextPage = () => {
                     fontWeight: 'bold',
                     color: '#FFFFFC',
                     margin: '10px',
-                    borderBottom: tabValue === '1' ? 'solid 3px' : ''
+                    borderBottom: tabValue === 'overview' ? 'solid 3px' : ''
                   }}
                 >
                   Overview
                 </a>
               </Link>
-              <Link href="/stake?tab=2">
+              <Link href="/stake?tab=faucet">
                 <a
                   style={{
                     fontSize: '20px',
@@ -62,13 +63,13 @@ const Stake: NextPage = () => {
                     fontWeight: 'bold',
                     color: '#FFFFFC',
                     margin: '10px',
-                    borderBottom: tabValue === '2' ? 'solid 3px' : ''
+                    borderBottom: tabValue === 'faucet' ? 'solid 3px' : ''
                   }}
                 >
                   Faucet
                 </a>
               </Link>
-              <Link href="/stake?tab=3">
+              <Link href="/stake?tab=rebase">
                 <a
                   style={{
                     fontSize: '20px',
@@ -76,13 +77,13 @@ const Stake: NextPage = () => {
                     fontWeight: 'bold',
                     color: '#FFFFFC',
                     margin: '10px',
-                    borderBottom: tabValue === '3' ? 'solid 3px' : ''
+                    borderBottom: tabValue === 'rebase' ? 'solid 3px' : ''
                   }}
                 >
                   Rebase
                 </a>
               </Link>
-              <Link href="/stake?tab=4">
+              <Link href="/stake?tab=referral">
                 <a
                   style={{
                     fontSize: '20px',
@@ -90,26 +91,43 @@ const Stake: NextPage = () => {
                     fontWeight: 'bold',
                     color: '#FFFFFC',
                     margin: '10px',
-                    borderBottom: tabValue === '4' ? 'solid 3px' : ''
+                    borderBottom: tabValue === 'referral' ? 'solid 3px' : ''
                   }}
                 >
                   Referral
                 </a>
               </Link>
+              <Link href="/stake?tab=downline">
+                <a
+                  style={{
+                    fontSize: '20px',
+                    textDecoration: 'none',
+                    fontWeight: 'bold',
+                    color: '#FFFFFC',
+                    margin: '10px',
+                    borderBottom: tabValue === 'downline' ? 'solid 3px' : ''
+                  }}
+                >
+                  Downline
+                </a>
+              </Link>
             </Box>
           </Box>
           <Box>
-            <TabPanel value="1">
+            <TabPanel value="overview">
               <OverviewTab />
             </TabPanel>
-            <TabPanel value="2">
+            <TabPanel value="faucet">
               <FaucetTab />
             </TabPanel>
-            <TabPanel value="3">
+            <TabPanel value="rebase">
               <RebaseTab />
             </TabPanel>
-            <TabPanel value="4">
+            <TabPanel value="referral">
               <ReferralTab/>
+            </TabPanel>
+            <TabPanel value="downline">
+              <DownlineTab/>
             </TabPanel>
           </Box>
         </TabContext>

@@ -151,7 +151,7 @@ const menuItems: Array<MenuItemType> = [
   {
     name: "Stake",
     icon: <ShieldMoonIcon color="secondary" />,
-    href: "/stake",
+    href: "/stake?tab=overview",
     disabled: false,
   },
   {

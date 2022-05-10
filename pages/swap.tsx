@@ -8,7 +8,8 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 // components
 import SwapTab from '../components/swap/SwapTab';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
+import Link from 'next/link';
 
 const Swap: NextPage = () => {
   const [tabValue, setTabValue] = React.useState("0");
@@ -24,9 +25,13 @@ const Swap: NextPage = () => {
             justifyContent: 'center'
           }}
         >
-          <ButtonGroup variant="contained" aria-label="outlined primary button group">
-            <Button href="/swap" component={Link} >swap</Button>
-            <Button href="/stake" component={Link}>Liquidity</Button>
+          <ButtonGroup color="secondary" variant="contained">
+            <Link href="/swap">
+              <Button >swap</Button>
+            </Link>
+            <Link href="/foundation">
+              <Button>Liquidity</Button>
+            </Link>
           </ButtonGroup>
         </Box>
         <SwapTab />
