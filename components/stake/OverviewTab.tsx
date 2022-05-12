@@ -7,6 +7,24 @@ import SimpleAreaChart from '../common/SimpleAreaChart';
 
 
 const OverviewTab = () => {
+  const [sellAmount, setSellAmount] = React.useState('0');
+  const [buyAmount, setBuyAmount] = React.useState('0');
+
+  const handleSellAmount = (e: any) => {
+    e.target.value = e.target.value.toString().replace(",", ".").replace(" ", "");
+    if (isNaN(e.target.value)) {
+      return;
+    }
+    setSellAmount(e.target.value);
+  }
+
+  const handleBuyAmount = (e:any) => {
+    e.target.value = e.target.value.toString().replace(",", ".").replace(" ", "");
+    if (isNaN(e.target.value)) {
+      return;
+    }
+    setBuyAmount(e.target.value);
+  }
   return (
     <Box>
       <Box
@@ -127,7 +145,7 @@ const OverviewTab = () => {
                   <Box sx={{ flexGrow: 1 }}></Box>
                   <Box>Stake Balance: 65,707</Box>
                 </Box>
-                <CustomInput width="500px" icon={<SellIcon />} />
+                <CustomInput value={sellAmount} setValue={e => handleSellAmount(e)} width="500px" icon={<SellIcon />} />
                 <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
                   <Button color="secondary" variant="contained">Sell</Button>
                 </Box>
@@ -153,7 +171,7 @@ const OverviewTab = () => {
                   <Box sx={{ flexGrow: 1 }}></Box>
                   <Box>BNB Balance: 1.452</Box>
                 </Box>
-                <CustomInput width="500px" icon={<ShoppingBagIcon />} />
+                <CustomInput value={buyAmount} setValue={e => handleBuyAmount(e)} width="500px" icon={<ShoppingBagIcon />} />
                 <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
                   <Button color="secondary" variant="contained">Buy</Button>
                 </Box>

@@ -1,5 +1,5 @@
 // React
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { useRouter } from 'next/router';
 // Material
 import Avatar from "@mui/material/Avatar";
@@ -39,6 +39,10 @@ function ResponsiveDrawer(props: MainDrawerProps) {
   const { open, toggleOpen } = props;
   const isSm = useMediaQuery("(min-width:600px)");
   const router = useRouter();
+
+  // useEffect(() => {
+  //   console.log(router.pathname)
+  // }, [router.pathname])
 
   const gotoLink = (href: string) => {
     router.push(href);
@@ -92,7 +96,10 @@ function ResponsiveDrawer(props: MainDrawerProps) {
                   </ListItemIcon>
                   <ListItemText
                     primary={item.name}
-                    sx={(theme) => ({ color: theme.palette.neutral.main })}
+                    sx={(theme) => ({ 
+                      color: item.href.includes(router.pathname) ? theme.palette.primary.main : theme.palette.text.primary,
+                      fontWeight: 'bold'
+                    })}
                   />
                 </ListItem>
               ))}

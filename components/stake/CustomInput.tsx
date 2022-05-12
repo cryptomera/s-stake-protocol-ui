@@ -11,18 +11,22 @@ import { Box } from '@mui/material';
 interface ButtonProps {
   icon: any;
   width?: string;
+  value: string;
+  setValue: (e:any) => void;
 }
 
 const CustomInput = (props: ButtonProps) => {
-  const { icon, width } = props;
+  const { icon, width, value, setValue } = props;
   return (
     <Paper
       component="form"
       sx={{ display: 'flex', alignItems: 'center', width: !!width ? width : '100%', background: 'gray', }}
     >
       <InputBase
-        sx={{ ml: 1, flex: 1, color: 'white' }}
+        sx={{ ml: 1, flex: 1, color: 'white', fontWeight: 'bold' }}
         inputProps={{ 'aria-label': 'search google maps' }}
+        value={value}
+        onChange={setValue}
       />
       <Box sx={{ background: 'lightBlue', display: 'flex', borderRadius: '0px 5px 5px 0px' }}>
         <Button type="submit" sx={{ p: '10px', color: 'black', fontWeight: 'bold' }}>
