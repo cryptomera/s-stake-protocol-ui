@@ -162,12 +162,6 @@ const menuItems: Array<MenuItemType> = [
     disabled: false,
   },
   {
-    name: 'Foundation',
-    icon: <FoundationIcon color="secondary"/>,
-    href: '/foundation',
-    disabled: false
-  },
-  {
     name: "Docs",
     icon: <MenuBookIcon color="secondary" />,
     href: "",
@@ -178,5 +172,17 @@ const menuItems: Array<MenuItemType> = [
     icon: <PaidIcon color="secondary" />,
     href: "",
     disabled: true,
+  },
+  {
+    name: 'Foundation',
+    icon: <FoundationIcon color="secondary"/>,
+    href: '/foundation',
+    disabled: false
+  },
+  {
+    name: 'Treasury',
+    icon: <FoundationIcon color="secondary"/>,
+    href: '/treasury',
+    disabled: false
   },
 ];
