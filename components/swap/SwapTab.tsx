@@ -8,6 +8,8 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 //  components
 import TokenDlg from 'components/common/TokenDlg';
 
+import { useMediaQuery } from 'react-responsive'
+
 const SwapTab = () => {
   const [openTokenDlg, setOpenTokenDlg] = React.useState(false);
   const [tokenList, setTokenList] = React.useState([
@@ -20,6 +22,9 @@ const SwapTab = () => {
       symbol: 'STK'
     }
   ])
+  const isResp520 = useMediaQuery({
+    query: '(max-width: 520px)'
+  })
   return (
     <>
       {/* token select dialog */}
@@ -40,8 +45,8 @@ const SwapTab = () => {
             position: 'absolute',
             backgroundColor: 'primary.main',
             filter: 'blur(15px)',
-            width: '500px',
-            height: '500px',
+            width: isResp520?'100%':'500px',
+            height: isResp520?'auto':'500px',
             left: 0,
             right: 0,
             margin: 'auto',
@@ -54,8 +59,8 @@ const SwapTab = () => {
           sx={{
             position: 'absolute',
             border: 'solid 3px',
-            width: '500px',
-            height: '500px',
+            width: isResp520?'100%':'500px',
+            height: isResp520?'auto':'500px',
             borderRadius: '16px',
             borderColor: 'secondary.main',
             backgroundColor: 'background.paper',
@@ -100,11 +105,11 @@ const SwapTab = () => {
             <Box
               sx={{
                 width: '100%',
-                height: '120px',
+                height: isResp520?'auto':'120px',
                 backgroundColor: 'background.default',
                 borderRadius: '16px',
                 boxShadow: 'rgb(0 0 0) 5px 5px 7px -5px',
-                padding: '20px'
+                padding: isResp520?'10px':'20px'
               }}
             >
               {/* label */}
@@ -115,7 +120,7 @@ const SwapTab = () => {
               <Box
                 sx={{
                   display: 'flex',
-                  marginTop: '20px'
+                  marginTop: isResp520?'0px':'20px'
                 }}
               >
                 {/* input amount */}
@@ -127,7 +132,8 @@ const SwapTab = () => {
                       height: '30px',
                       fontSize: '20px',
                       backgroundColor: 'transparent',
-                      color: 'white'
+                      color: 'white',
+                      width: '100%'
                     }}
                   />
                 </Box>
@@ -157,11 +163,11 @@ const SwapTab = () => {
             <Box
               sx={{
                 width: '100%',
-                height: '120px',
+                height: isResp520?'auto':'120px',
                 backgroundColor: 'background.default',
                 borderRadius: '16px',
                 boxShadow: 'rgb(0 0 0) 5px 5px 7px -5px',
-                padding: '20px'
+                padding: isResp520?'10px':'20px'
               }}
             >
               {/* label */}
@@ -172,7 +178,7 @@ const SwapTab = () => {
               <Box
                 sx={{
                   display: 'flex',
-                  marginTop: '20px'
+                  marginTop: isResp520?'0px':'20px'
                 }}
               >
                 {/* input amount */}
@@ -184,7 +190,8 @@ const SwapTab = () => {
                       height: '30px',
                       fontSize: '20px',
                       backgroundColor: 'transparent',
-                      color: 'white'
+                      color: 'white',
+                      width: '100%'
                     }}
                   />
                 </Box>
