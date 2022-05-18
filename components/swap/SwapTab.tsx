@@ -8,7 +8,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 //  components
 import TokenDlg from 'components/common/TokenDlg';
 
-import { useMediaQuery } from 'react-responsive'
+import { useMediaQuery } from 'react-responsive';
 
 const SwapTab = () => {
   const [openTokenDlg, setOpenTokenDlg] = React.useState(false);
@@ -24,7 +24,7 @@ const SwapTab = () => {
   ])
   const isResp520 = useMediaQuery({
     query: '(max-width: 520px)'
-  })
+  });
   return (
     <>
       {/* token select dialog */}
