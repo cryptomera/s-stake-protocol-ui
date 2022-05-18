@@ -15,6 +15,7 @@ import Onboard from '@web3-onboard/core'
 import injectedModule from '@web3-onboard/injected-wallets'
 import walletConnectModule from '@web3-onboard/walletconnect'
 import { nodes } from "data/getRpc";
+import { useMediaQuery } from 'react-responsive';
 
 const drawerWidth = 240;
 const injected = injectedModule();
@@ -66,6 +67,9 @@ const PageContainer = (props: { children: ReactNode }) => {
     const wallets = await onboard.connectWallet();
     setUserAccount(wallets[0]);
   }
+  const isResp520 = useMediaQuery({
+    query: '(max-width: 520px)'
+  });
 
   return (
     <>
@@ -77,7 +81,7 @@ const PageContainer = (props: { children: ReactNode }) => {
           component="main"
           sx={{
             flexGrow: 1,
-            p: 3,
+            p: isResp520?0:3,
             width: { sm: `calc(100% - ${drawerWidth}px)` },
           }}
         >

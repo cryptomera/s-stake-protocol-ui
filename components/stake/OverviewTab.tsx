@@ -4,6 +4,7 @@ import CustomInput from './CustomInput';
 import SellIcon from '@mui/icons-material/Sell';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import SimpleAreaChart from '../common/SimpleAreaChart';
+import { useMediaQuery } from 'react-responsive';
 
 
 const OverviewTab = () => {
@@ -25,6 +26,9 @@ const OverviewTab = () => {
     }
     setBuyAmount(e.target.value);
   }
+  const isResp520 = useMediaQuery({
+    query: '(max-width: 520px)'
+  });
   return (
     <Box>
       <Box
@@ -42,12 +46,14 @@ const OverviewTab = () => {
         container
         spacing={2}
         sx={{
-          padding: '30px'
+          padding: '30px',
+          display:isResp520?'initial':'flex'
         }}
       >
         <Grid
           item
-          xs={6}
+          xs={12}
+          md={6}
         >
           <Box
             sx={{
@@ -99,14 +105,26 @@ const OverviewTab = () => {
                   width: '50%'
                 }}
               >
-                <Button size="large" color="secondary" fullWidth variant="contained">Claim all</Button>
+                <Button size="large" color="secondary" 
+                  fullWidth variant="contained"
+                  sx={{
+                    fontSize:isResp520?'0.68rem':'0.9375rem'
+                  }}>
+                  Claim all
+                </Button>
               </Box>
               <Box
                 sx={{
                   width: '50%'
                 }}
               >
-                <Button size="large" color="secondary" fullWidth variant="contained">Compound all</Button>
+                <Button size="large" color="secondary" 
+                fullWidth variant="contained"
+                sx={{
+                  fontSize:isResp520?'0.68rem':'0.9375rem'
+                }}>
+                  Compound all
+                </Button>
               </Box>
             </Box>
             <Box sx={{ marginTop: '20px' }}>
@@ -116,7 +134,8 @@ const OverviewTab = () => {
         </Grid>
         <Grid
           item
-          xs={6}
+          xs={12}
+          md={6}
         >
           <Box
             sx={{
@@ -133,7 +152,10 @@ const OverviewTab = () => {
                 marginBottom: '10px'
               }}
             >
-              <Box>
+              <Box
+                sx={{
+                  width:'100%'
+                }}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -145,7 +167,12 @@ const OverviewTab = () => {
                   <Box sx={{ flexGrow: 1 }}></Box>
                   <Box>Stake Balance: 65,707</Box>
                 </Box>
-                <CustomInput value={sellAmount} setValue={e => handleSellAmount(e)} width="500px" icon={<SellIcon />} />
+                <CustomInput 
+                  value={sellAmount} 
+                  setValue={e => handleSellAmount(e)} 
+                  width='100%'
+                  icon={<SellIcon />} 
+                />
                 <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
                   <Button color="secondary" variant="contained">Sell</Button>
                 </Box>
@@ -159,7 +186,10 @@ const OverviewTab = () => {
                 marginBottom: '10px'
               }}
             >
-              <Box>
+              <Box 
+                sx={{
+                  width:'100%'
+                }}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -171,7 +201,12 @@ const OverviewTab = () => {
                   <Box sx={{ flexGrow: 1 }}></Box>
                   <Box>BNB Balance: 1.452</Box>
                 </Box>
-                <CustomInput value={buyAmount} setValue={e => handleBuyAmount(e)} width="500px" icon={<ShoppingBagIcon />} />
+                <CustomInput 
+                  value={buyAmount} 
+                  setValue={e => handleBuyAmount(e)} 
+                  width='100%'  
+                  icon={<ShoppingBagIcon />} 
+                />
                 <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
                   <Button color="secondary" variant="contained">Buy</Button>
                 </Box>
@@ -181,7 +216,8 @@ const OverviewTab = () => {
         </Grid>
         <Grid
           item
-          xs={6}
+          xs={12}
+          md={6}
         >
           <Box
             sx={{
@@ -251,7 +287,7 @@ const OverviewTab = () => {
                     display: 'flex',
                     justifyContent: 'center',
                     fontWeight: 'bold',
-                    fontSize: '18px'
+                    fontSize: isResp520?'16px':'18px'
                   }}
                 >
                   Referral Rewards
@@ -269,7 +305,7 @@ const OverviewTab = () => {
                     display: 'flex',
                     justifyContent: 'center',
                     fontWeight: 'bold',
-                    fontSize: '18px'
+                    fontSize: isResp520?'16px':'18px'
                   }}
                 >
                   FLAME in Wallet
@@ -286,7 +322,8 @@ const OverviewTab = () => {
         </Grid>
         <Grid
           item
-          xs={6}
+          xs={12}
+          md={6}
         >
           <Box
             sx={{
@@ -317,6 +354,7 @@ const OverviewTab = () => {
         <Grid
           item
           xs={12}
+          md={12}
         >
           <Box
             sx={{
@@ -327,7 +365,7 @@ const OverviewTab = () => {
           >
             {/* market cap */}
             <Grid container spacing={1}>
-              <Grid item xs={2}>
+              <Grid item xs={6} md={2}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -347,7 +385,7 @@ const OverviewTab = () => {
                 </Box>
               </Grid>
               {/* Total players */}
-              <Grid item xs={2}>
+              <Grid item xs={6} md={2}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -367,7 +405,7 @@ const OverviewTab = () => {
                 </Box>
               </Grid>
               {/* faucet returns */}
-              <Grid item xs={2}>
+              <Grid item xs={6} md={2}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -395,7 +433,7 @@ const OverviewTab = () => {
                 </Box>
               </Grid>
               {/* Treasury Value */}
-              <Grid item xs={3}>
+              <Grid item xs={6} md={3}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -415,7 +453,7 @@ const OverviewTab = () => {
                 </Box>
               </Grid>
               {/* Total POL */}
-              <Grid item xs={3}>
+              <Grid item xs={6} md={3}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -435,7 +473,7 @@ const OverviewTab = () => {
                 </Box>
               </Grid>
               {/* total supply */}
-              <Grid item xs={2}>
+              <Grid item xs={6} md={2}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -455,7 +493,7 @@ const OverviewTab = () => {
                 </Box>
               </Grid>
               {/* Locked in Vault */}
-              <Grid item xs={2}>
+              <Grid item xs={6} md={2}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -475,7 +513,7 @@ const OverviewTab = () => {
                 </Box>
               </Grid>
               {/* rebase returns */}
-              <Grid item xs={2}>
+              <Grid item xs={6} md={2}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -503,7 +541,7 @@ const OverviewTab = () => {
                 </Box>
               </Grid>
               {/* floor price */}
-              <Grid item xs={3}>
+              <Grid item xs={6} md={3}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -523,7 +561,7 @@ const OverviewTab = () => {
                 </Box>
               </Grid>
               {/* time until next rebase */}
-              <Grid item xs={3}>
+              <Grid item xs={6} md={3}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -548,6 +586,7 @@ const OverviewTab = () => {
         <Grid
           item
           xs={12}
+          md={12}
         >
           <Box
             sx={{
