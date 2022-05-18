@@ -6,6 +6,21 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  async redirects()
+  {
+    return [
+      {
+        source: '/:path/:slug*',
+        destination: '/',
+        permanent: false,
+      },
+      // {
+      //   source: '/',
+      //   destination: '/stake?tab=overview',
+      //   permanent: false,
+      // },
+    ]
+  },
 }
 
 module.exports = nextConfig

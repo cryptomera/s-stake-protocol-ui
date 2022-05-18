@@ -8,11 +8,6 @@ import { useRouter } from "next/router";
 const Home: NextPage = () =>
 {
   const router = useRouter();
-  useEffect(() => {
-    if(router.pathname === '/') {
-      router.push({pathname: '/stake', query: {tab: 'overview'}});
-    }
-  }, [])
   return (
     <PageContainer>
       <Typography align="center" variant="h1" component="div">
