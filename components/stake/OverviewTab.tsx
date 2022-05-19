@@ -35,7 +35,7 @@ const OverviewTab = () => {
         sx={{
           display: 'flex',
           justifyContent: 'center',
-          fontSize: '26px',
+          fontSize: isResp520?'20px':'26px',
           fontWeight: 'bold',
           color: 'lightblue'
         }}
@@ -54,17 +54,20 @@ const OverviewTab = () => {
           item
           xs={12}
           md={6}
+          sx={{
+            paddingLeft:isResp520?'0px !important':'auto'
+          }}
         >
           <Box
             sx={{
-              background: '#212121',
+              background: isResp520?'#69696969':'#212121',
               padding: '20px',
               borderRadius: '16px'
             }}
           >
             <Box
               sx={{
-                fontSize: '28px',
+                fontSize: isResp520?'20px':'28px',
                 fontWeight: 'bold',
                 display: 'flex',
                 justifyContent: 'center',
@@ -138,11 +141,14 @@ const OverviewTab = () => {
           item
           xs={12}
           md={6}
+          sx={{
+            paddingLeft:isResp520?'0px !important':'auto'
+          }}
         >
           <Box
             sx={{
               padding: '20px',
-              background: '#212121',
+              background: isResp520?'#69696969':'#212121',
               borderRadius: '16px'
             }}
           >
@@ -220,10 +226,13 @@ const OverviewTab = () => {
           item
           xs={12}
           md={6}
+          sx={{
+            paddingLeft:isResp520?'0px !important':'auto'
+          }}
         >
           <Box
             sx={{
-              background: '#212121',
+              background: isResp520?'#69696969':'#212121',
               padding: '20px',
               borderRadius: '16px'
             }}
@@ -326,10 +335,13 @@ const OverviewTab = () => {
           item
           xs={12}
           md={6}
+          sx={{
+            paddingLeft:isResp520?'0px !important':'auto'
+          }}
         >
           <Box
             sx={{
-              background: '#212121',
+              background: isResp520?'#69696969':'#212121',
               padding: '20px',
               borderRadius: '16px'
             }}
@@ -357,10 +369,13 @@ const OverviewTab = () => {
           item
           xs={12}
           md={12}
+          sx={{
+            paddingLeft:isResp520?'0px !important':'auto'
+          }}
         >
           <Box
             sx={{
-              background: '#212121',
+              background: isResp520?'#69696969':'#212121',
               padding: '20px',
               borderRadius: '16px'
             }}
@@ -589,10 +604,13 @@ const OverviewTab = () => {
           item
           xs={12}
           md={12}
+          sx={{
+            paddingLeft:isResp520?'0px !important':'auto'
+          }}
         >
           <Box
             sx={{
-              background: '#212121',
+              background: isResp520?'#69696969':'#212121',
               padding: '20px',
               borderRadius: '16px'
             }}

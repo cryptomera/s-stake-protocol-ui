@@ -40,7 +40,7 @@ const RebaseTab = () => {
       <Grid item xs={12}>
         <Box
           sx={{
-            background: '#212121',
+            background: isResp520?'#69696969':'#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -205,7 +205,7 @@ const RebaseTab = () => {
         <Box
           sx={{
             padding: '20px',
-            background: '#212121',
+            background: isResp520?'#69696969':'#212121',
             borderRadius: '16px'
           }}
         >
@@ -273,7 +273,7 @@ const RebaseTab = () => {
         <Box
           sx={{
             padding: '20px',
-            background: '#212121',
+            background: isResp520?'#69696969':'#212121',
             borderRadius: '16px',
             height: '100%'
           }}
@@ -285,7 +285,7 @@ const RebaseTab = () => {
         <Box
           sx={{
             padding: '20px',
-            background: '#212121',
+            background: isResp520?'#69696969':'#212121',
             borderRadius: '16px',
             height: '100%'
           }}
@@ -367,7 +367,7 @@ const RebaseTab = () => {
         <Box
           sx={{
             padding: '20px',
-            background: '#212121',
+            background: isResp520?'#69696969':'#212121',
             borderRadius: '16px'
           }}
         >

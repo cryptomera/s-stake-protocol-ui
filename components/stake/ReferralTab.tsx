@@ -23,7 +23,7 @@ const ReferralTab = () => {
       <Grid item xs={12}>
         <Box
           sx={{
-            background: '#212121',
+            background: isResp520?'#69696969':'#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -152,7 +152,7 @@ const ReferralTab = () => {
       <Grid item xs={12}>
         <Box
           sx={{
-            background: '#212121',
+            background: isResp520?'#69696969':'#212121',
             borderRadius: '16px',
             padding: '20px'
           }}
@@ -254,7 +254,7 @@ const ReferralTab = () => {
       <Grid item xs={12}>
         <Box
           sx={{
-            background: '#212121',
+            background: isResp520?'#69696969':'#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -315,7 +315,7 @@ const ReferralTab = () => {
       <Grid item xs={12}>
         <Box
           sx={{
-            background: '#212121',
+            background: isResp520?'#69696969':'#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
