@@ -1,11 +1,13 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
 declare module "@mui/material/styles" {
-  interface Palette {
-    neutral: Palette["primary"];
+  interface Palette
+  {
+    neutral: Palette[ "primary" ];
   }
-  interface PaletteOptions {
-    neutral: PaletteOptions["primary"];
+  interface PaletteOptions
+  {
+    neutral: PaletteOptions[ "primary" ];
   }
 }
 
@@ -79,4 +81,4 @@ const theme = createTheme({
   },
 });
 
-export default theme;
+export default responsiveFontSizes(theme);

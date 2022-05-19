@@ -10,7 +10,22 @@ const nextConfig = {
   {
     return [
       {
-        source: '/:path/:slug*',
+        source: '/stake/:slug*',
+        destination: '/',
+        permanent: false,
+      },
+      {
+        source: '/foundation/:slug*',
+        destination: '/',
+        permanent: false,
+      },
+      {
+        source: '/swap/:slug*',
+        destination: '/',
+        permanent: false,
+      },
+      {
+        source: '/treasury/:slug*',
         destination: '/',
         permanent: false,
       },

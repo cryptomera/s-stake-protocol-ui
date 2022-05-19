@@ -4,7 +4,6 @@ import CustomInput from './CustomInput';
 import SellIcon from '@mui/icons-material/Sell';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import { RedditTextField } from './RedditTextField';
-import { useMediaQuery } from 'react-responsive';
 
 const RebaseTab = () => {
   const [sellAmount, setSellAmount] = React.useState('0');
@@ -25,10 +24,6 @@ const RebaseTab = () => {
     }
     setBuyAmount(e.target.value);
   }
-  const isResp520 = useMediaQuery({
-    query: '(max-width: 520px)'
-  });
-
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -40,7 +35,7 @@ const RebaseTab = () => {
       <Grid item xs={12}>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: '#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -60,14 +55,14 @@ const RebaseTab = () => {
                 Gross Faucet Value (GFV)
               </Box>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid item xs={3}>
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
                   fontSize: '20px',
-                  marginBottom: isResp520?'5px':'20px'
+                  marginBottom: '20px'
                 }}
               >
                 GFV Available
@@ -77,7 +72,7 @@ const RebaseTab = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: isResp520?'18px':'28px'
+                  fontSize: '28px'
                 }}
               >
                 123.3211
@@ -92,14 +87,14 @@ const RebaseTab = () => {
               </Box>
             </Grid>
             {/* Airdrop Sent */}
-            <Grid item xs={12} md={3}>
+            <Grid item xs={3}>
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
                   fontSize: '20px',
-                  marginBottom: isResp520?'5px':'20px'
+                  marginBottom: '20px'
                 }}
               >
                 Total Rebase earned
@@ -109,7 +104,7 @@ const RebaseTab = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: isResp520?'18px':'28px'
+                  fontSize: '28px'
                 }}
               >
                 123.3211
@@ -124,14 +119,14 @@ const RebaseTab = () => {
               </Box>
             </Grid>
             {/* Airdrop received */}
-            <Grid item xs={12} md={3}>
+            <Grid item xs={3}>
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
                   fontSize: '20px',
-                  marginBottom: isResp520?'5px':'20px'
+                  marginBottom: '20px'
                 }}
               >
                 Gross Claimed
@@ -141,7 +136,7 @@ const RebaseTab = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: isResp520?'18px':'28px'
+                  fontSize: '28px'
                 }}
               >
                 123.3211
@@ -156,7 +151,7 @@ const RebaseTab = () => {
               </Box>
             </Grid>
             {/* team */}
-            <Grid item xs={12} md={3}>
+            <Grid item xs={3}>
               <Box
                 sx={{
                   display: 'flex',
@@ -184,7 +179,7 @@ const RebaseTab = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: isResp520?'18px':'28px'
+                  fontSize: '28px'
                 }}
               >
                 123.3211
@@ -201,11 +196,11 @@ const RebaseTab = () => {
           </Grid>
         </Box>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={6}>
         <Box
           sx={{
             padding: '20px',
-            background: isResp520?'#69696969':'#212121',
+            background: '#212121',
             borderRadius: '16px'
           }}
         >
@@ -217,10 +212,7 @@ const RebaseTab = () => {
               marginBottom: '10px'
             }}
           >
-            <Box
-              sx={{
-                width:'100%'
-              }}>
+            <Box>
               <Box
                 sx={{
                   display: 'flex',
@@ -232,7 +224,7 @@ const RebaseTab = () => {
                 <Box sx={{ flexGrow: 1 }}></Box>
                 <Box>Stake Balance: 65,707</Box>
               </Box>
-              <CustomInput value={sellAmount} setValue={e=>handleSellAmount(e)} width="100%" icon={<SellIcon />} />
+              <CustomInput value={sellAmount} setValue={e=>handleSellAmount(e)} width="500px" icon={<SellIcon />} />
               <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
                 <Button color="secondary" variant="contained">Sell</Button>
               </Box>
@@ -246,10 +238,7 @@ const RebaseTab = () => {
               marginBottom: '10px'
             }}
           >
-            <Box 
-              sx={{
-                width:'100%'
-              }}>
+            <Box>
               <Box
                 sx={{
                   display: 'flex',
@@ -261,7 +250,7 @@ const RebaseTab = () => {
                 <Box sx={{ flexGrow: 1 }}></Box>
                 <Box>BNB Balance: 1.452</Box>
               </Box>
-              <CustomInput value={buyAmount} setValue={e=>handleBuyAmount(e)} width="100%" icon={<ShoppingBagIcon />} />
+              <CustomInput value={buyAmount} setValue={e=>handleBuyAmount(e)} width="500px" icon={<ShoppingBagIcon />} />
               <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
                 <Button color="secondary" variant="contained">Buy</Button>
               </Box>
@@ -269,11 +258,11 @@ const RebaseTab = () => {
           </Box>
         </Box>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={6}>
         <Box
           sx={{
             padding: '20px',
-            background: isResp520?'#69696969':'#212121',
+            background: '#212121',
             borderRadius: '16px',
             height: '100%'
           }}
@@ -281,11 +270,11 @@ const RebaseTab = () => {
           description
         </Box>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={6}>
         <Box
           sx={{
             padding: '20px',
-            background: isResp520?'#69696969':'#212121',
+            background: '#212121',
             borderRadius: '16px',
             height: '100%'
           }}
@@ -363,11 +352,11 @@ const RebaseTab = () => {
           </Grid>
         </Box>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={6}>
         <Box
           sx={{
             padding: '20px',
-            background: isResp520?'#69696969':'#212121',
+            background: '#212121',
             borderRadius: '16px'
           }}
         >
@@ -395,7 +384,7 @@ const RebaseTab = () => {
                 <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={12}>
                   <Box
                     sx={{
-                      width: isResp520?'100%':'400px'
+                      width: '400px'
                     }}
                   >
                     <RedditTextField
@@ -411,7 +400,7 @@ const RebaseTab = () => {
                 <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={12}>
                   <Box
                     sx={{
-                      width: isResp520?'100%':'400px'
+                      width: '400px'
                     }}
                   >
                     <RedditTextField
@@ -427,7 +416,7 @@ const RebaseTab = () => {
                 <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={12}>
                   <Box
                     sx={{
-                      width: isResp520?'100%':'400px'
+                      width: '400px'
                     }}
                   >
                     <RedditTextField
@@ -443,7 +432,7 @@ const RebaseTab = () => {
                 <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={12}>
                   <Box
                     sx={{
-                      width: isResp520?'100%':'400px'
+                      width: '400px'
                     }}
                   >
                     <RedditTextField
@@ -456,28 +445,28 @@ const RebaseTab = () => {
                     />
                   </Box>
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={7} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={6}>
                   Faucet APY
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={5} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={6}>
                   3,543%
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={7} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={6}>
                   Rebase APY
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={5} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={6}>
                   3,543%
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={7} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={6}>
                   Estimate Rewards
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={5} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={6}>
                   3,543%
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={7} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={6}>
                   ROI
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={5} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={6}>
                   3,543%
                 </Grid>
               </Grid>

@@ -158,13 +158,13 @@ const menuItems: Array<MenuItemType> = [
     name: "Swap",
     icon: <SwapHorizontalCircleIcon color="secondary" />,
     href: "/swap",
-    disabled: false,
+    disabled: true,
   },
   {
     name: "Stake",
     icon: <ShieldMoonIcon color="secondary" />,
     href: "/stake?tab=overview",
-    disabled: false,
+    disabled: true,
   },
   {
     name: "Docs",
@@ -177,18 +177,18 @@ const menuItems: Array<MenuItemType> = [
     name: "King's Riches",
     icon: <PaidIcon color="secondary" />,
     href: "",
-    disabled: false,
+    disabled: true,
   },
   {
     name: 'Foundation',
     icon: <FoundationIcon color="secondary" />,
     href: '/foundation',
-    disabled: false
+    disabled: true
   },
   {
     name: 'Treasury',
     icon: <FoundationIcon color="secondary" />,
     href: '/treasury',
-    disabled: false
+    disabled: true
   },
 ];

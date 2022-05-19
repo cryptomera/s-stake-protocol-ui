@@ -13,7 +13,6 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import ReferralTab from 'components/stake/ReferralTab';
 import DownlineTab from 'components/stake/DownlineTab';
-import { useMediaQuery } from 'react-responsive';
 
 const Stake: NextPage = () => {
   const [tabValue, setTabValue] = React.useState('1');
@@ -22,9 +21,6 @@ const Stake: NextPage = () => {
   React.useEffect(() => {
     setTabValue(String(router.query.tab))
   }, [router]);
-  const isResp520 = useMediaQuery({
-    query: '(max-width: 520px)'
-  });
   return (
     <PageContainer>
       <Box
@@ -42,22 +38,18 @@ const Stake: NextPage = () => {
             <Box
               sx={{
                 display: 'flex',
-                justifyContent: 'center',
-                width:'100%',
-                padding: isResp520?'10px':'auto'
+                justifyContent: 'center'
               }}
             >
               <Link href="/stake?tab=overview">
                 <a
                   style={{
-                    fontSize: isResp520?'15px':'20px',
+                    fontSize: '20px',
                     textDecoration: 'none',
                     fontWeight: 'bold',
                     color: '#FFFFFC',
-                    margin: isResp520?'0px':'10px',
-                    borderBottom: tabValue === 'overview' ? 'solid 3px' : '',
-                    width: isResp520?'25%':'auto',
-                    textAlign: 'center'
+                    margin: '10px',
+                    borderBottom: tabValue === 'overview' ? 'solid 3px' : ''
                   }}
                 >
                   Overview
@@ -66,14 +58,12 @@ const Stake: NextPage = () => {
               <Link href="/stake?tab=faucet">
                 <a
                   style={{
-                    fontSize: isResp520?'15px':'20px',
+                    fontSize: '20px',
                     textDecoration: 'none',
                     fontWeight: 'bold',
                     color: '#FFFFFC',
-                    margin: isResp520?'0px':'10px',
-                    borderBottom: tabValue === 'faucet' ? 'solid 3px' : '',
-                    width: isResp520?'25%':'auto',
-                    textAlign: 'center'
+                    margin: '10px',
+                    borderBottom: tabValue === 'faucet' ? 'solid 3px' : ''
                   }}
                 >
                   Faucet
@@ -82,14 +72,12 @@ const Stake: NextPage = () => {
               <Link href="/stake?tab=rebase">
                 <a
                   style={{
-                    fontSize: isResp520?'15px':'20px',
+                    fontSize: '20px',
                     textDecoration: 'none',
                     fontWeight: 'bold',
                     color: '#FFFFFC',
-                    margin: isResp520?'0px':'10px',
-                    borderBottom: tabValue === 'rebase' ? 'solid 3px' : '',
-                    width: isResp520?'25%':'auto',
-                    textAlign: 'center'
+                    margin: '10px',
+                    borderBottom: tabValue === 'rebase' ? 'solid 3px' : ''
                   }}
                 >
                   Rebase
@@ -98,14 +86,12 @@ const Stake: NextPage = () => {
               <Link href="/stake?tab=downline">
                 <a
                   style={{
-                    fontSize: isResp520?'15px':'20px',
+                    fontSize: '20px',
                     textDecoration: 'none',
                     fontWeight: 'bold',
                     color: '#FFFFFC',
-                    margin: isResp520?'0px':'10px',
-                    borderBottom: tabValue === 'downline' ? 'solid 3px' : '',
-                    width: isResp520?'25%':'auto',
-                    textAlign: 'center'
+                    margin: '10px',
+                    borderBottom: tabValue === 'downline' ? 'solid 3px' : ''
                   }}
                 >
                   Downline

@@ -4,7 +4,6 @@ import SellIcon from '@mui/icons-material/Sell';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import * as React from 'react';
 import CustomInput from './CustomInput';
-import { useMediaQuery } from 'react-responsive';
 
 const FaucetTab = () => {
   const [sellAmount, setSellAmount] = React.useState('0');
@@ -25,20 +24,13 @@ const FaucetTab = () => {
     }
     setBuyAmount(e.target.value);
   }
-  const isResp520 = useMediaQuery({
-    query: '(max-width: 520px)'
-  });
   return (
-    <Grid container spacing={2}
-      sx={{
-        display: isResp520?'block':'flex'
-      }}
-    >
+    <Grid container spacing={2}>
       {/* net faucet value */}
       <Grid item xs={12}>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: '#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -56,7 +48,7 @@ const FaucetTab = () => {
           </Box>
           <Grid container spacing={3}>
             {/* nfv available */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={3}>
               <Box>
                 <Box
                   sx={{
@@ -78,7 +70,7 @@ const FaucetTab = () => {
               </Box>
             </Grid>
             {/* deposits */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={3}>
               <Box>
                 <Box
                   sx={{
@@ -100,7 +92,7 @@ const FaucetTab = () => {
               </Box>
             </Grid>
             {/* Gross Claimed */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={3}>
               <Box>
                 <Box
                   sx={{
@@ -122,7 +114,7 @@ const FaucetTab = () => {
               </Box>
             </Grid>
             {/* max payout */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={3}>
               <Box>
                 <Box
                   sx={{
@@ -145,30 +137,21 @@ const FaucetTab = () => {
             </Grid>
             {/* buttons */}
             <Grid item xs={4}>
-              <Button color="secondary" fullWidth variant="contained"
-                sx={{ fontSize:isResp520?'0.68rem':'0.875rem'}}>
-                Claim
-              </Button>
+              <Button color="secondary" fullWidth variant="contained">Claim</Button>
             </Grid>
             <Grid item xs={4}>
-              <Button color="secondary" fullWidth variant="contained"
-                sx={{ fontSize:isResp520?'0.68rem':'0.875rem'}}>
-                  Compound
-                </Button>
+              <Button color="secondary" fullWidth variant="contained">Compound</Button>
             </Grid>
             <Grid item xs={4}>
-              <Button color="secondary" fullWidth variant="contained"
-                sx={{ fontSize:isResp520?'0.68rem':'0.875rem'}}>
-                Deposit
-              </Button>
+              <Button color="secondary" fullWidth variant="contained">Deposit</Button>
             </Grid>
           </Grid>
         </Box>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={6}>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: '#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -176,7 +159,7 @@ const FaucetTab = () => {
           {/* sell */}
           <Box
             sx={{
-              display: 'block',
+              display: 'flex',
               justifyContent: 'center',
             }}
           >
@@ -192,7 +175,7 @@ const FaucetTab = () => {
                 <Box sx={{ flexGrow: 1 }}></Box>
                 <Box>Stake Balance: 65,707</Box>
               </Box>
-              <CustomInput value={sellAmount} setValue={e=>handleSellAmount(e)} width="100%" icon={<SellIcon />} />
+              <CustomInput value={sellAmount} setValue={e=>handleSellAmount(e)} width="500px" icon={<SellIcon />} />
               <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
                 <Button color="secondary" variant="contained">Sell</Button>
               </Box>
@@ -201,7 +184,7 @@ const FaucetTab = () => {
           {/* buy */}
           <Box
             sx={{
-              display: 'block',
+              display: 'flex',
               justifyContent: 'center',
             }}
           >
@@ -217,7 +200,7 @@ const FaucetTab = () => {
                 <Box sx={{ flexGrow: 1 }}></Box>
                 <Box>BNB Balance: 1.452</Box>
               </Box>
-              <CustomInput value={buyAmount} setValue={e=>handleBuyAmount(e)} width="100%" icon={<ShoppingBagIcon />} />
+              <CustomInput value={buyAmount} setValue={e=>handleBuyAmount(e)} width="500px" icon={<ShoppingBagIcon />} />
               <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
                 <Button color="secondary" variant="contained">Buy</Button>
               </Box>
@@ -225,10 +208,10 @@ const FaucetTab = () => {
           </Box>
         </Box>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={6}>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: '#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -239,7 +222,7 @@ const FaucetTab = () => {
       <Grid item xs={12}>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: '#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -264,15 +247,15 @@ const FaucetTab = () => {
             (Net Elastic Rebase Depletion)
           </Box>
           <Grid container spacing={2}>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={6}>
               <Grid container spacing={2}>
-                <Grid item xs={7} md={6}>
+                <Grid item xs={6}>
                   Net Deposits
                 </Grid>
-                <Grid item xs={5} md={6}>
+                <Grid item xs={6}>
                   -123.3211
                 </Grid>
-                <Grid item xs={7} md={6}>
+                <Grid item xs={6}>
                   <Box>
                     Current Rebase Rate
                   </Box>
@@ -282,19 +265,19 @@ const FaucetTab = () => {
                     (daily)
                   </Box>
                 </Grid>
-                <Grid item xs={5} md={6}>
+                <Grid item xs={6}>
                   0.2%
                 </Grid>
-                <Grid item xs={7} md={6}>
+                <Grid item xs={6}>
                   GFV Depletion
                 </Grid>
-                <Grid item xs={5} md={6}>
+                <Grid item xs={6}>
                   no
                 </Grid>
-                <Grid item xs={7} md={6}>
+                <Grid item xs={6}>
                   Depletion Amount
                 </Grid>
-                <Grid item xs={5} md={6}>
+                <Grid item xs={6}>
                   0 Stake
                 </Grid>
               </Grid>
