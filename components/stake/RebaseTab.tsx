@@ -53,20 +53,20 @@ const RebaseTab = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: '26px',
-                  marginBottom: '30px'
+                  fontSize: isResp520?'22px':'26px',
+                  marginBottom: isResp520?'0px':'30px'
                 }}
               >
                 Gross Faucet Value (GFV)
               </Box>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid item xs={6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: '20px',
+                  fontSize: isResp520?'16px':'20px',
                   marginBottom: isResp520?'5px':'20px'
                 }}
               >
@@ -76,8 +76,8 @@ const RebaseTab = () => {
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
-                  fontWeight: 'bold',
-                  fontSize: isResp520?'18px':'28px'
+                  fontWeight: isResp520?'400':'bold',
+                  fontSize: isResp520?'16px':'28px'
                 }}
               >
                 123.3211
@@ -92,13 +92,13 @@ const RebaseTab = () => {
               </Box>
             </Grid>
             {/* Airdrop Sent */}
-            <Grid item xs={12} md={3}>
+            <Grid item xs={6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: '20px',
+                  fontSize: isResp520?'16px':'20px',
                   marginBottom: isResp520?'5px':'20px'
                 }}
               >
@@ -108,8 +108,8 @@ const RebaseTab = () => {
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
-                  fontWeight: 'bold',
-                  fontSize: isResp520?'18px':'28px'
+                  fontWeight: isResp520?'400':'bold',
+                  fontSize: isResp520?'16px':'28px'
                 }}
               >
                 123.3211
@@ -124,13 +124,13 @@ const RebaseTab = () => {
               </Box>
             </Grid>
             {/* Airdrop received */}
-            <Grid item xs={12} md={3}>
+            <Grid item xs={6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: '20px',
+                  fontSize: isResp520?'16px':'20px',
                   marginBottom: isResp520?'5px':'20px'
                 }}
               >
@@ -140,8 +140,8 @@ const RebaseTab = () => {
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
-                  fontWeight: 'bold',
-                  fontSize: isResp520?'18px':'28px'
+                  fontWeight: isResp520?'400':'bold',
+                  fontSize: isResp520?'16px':'28px'
                 }}
               >
                 123.3211
@@ -156,13 +156,13 @@ const RebaseTab = () => {
               </Box>
             </Grid>
             {/* team */}
-            <Grid item xs={12} md={3}>
+            <Grid item xs={6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: '20px'
+                  fontSize: isResp520?'16px':'20px',
                 }}
               >
                 <Box>
@@ -183,8 +183,8 @@ const RebaseTab = () => {
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
-                  fontWeight: 'bold',
-                  fontSize: isResp520?'18px':'28px'
+                  fontWeight: isResp520?'400':'bold',
+                  fontSize: isResp520?'16px':'28px'
                 }}
               >
                 123.3211
