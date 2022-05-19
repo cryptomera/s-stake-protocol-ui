@@ -108,7 +108,8 @@ const OverviewTab = () => {
                 <Button size="large" color="secondary" 
                   fullWidth variant="contained"
                   sx={{
-                    fontSize:isResp520?'0.68rem':'0.9375rem'
+                    fontSize:isResp520?'0.68rem':'0.9375rem',
+                    padding:isResp520?'8px 5px':'8px 22px'
                   }}>
                   Claim all
                 </Button>
@@ -121,7 +122,8 @@ const OverviewTab = () => {
                 <Button size="large" color="secondary" 
                 fullWidth variant="contained"
                 sx={{
-                  fontSize:isResp520?'0.68rem':'0.9375rem'
+                  fontSize:isResp520?'0.68rem':'0.9375rem',
+                  padding:isResp520?'8px 5px':'8px 22px'
                 }}>
                   Compound all
                 </Button>

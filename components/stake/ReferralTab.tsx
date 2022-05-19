@@ -2,12 +2,16 @@ import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { Box, Button, ButtonGroup, Grid, Tab } from '@mui/material';
 import * as React from 'react';
 import CustomNoIconInput from './CustomNoIconInput';
+import { useMediaQuery } from 'react-responsive';
 
 const ReferralTab = () => {
   const [tabValue, setTabValue] = React.useState('1');
   const handleTab = (event: React.SyntheticEvent, newValue: string) => {
     setTabValue(newValue);
   }
+  const isResp520 = useMediaQuery({
+    query: '(max-width: 520px)'
+  });
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -26,7 +30,7 @@ const ReferralTab = () => {
         >
           <Grid container spacing={2}>
             {/* Referral Rewards */}
-            <Grid item xs={3}>
+            <Grid item xs={12} md={3}>
               <Box
                 sx={{
                   display: 'flex',
@@ -42,7 +46,7 @@ const ReferralTab = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: '28px'
+                  fontSize: isResp520?'18px':'28px'
                 }}
               >
                 123.3211
@@ -57,7 +61,7 @@ const ReferralTab = () => {
               </Box>
             </Grid>
             {/* Airdrop Sent */}
-            <Grid item xs={3}>
+            <Grid item xs={12} md={3}>
               <Box
                 sx={{
                   display: 'flex',
@@ -73,7 +77,7 @@ const ReferralTab = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: '28px'
+                  fontSize: isResp520?'18px':'28px'
                 }}
               >
                 123.3211
@@ -88,7 +92,7 @@ const ReferralTab = () => {
               </Box>
             </Grid>
             {/* Airdrop received */}
-            <Grid item xs={3}>
+            <Grid item xs={12} md={3}>
               <Box
                 sx={{
                   display: 'flex',
@@ -104,7 +108,7 @@ const ReferralTab = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: '28px'
+                  fontSize: isResp520?'18px':'28px'
                 }}
               >
                 123.3211
@@ -119,7 +123,7 @@ const ReferralTab = () => {
               </Box>
             </Grid>
             {/* team */}
-            <Grid item xs={3}>
+            <Grid item xs={12} md={3}>
               <Box
                 sx={{
                   display: 'flex',
@@ -135,7 +139,7 @@ const ReferralTab = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: '28px'
+                  fontSize: isResp520?'18px':'28px'
                 }}
               >
                 1/1
@@ -191,7 +195,7 @@ const ReferralTab = () => {
             >
               Stake Master:
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={8} sx={{wordBreak:'break-word'}}>
               0xc70dAF7356bC5f2eF6008E0FaA7e076C47C6e7f
             </Grid>
             <Grid
@@ -210,7 +214,7 @@ const ReferralTab = () => {
                 buttonColor="secondary"
                 buttonTextColor="white"
                 placeHolder="0xc70dAF7356bC5f2eF6008E0FaA7e076C47C6e7f"
-                width="480px"
+                width={isResp520?'100%':"480px"}
               />
             </Grid>
             <Grid sx={{ fontSize: '20px' }} item xs={4}>
@@ -257,9 +261,18 @@ const ReferralTab = () => {
         >
           <TabContext value={tabValue}>
             <TabList onChange={handleTab}>
-              <Tab label="Team Viewer" value="1" />
-              <Tab label="Team Airdrop" value="2" />
-              <Tab label="Direct Airdrop" value="3" />
+              <Tab label="Team Viewer" value="1" 
+              sx={{
+                width: isResp520?'33%':'auto'
+              }}/>
+              <Tab label="Team Airdrop" value="2" 
+              sx={{
+                width: isResp520?'33%':'auto'
+              }}/>
+              <Tab label="Direct Airdrop" value="3" 
+              sx={{
+                width: isResp520?'33%':'auto'
+              }}/>
             </TabList>
             <TabPanel
               sx={{
@@ -274,12 +287,12 @@ const ReferralTab = () => {
                   buttonColor="primary"
                   buttonTextColor="white"
                   placeHolder="0xc70dAF7356bC5f2eF6008E0FaA7e076C47C6e7f"
-                  width="480px"
+                  width={isResp520?'100%':"480px"}
                 />
                 <Box
                   sx={{
                     display: 'flex',
-                    justifyContent: 'right',
+                    justifyContent: isResp520?'center':'right',
                     marginTop: '10px'
                   }}
                 >

@@ -145,13 +145,22 @@ const FaucetTab = () => {
             </Grid>
             {/* buttons */}
             <Grid item xs={4}>
-              <Button color="secondary" fullWidth variant="contained">Claim</Button>
+              <Button color="secondary" fullWidth variant="contained"
+                sx={{ fontSize:isResp520?'0.68rem':'0.875rem'}}>
+                Claim
+              </Button>
             </Grid>
             <Grid item xs={4}>
-              <Button color="secondary" fullWidth variant="contained">Compound</Button>
+              <Button color="secondary" fullWidth variant="contained"
+                sx={{ fontSize:isResp520?'0.68rem':'0.875rem'}}>
+                  Compound
+                </Button>
             </Grid>
             <Grid item xs={4}>
-              <Button color="secondary" fullWidth variant="contained">Deposit</Button>
+              <Button color="secondary" fullWidth variant="contained"
+                sx={{ fontSize:isResp520?'0.68rem':'0.875rem'}}>
+                Deposit
+              </Button>
             </Grid>
           </Grid>
         </Box>
