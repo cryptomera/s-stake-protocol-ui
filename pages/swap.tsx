@@ -10,15 +10,19 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import SwapTab from '../components/swap/SwapTab';
 // import Link from '@mui/material/Link';
 import Link from 'next/link';
+import { useMediaQuery } from 'react-responsive';
 
 const Swap: NextPage = () => {
   const [tabValue, setTabValue] = React.useState("0");
   const tabHandler = (event: React.SyntheticEvent, newValue: string) => {
     setTabValue(newValue);
   }
+  const isResp520 = useMediaQuery({
+    query: '(max-width: 520px)'
+  });
   return (
     <PageContainer>
-      <div style={{ width: '100%' }}>
+      <div style={{ width: '100%',padding:isResp520?'24px':'0px' }}>
         <Box
           sx={{
             display: 'flex',

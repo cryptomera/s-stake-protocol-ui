@@ -5,6 +5,7 @@ import { Box, Grid, Button } from '@mui/material';
 import CustomInput from 'components/stake/CustomInput';
 import SellIcon from '@mui/icons-material/Sell';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import { useMediaQuery } from 'react-responsive';
 
 const Foundation: NextPage = () => {
   const [buyAmount, setBuyAmount] = React.useState('0');
@@ -24,6 +25,9 @@ const Foundation: NextPage = () => {
     }
     setBuyAmount(e.target.value);
   }
+  const isResp520 = useMediaQuery({
+    query: '(max-width: 520px)'
+  });
   return (
     <PageContainer>
       <Box>
@@ -49,7 +53,7 @@ const Foundation: NextPage = () => {
         >
           <Grid container spacing={2}>
             {/* nfv available */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={2}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={2}>
               <Box>
                 <Box
                   sx={{
@@ -71,7 +75,7 @@ const Foundation: NextPage = () => {
               </Box>
             </Grid>
             {/* deposits */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={2}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={2}>
               <Box>
                 <Box
                   sx={{
@@ -93,7 +97,7 @@ const Foundation: NextPage = () => {
               </Box>
             </Grid>
             {/* Gross Claimed */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={3}>
               <Box>
                 <Box
                   sx={{
@@ -115,7 +119,7 @@ const Foundation: NextPage = () => {
               </Box>
             </Grid>
             {/* max payout */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={3}>
               <Box>
                 <Box
                   sx={{
@@ -136,7 +140,7 @@ const Foundation: NextPage = () => {
                 </Box>
               </Box>
             </Grid>
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={2}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={12} md={2}>
               <Box>
                 <Box
                   sx={{
@@ -168,7 +172,7 @@ const Foundation: NextPage = () => {
           }}
         >
           <Grid container spacing={2}>
-            <Grid item xs={6}>
+            <Grid item xs={12} md={6}>
               <Box
                 sx={{
                   display: 'flex',
@@ -199,14 +203,18 @@ const Foundation: NextPage = () => {
                     <Box sx={{ flexGrow: 1 }}></Box>
                     <Box>BNB Balance: 1.452</Box>
                   </Box>
-                  <CustomInput value={buyAmount} setValue={e => handleBuyAmount(e)} width="500px" icon={<ShoppingBagIcon />} />
+                  <CustomInput 
+                  value={buyAmount} 
+                  setValue={e => handleBuyAmount(e)} 
+                  width={isResp520?'100%':"500px"} 
+                  icon={<ShoppingBagIcon />} />
                   <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
                     <Button color="secondary" variant="contained">Buy</Button>
                   </Box>
                 </Box>
               </Box>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} md={6}>
               <Box
                 sx={{
                   display: 'flex',
@@ -234,14 +242,18 @@ const Foundation: NextPage = () => {
                     <Box sx={{ flexGrow: 1 }}></Box>
                     <Box>Stake Balance: 65,707</Box>
                   </Box>
-                  <CustomInput value={sellAmount} setValue={e => handleSellAmount(e)} width="500px" icon={<SellIcon />} />
+                  <CustomInput 
+                  value={sellAmount} 
+                  setValue={e => handleSellAmount(e)} 
+                  width={isResp520?'100%':"500px"}
+                  icon={<SellIcon />} />
                   <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
                     <Button color="secondary" variant="contained">Sell</Button>
                   </Box>
                 </Box>
               </Box>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={6} md={4}>
               <Box
                 sx={{
                   display: 'flex',
@@ -271,7 +283,7 @@ const Foundation: NextPage = () => {
                 $999,999,999
               </Box>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={6} md={4}>
               <Box
                 sx={{
                   display: 'flex',
@@ -301,7 +313,7 @@ const Foundation: NextPage = () => {
                 $999,999,999
               </Box>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={12} md={4}>
               <Box
                 sx={{
                   display: 'flex',
