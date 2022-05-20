@@ -38,6 +38,6 @@ const nextConfig = {
     ]
   },
 }
-const withTM = require('next-transpile-modules')(['react-d3-speedometer']);
+const withTM = require('next-transpile-modules')(['react-d3-speedometer', 'lodash-es']);
 
 module.exports = withPlugins([withTM], nextConfig); 
