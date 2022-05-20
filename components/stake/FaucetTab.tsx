@@ -5,7 +5,6 @@ import * as React from 'react';
 import CustomInput from './CustomInput';
 import { useMediaQuery } from 'react-responsive';
 import { address } from '../../utils/ethers.util';
-import { getAccount } from 'utils/account.utils';
 import { formatEther } from 'ethers/lib/utils';
 import { BigNumber } from '@web3-onboard/common/node_modules/ethers';
 import Erc20 from '../../abi/Erc20.json';
@@ -22,13 +21,12 @@ const FaucetTab = () => {
   const [deposits, setDeposits] = React.useState('0');
   const [grossClaimed, setGrossClaimed] = React.useState('0');
   const [maxPayout, setMaxPayout] = React.useState('0');
-  const { library } = useWeb3React<Web3Provider>();
+  const { library, account } = useWeb3React<Web3Provider>();
 
   React.useEffect(() => {
     async function getNerdData() {
       const nerd = new Contract(address['nerd'], Nerd.abi, library);
-      const userAddress = getAccount().address;
-      const data = await nerd.getNerdData(userAddress);
+      const data = await nerd.getNerdData(account);
       setNfv(formatEther(data[6]));
       setDeposits(formatEther(data[5]));
       setGrossClaimed(formatEther(data[3]));
@@ -38,13 +36,12 @@ const FaucetTab = () => {
   }, []);
 
   const deposit = async () => {
-    const userAddress = getAccount().address;
     const stakeToken = new Contract(address['$stake'], Erc20.abi, library?.getSigner());
-    const balance = await stakeToken.balanceOf(userAddress);
+    const balance = await stakeToken.balanceOf(account);
     await stakeToken.approve(address['nerd'], BigNumber.from(balance.toString()));
     stakeToken.once("Approval", () => {
       const nerd = new Contract(address['nerd'], Nerd.abi, library?.getSigner());
-      nerd.deposit(BigNumber.from(balance.toString()), userAddress);
+      nerd.deposit(BigNumber.from(balance.toString()), account);
     });
   }
 
