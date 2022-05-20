@@ -25,6 +25,9 @@ const FaucetTab = () => {
     }
     setBuyAmount(e.target.value);
   }
+  const isResp300 = useMediaQuery({
+    query: '(max-width: 300px)'
+  });
   const isResp520 = useMediaQuery({
     query: '(max-width: 520px)'
   });
@@ -56,89 +59,89 @@ const FaucetTab = () => {
           </Box>
           <Grid container spacing={3}>
             {/* nfv available */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={isResp300?12:6} md={3}>
               <Box>
                 <Box
                   sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     fontWeight: 'bold',
-                    fontSize: '18px',
+                    fontSize: isResp520?'14px':'18px',
                     marginBottom: '10px'
                   }}
                 >
                   NFV Available
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
                   123.3211
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
                   $3,532.23432
                 </Box>
               </Box>
             </Grid>
             {/* deposits */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={isResp300?12:6} md={3}>
               <Box>
                 <Box
                   sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     fontWeight: 'bold',
-                    fontSize: '18px',
+                    fontSize: isResp520?'14px':'18px',
                     marginBottom: '10px'
                   }}
                 >
                   Deposits
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
                   123.3211
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
                   $3,532.23432
                 </Box>
               </Box>
             </Grid>
             {/* Gross Claimed */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={isResp300?12:6} md={3}>
               <Box>
                 <Box
                   sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     fontWeight: 'bold',
-                    fontSize: '18px',
+                    fontSize: isResp520?'14px':'18px',
                     marginBottom: '10px'
                   }}
                 >
                   Gross Claimed
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
                   123.3211
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
                   $3,532.23432
                 </Box>
               </Box>
             </Grid>
             {/* max payout */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={isResp300?12:6} md={3}>
               <Box>
                 <Box
                   sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     fontWeight: 'bold',
-                    fontSize: '18px',
+                    fontSize: isResp520?'14px':'18px',
                     marginBottom: '10px'
                   }}
                 >
                   Max Payout
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
                   123.3211
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
                   $3,532.23432
                 </Box>
               </Box>
@@ -146,19 +149,19 @@ const FaucetTab = () => {
             {/* buttons */}
             <Grid item xs={4}>
               <Button color="secondary" fullWidth variant="contained"
-                sx={{ fontSize:isResp520?'0.68rem':'0.875rem'}}>
+                sx={{ fontSize:isResp520?'0.58rem':'0.875rem'}}>
                 Claim
               </Button>
             </Grid>
             <Grid item xs={4}>
               <Button color="secondary" fullWidth variant="contained"
-                sx={{ fontSize:isResp520?'0.68rem':'0.875rem'}}>
+                sx={{ fontSize:isResp520?'0.58rem':'0.875rem'}}>
                   Compound
                 </Button>
             </Grid>
             <Grid item xs={4}>
               <Button color="secondary" fullWidth variant="contained"
-                sx={{ fontSize:isResp520?'0.68rem':'0.875rem'}}>
+                sx={{ fontSize:isResp520?'0.58rem':'0.875rem'}}>
                 Deposit
               </Button>
             </Grid>
@@ -264,37 +267,37 @@ const FaucetTab = () => {
             (Net Elastic Rebase Depletion)
           </Box>
           <Grid container spacing={2}>
-            <Grid item xs={12} md={6}>
-              <Grid container spacing={2}>
-                <Grid item xs={7} md={6}>
+            <Grid item xs={12} md={6} sx={{fontSize:isResp520?'13px':'initial'}}>
+              <Grid container spacing={2} sx={{paddingTop:isResp520?'15px':'auto'}}>
+                <Grid item xs={8} md={6}>
                   Net Deposits
                 </Grid>
-                <Grid item xs={5} md={6}>
+                <Grid item xs={4} md={6}>
                   -123.3211
                 </Grid>
-                <Grid item xs={7} md={6}>
+                <Grid item xs={8} md={6}>
                   <Box>
                     Current Rebase Rate
                   </Box>
                   <Box
-                    sx={{ paddingLeft: '50px' }}
+                    sx={{ paddingLeft: isResp520?'0px':'50px' }}
                   >
                     (daily)
                   </Box>
                 </Grid>
-                <Grid item xs={5} md={6}>
+                <Grid item xs={4} md={6}>
                   0.2%
                 </Grid>
-                <Grid item xs={7} md={6}>
+                <Grid item xs={8} md={6}>
                   GFV Depletion
                 </Grid>
-                <Grid item xs={5} md={6}>
+                <Grid item xs={4} md={6}>
                   no
                 </Grid>
-                <Grid item xs={7} md={6}>
+                <Grid item xs={8} md={6}>
                   Depletion Amount
                 </Grid>
-                <Grid item xs={5} md={6}>
+                <Grid item xs={4} md={6}>
                   0 Stake
                 </Grid>
               </Grid>

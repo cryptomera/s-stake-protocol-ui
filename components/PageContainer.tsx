@@ -117,7 +117,7 @@ const PageContainer = (props: { children: ReactNode }) =>
           component="main"
           sx={{
             flexGrow: 1,
-            p: isResp520?0:3,
+            p: isResp520?1:3,
             pt: '80px',
             width: { sm: `calc(100% - ${drawerWidth}px)` },
           }}

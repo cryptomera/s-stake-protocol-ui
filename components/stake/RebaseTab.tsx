@@ -5,6 +5,7 @@ import SellIcon from '@mui/icons-material/Sell';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import { RedditTextField } from './RedditTextField';
 import { useMediaQuery } from 'react-responsive';
+import ReactSpeedometer from "react-d3-speedometer"
 
 const RebaseTab = () => {
   const [sellAmount, setSellAmount] = React.useState('0');
@@ -25,6 +26,9 @@ const RebaseTab = () => {
     }
     setBuyAmount(e.target.value);
   }
+  const isResp370 = useMediaQuery({
+    query: '(max-width: 370px)'
+  });
   const isResp520 = useMediaQuery({
     query: '(max-width: 520px)'
   });
@@ -53,20 +57,20 @@ const RebaseTab = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: isResp520?'22px':'26px',
+                  fontSize:isResp370?'16px':isResp520?'18px':'26px',
                   marginBottom: isResp520?'0px':'30px'
                 }}
               >
                 Gross Faucet Value (GFV)
               </Box>
             </Grid>
-            <Grid item xs={6} md={3}>
+            <Grid item xs={isResp370?12:6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: isResp520?'16px':'20px',
+                  fontSize: isResp520?'14px':'20px',
                   marginBottom: isResp520?'5px':'20px'
                 }}
               >
@@ -77,7 +81,7 @@ const RebaseTab = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: isResp520?'400':'bold',
-                  fontSize: isResp520?'16px':'28px'
+                  fontSize: isResp520?'14px':'28px'
                 }}
               >
                 123.3211
@@ -86,19 +90,20 @@ const RebaseTab = () => {
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
+                  fontSize: isResp520?'14px':'initial'
                 }}
               >
                 $9,999.99999
               </Box>
             </Grid>
             {/* Airdrop Sent */}
-            <Grid item xs={6} md={3}>
+            <Grid item xs={isResp370?12:6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: isResp520?'16px':'20px',
+                  fontSize: isResp520?'14px':'20px',
                   marginBottom: isResp520?'5px':'20px'
                 }}
               >
@@ -109,7 +114,7 @@ const RebaseTab = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: isResp520?'400':'bold',
-                  fontSize: isResp520?'16px':'28px'
+                  fontSize: isResp520?'14px':'28px'
                 }}
               >
                 123.3211
@@ -118,19 +123,20 @@ const RebaseTab = () => {
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
+                  fontSize: isResp520?'14px':'initial'
                 }}
               >
                 $9,999.99999
               </Box>
             </Grid>
             {/* Airdrop received */}
-            <Grid item xs={6} md={3}>
+            <Grid item xs={isResp370?12:6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: isResp520?'16px':'20px',
+                  fontSize: isResp520?'14px':'20px',
                   marginBottom: isResp520?'5px':'20px'
                 }}
               >
@@ -141,7 +147,7 @@ const RebaseTab = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: isResp520?'400':'bold',
-                  fontSize: isResp520?'16px':'28px'
+                  fontSize: isResp520?'14px':'28px'
                 }}
               >
                 123.3211
@@ -150,19 +156,20 @@ const RebaseTab = () => {
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
+                  fontSize: isResp520?'14px':'initial'
                 }}
               >
                 $9,999.99999
               </Box>
             </Grid>
             {/* team */}
-            <Grid item xs={6} md={3}>
+            <Grid item xs={isResp370?12:6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: isResp520?'16px':'20px',
+                  fontSize: isResp520?'14px':'20px',
                 }}
               >
                 <Box>
@@ -184,7 +191,7 @@ const RebaseTab = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: isResp520?'400':'bold',
-                  fontSize: isResp520?'16px':'28px'
+                  fontSize: isResp520?'14px':'28px'
                 }}
               >
                 123.3211
@@ -193,6 +200,7 @@ const RebaseTab = () => {
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
+                  fontSize: isResp520?'14px':'initial'
                 }}
               >
                 $9,999.99999
@@ -313,17 +321,17 @@ const RebaseTab = () => {
                 </Box>
               </Box>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={8} md={6}>
               <Box>
                 Net Depoists
               </Box>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={4} md={6}>
               <Box>
                 -123.3211
               </Box>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={8} md={6}>
               <Box>
                 Current Rebase Rate
               </Box>
@@ -335,29 +343,34 @@ const RebaseTab = () => {
                 (daily)
               </Box>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={4} md={6}>
               <Box>
                 0.2%
               </Box>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={8} md={6}>
               <Box>
                 GFV Depletion
               </Box>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={4} md={6}>
               <Box>
                 no
               </Box>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={8} md={6}>
               <Box>
                 Depletion Amount
               </Box>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={4} md={6}>
               <Box>
                 0 stake
+              </Box>
+            </Grid>
+	          <Grid item xs={12} sx={{display:'none'}}>
+              <Box style={{display: 'flex', justifyContent: 'center'}}>
+                <ReactSpeedometer />  
               </Box>
             </Grid>
           </Grid>
@@ -456,28 +469,28 @@ const RebaseTab = () => {
                     />
                   </Box>
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={7} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: isResp520?'left':'center'}} item xs={7} md={6}>
                   Faucet APY
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={5} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: isResp520?'end':'center'}} item xs={5} md={6}>
                   3,543%
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={7} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: isResp520?'left':'center'}} item xs={7} md={6}>
                   Rebase APY
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={5} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: isResp520?'end':'center'}} item xs={5} md={6}>
                   3,543%
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={7} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: isResp520?'left':'center'}} item xs={7} md={6}>
                   Estimate Rewards
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={5} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: isResp520?'end':'center'}} item xs={5} md={6}>
                   3,543%
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={7} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: isResp520?'left':'center'}} item xs={7} md={6}>
                   ROI
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={5} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: isResp520?'end':'center'}} item xs={5} md={6}>
                   3,543%
                 </Grid>
               </Grid>

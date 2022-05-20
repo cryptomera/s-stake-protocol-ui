@@ -26,6 +26,9 @@ const OverviewTab = () => {
     }
     setBuyAmount(e.target.value);
   }
+  const isResp320 = useMediaQuery({
+    query: '(max-width: 320px)'
+  });
   const isResp520 = useMediaQuery({
     query: '(max-width: 520px)'
   });
@@ -46,7 +49,7 @@ const OverviewTab = () => {
         container
         spacing={2}
         sx={{
-          padding: '30px',
+          padding: '0px',
           display:isResp520?'initial':'flex'
         }}
       >
@@ -238,95 +241,201 @@ const OverviewTab = () => {
             }}
           >
             <Grid container spacing={2}>
-              <Grid item xs={12} md={6}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    fontWeight: 'bold',
-                    fontSize: '18px'
-                  }}
-                >
-                  NFV
-                </Box>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    margin: '10px'
-                  }}
-                >
-                  (Net Faucet Value)
-                </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center', fontWeight: 'bold' }}>
-                  1,865,707
-                </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                  $65,707
-                </Box>
+              <Grid item xs={isResp320?12:6} md={6}>
+                <Grid container spacing={1}>
+                  <Grid item xs={12} md={12}
+                    sx={{
+                      display: 'flex',
+                      justifyContent:'center'
+                    }}>
+                      <Grid container spacing={1}>
+                        <Grid item xs={12} md={12}
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'baseline',
+                            justifyContent:'center',
+                            fontSize: isResp520?'15px':'18px',
+                            fontWeight: 'bold'
+                          }}>NFV
+                          </Grid>  
+                          <Grid item xs={12} md={12} 
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'baseline',
+                            justifyContent:'center',
+                            fontSize: isResp520?'12px':'16px',
+                            paddingTop: isResp520?'5px !important':'16px',
+                          }}>
+                          (Net Faucet Value)
+                        </Grid>    
+                      </Grid>
+                  </Grid>
+                  <Grid item xs={12} md={12}>
+                      <Grid container spacing={1}>
+                        <Grid item xs={12} md={12}
+                          sx={{
+                            display: 'flex',
+                            justifyContent:'center',
+                            fontSize: isResp520?'13px':'16px',
+                            fontWeight: isResp520?'400':'bold',
+                            paddingTop: isResp520?'12px !important':'16px'
+                          }}>1,865,707
+                        </Grid>
+                        <Grid item xs={12} md={12}
+                          sx={{
+                            display: 'flex',
+                            justifyContent:'center',
+                            fontSize: isResp520?'13px':'16px',
+                            fontWeight: '400',
+                            paddingTop: '0px !important'
+                          }}>
+                          $65,707
+                        </Grid>
+                      </Grid>
+                  </Grid>
+                </Grid>
               </Grid>
-              <Grid item xs={12} md={6}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    fontWeight: 'bold',
-                    fontSize: '18px'
-                  }}
-                >
-                  GFV
-                </Box>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    margin: '10px'
-                  }}
-                >
-                  (Gross Faucet Value)
-                </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center', fontWeight: 'bold' }}>
-                  1,865,707
-                </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                  $65,707
-                </Box>
+              <Grid item xs={isResp320?12:6} md={6}>
+                <Grid container spacing={1}>
+                  <Grid item xs={12} md={12}
+                    sx={{
+                      display: 'flex',
+                      justifyContent:'center'
+                    }}>
+                      <Grid container spacing={1}>
+                        <Grid item xs={12} md={12}
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'baseline',
+                            justifyContent:'center',
+                            fontSize: isResp520?'15px':'18px',
+                            fontWeight: 'bold'
+                          }}>GFV
+                          </Grid>  
+                          <Grid item xs={12} md={12} 
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'baseline',
+                            justifyContent:'center',
+                            fontSize: isResp520?'12px':'16px',
+                            paddingTop: isResp520?'5px !important':'16px',
+                          }}>
+                          (Gross Faucet Value)
+                        </Grid>    
+                      </Grid>
+                  </Grid>
+                  <Grid item xs={12} md={12}>
+                      <Grid container spacing={1}>
+                        <Grid item xs={12} md={12}
+                          sx={{
+                            display: 'flex',
+                            justifyContent:'center',
+                            fontSize: isResp520?'13px':'16px',
+                            fontWeight: isResp520?'400':'bold',
+                            paddingTop: isResp520?'12px !important':'16px'
+                          }}>1,865,707
+                        </Grid>
+                        <Grid item xs={12} md={12}
+                          sx={{
+                            display: 'flex',
+                            justifyContent:'center',
+                            fontSize: isResp520?'13px':'16px',
+                            fontWeight: '400',
+                            paddingTop: '0px !important'
+                          }}>
+                          $65,707
+                        </Grid>
+                      </Grid>
+                  </Grid>
+                </Grid>
               </Grid>
-              <Grid item xs={12} md={6}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    fontWeight: 'bold',
-                    fontSize: isResp520?'16px':'18px'
-                  }}
-                >
-                  Referral Rewards
-                </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center', fontWeight: 'bold' }}>
-                  1,865,707
-                </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                  $65,707
-                </Box>
+              <Grid item xs={isResp320?12:6} md={6}>
+                <Grid container spacing={1}>
+                  <Grid item xs={12} md={12}
+                    sx={{
+                      display: 'flex',
+                      justifyContent:'center'
+                    }}>
+                      <Grid container spacing={1}>
+                        <Grid item xs={12} md={12}
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'baseline',
+                            justifyContent:'center',
+                            fontSize: isResp520?'15px':'18px',
+                            fontWeight: 'bold'
+                          }}>Referral Rewards
+                          </Grid>     
+                      </Grid>
+                  </Grid>
+                  <Grid item xs={12} md={12}>
+                      <Grid container spacing={1}>
+                        <Grid item xs={12} md={12}
+                          sx={{
+                            display: 'flex',
+                            justifyContent:'center',
+                            fontSize: isResp520?'13px':'16px',
+                            fontWeight: isResp520?'400':'bold',
+                            paddingTop: isResp520?'12px !important':'16px'
+                          }}>1,865,707
+                        </Grid>
+                        <Grid item xs={12} md={12}
+                          sx={{
+                            display: 'flex',
+                            justifyContent:'center',
+                            fontSize: isResp520?'13px':'16px',
+                            fontWeight: '400',
+                            paddingTop: '0px !important'
+                          }}>
+                          $65,707
+                        </Grid>
+                      </Grid>
+                  </Grid>
+                </Grid>
               </Grid>
-              <Grid item xs={12} md={6}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    fontWeight: 'bold',
-                    fontSize: isResp520?'16px':'18px'
-                  }}
-                >
-                  FLAME in Wallet
-                </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center', fontWeight: 'bold' }}>
-                  707
-                </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                  $5,707
-                </Box>
+              <Grid item xs={isResp320?12:6} md={6}>
+                <Grid container spacing={1}>
+                  <Grid item xs={12} md={12}
+                    sx={{
+                      display: 'flex',
+                      justifyContent:'center'
+                    }}>
+                      <Grid container spacing={1}>
+                        <Grid item xs={12} md={12}
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'baseline',
+                            justifyContent:'center',
+                            fontSize: isResp520?'15px':'18px',
+                            fontWeight: 'bold'
+                          }}>FLAME in Wallet
+                          </Grid>     
+                      </Grid>
+                  </Grid>
+                  <Grid item xs={12} md={12}>
+                      <Grid container spacing={1}>
+                        <Grid item xs={12} md={12}
+                          sx={{
+                            display: 'flex',
+                            justifyContent:'center',
+                            fontSize: isResp520?'13px':'16px',
+                            fontWeight: isResp520?'400':'bold',
+                            paddingTop: isResp520?'12px !important':'16px'
+                          }}>707
+                        </Grid>
+                        <Grid item xs={12} md={12}
+                          sx={{
+                            display: 'flex',
+                            justifyContent:'center',
+                            fontSize: isResp520?'13px':'16px',
+                            fontWeight: '400',
+                            paddingTop: '0px !important'
+                          }}>
+                          $5,707
+                        </Grid>
+                      </Grid>
+                  </Grid>
+                </Grid>
               </Grid>
             </Grid>
           </Box>
@@ -352,12 +461,12 @@ const OverviewTab = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 fontWeight: 'bold',
-                fontSize: '20px'
+                fontSize: isResp520?'16px':'20px'
               }}
             >
               NERD
             </Box>
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', fontSize: isResp520?'13px':'inintial' }}>
               (Net Elastic Rebase Depletion)
             </Box>
             <Box>
@@ -381,15 +490,18 @@ const OverviewTab = () => {
             }}
           >
             {/* market cap */}
-            <Grid container spacing={1}>
+            <Grid container spacing={1}
+              sx={{
+                fontSize: isResp520?'13px':'initial'
+              }}>
               <Grid item xs={12} md={2}sx={{ display: isResp520?'flex':'block' }}>
                 <Box
                   sx={{
                     display: 'flex',
                     justifyContent: isResp520?'flex-start':'center',
-                    fontWeight: 'bold',
-                    flex: isResp520?'0 0 50%':'auto',
-                    maxWidth: isResp520?'50%':'initial'
+                    fontWeight: isResp520?'400':'bold',
+                    flex: isResp520?'0 0 60%':'auto',
+                    maxWidth: isResp520?'60%':'initial'
                   }}
                 >
                   Market Cap
@@ -397,9 +509,9 @@ const OverviewTab = () => {
                 <Box
                   sx={{
                     display: 'flex',
-                    justifyContent: isResp520?'flex-start':'center',
-                    flex: isResp520?'0 0 50%':'auto',
-                    maxWidth: isResp520?'50%':'initial'
+                    justifyContent: isResp520?'end':'center',
+                    flex: isResp520?'0 0 40%':'auto',
+                    maxWidth: isResp520?'40%':'initial'
                   }}
                 >
                   $999,999,999
@@ -411,9 +523,9 @@ const OverviewTab = () => {
                   sx={{
                     display: 'flex',
                     justifyContent: isResp520?'flex-start':'center',
-                    fontWeight: 'bold',
-                    flex: isResp520?'0 0 50%':'auto',
-                    maxWidth: isResp520?'50%':'initial'
+                    fontWeight: isResp520?'400':'bold',
+                    flex: isResp520?'0 0 60%':'auto',
+                    maxWidth: isResp520?'60%':'initial'
                   }}
                 >
                   Total Players
@@ -421,9 +533,9 @@ const OverviewTab = () => {
                 <Box
                   sx={{
                     display: 'flex',
-                    justifyContent: isResp520?'flex-start':'center',
-                    flex: isResp520?'0 0 50%':'auto',
-                    maxWidth: isResp520?'50%':'initial'
+                    justifyContent: isResp520?'end':'center',
+                    flex: isResp520?'0 0 40%':'auto',
+                    maxWidth: isResp520?'40%':'initial'
                   }}
                 >
                   99,999
@@ -435,9 +547,9 @@ const OverviewTab = () => {
                   sx={{
                     display: 'flex',
                     justifyContent: isResp520?'flex-start':'center',
-                    fontWeight: 'bold',
-                    flex: isResp520?'0 0 50%':'auto',
-                    maxWidth: isResp520?'50%':'initial'
+                    fontWeight: isResp520?'400':'bold',
+                    flex: isResp520?'0 0 60%':'auto',
+                    maxWidth: isResp520?'60%':'initial'
                   }}
                 >
                   Faucet Returns
@@ -445,15 +557,17 @@ const OverviewTab = () => {
                 <Box
                   sx={{
                     display: 'flex',
-                    justifyContent: isResp520?'flex-start':'center',
+                    justifyContent: isResp520?'end':'center',
+                    flex: isResp520?'0 0 40%':'auto',
+                    maxWidth: isResp520?'40%':'initial'
                   }}
                 >
                   1% Daily
                 </Box>
                 <Box
                   sx={{
-                    display: 'flex',
-                    justifyContent: isResp520?'flex-start':'center',
+                    display: isResp520?'none':'flex',
+                    justifyContent: 'center',
                   }}
                 >
                   (on locked value)
@@ -465,9 +579,9 @@ const OverviewTab = () => {
                   sx={{
                     display: 'flex',
                     justifyContent: isResp520?'flex-start':'center',
-                    fontWeight: 'bold',
-                    flex: isResp520?'0 0 50%':'auto',
-                    maxWidth: isResp520?'50%':'initial'
+                    fontWeight: isResp520?'400':'bold',
+                    flex: isResp520?'0 0 60%':'auto',
+                    maxWidth: isResp520?'60%':'initial'
                   }}
                 >
                   Treasury Value
@@ -475,9 +589,9 @@ const OverviewTab = () => {
                 <Box
                   sx={{
                     display: 'flex',
-                    justifyContent: isResp520?'flex-start':'center',
-                    flex: isResp520?'0 0 50%':'auto',
-                    maxWidth: isResp520?'50%':'initial'
+                    justifyContent: isResp520?'end':'center',
+                    flex: isResp520?'0 0 40%':'auto',
+                    maxWidth: isResp520?'40%':'initial'
                   }}
                 >
                   $999,999,999
@@ -489,9 +603,9 @@ const OverviewTab = () => {
                   sx={{
                     display: 'flex',
                     justifyContent: isResp520?'flex-start':'center',
-                    fontWeight: 'bold',
-                    flex: isResp520?'0 0 50%':'auto',
-                    maxWidth: isResp520?'50%':'initial'
+                    fontWeight: isResp520?'400':'bold',
+                    flex: isResp520?'0 0 60%':'auto',
+                    maxWidth: isResp520?'60%':'initial'
                   }}
                 >
                   Total POL
@@ -499,9 +613,9 @@ const OverviewTab = () => {
                 <Box
                   sx={{
                     display: 'flex',
-                    justifyContent: isResp520?'flex-start':'center',
-                    flex: isResp520?'0 0 50%':'auto',
-                    maxWidth: isResp520?'50%':'initial'
+                    justifyContent: isResp520?'end':'center',
+                    flex: isResp520?'0 0 40%':'auto',
+                    maxWidth: isResp520?'40%':'initial'
                   }}
                 >
                   $999,999,999
@@ -513,9 +627,9 @@ const OverviewTab = () => {
                   sx={{
                     display: 'flex',
                     justifyContent: isResp520?'flex-start':'center',
-                    fontWeight: 'bold',
-                    flex: isResp520?'0 0 50%':'auto',
-                    maxWidth: isResp520?'50%':'initial'
+                    fontWeight: isResp520?'400':'bold',
+                    flex: isResp520?'0 0 60%':'auto',
+                    maxWidth: isResp520?'60%':'initial'
                   }}
                 >
                   Total Supply
@@ -523,9 +637,9 @@ const OverviewTab = () => {
                 <Box
                   sx={{
                     display: 'flex',
-                    justifyContent: isResp520?'flex-start':'center',
-                    flex: isResp520?'0 0 50%':'auto',
-                    maxWidth: isResp520?'50%':'initial'
+                    justifyContent: isResp520?'end':'center',
+                    flex: isResp520?'0 0 40%':'auto',
+                    maxWidth: isResp520?'40%':'initial'
                   }}
                 >
                   1,865,707
@@ -537,9 +651,9 @@ const OverviewTab = () => {
                   sx={{
                     display: 'flex',
                     justifyContent: isResp520?'flex-start':'center',
-                    fontWeight: 'bold',
-                    flex: isResp520?'0 0 50%':'auto',
-                    maxWidth: isResp520?'50%':'initial'
+                    fontWeight: isResp520?'400':'bold',
+                    flex: isResp520?'0 0 60%':'auto',
+                    maxWidth: isResp520?'60%':'initial'
                   }}
                 >
                   Locked in Vault
@@ -547,9 +661,9 @@ const OverviewTab = () => {
                 <Box
                   sx={{
                     display: 'flex',
-                    justifyContent: isResp520?'flex-start':'center',
-                    flex: isResp520?'0 0 50%':'auto',
-                    maxWidth: isResp520?'50%':'initial'
+                    justifyContent: isResp520?'end':'center',
+                    flex: isResp520?'0 0 40%':'auto',
+                    maxWidth: isResp520?'40%':'initial'
                   }}
                 >
                   65,707
@@ -561,9 +675,9 @@ const OverviewTab = () => {
                   sx={{
                     display: 'flex',
                     justifyContent: isResp520?'flex-start':'center',
-                    fontWeight: 'bold',
-                    flex: isResp520?'0 0 50%':'auto',
-                    maxWidth: isResp520?'50%':'initial'
+                    fontWeight: isResp520?'400':'bold',
+                    flex: isResp520?'0 0 60%':'auto',
+                    maxWidth: isResp520?'60%':'initial'
                   }}
                 >
                   Rebase Returns
@@ -571,15 +685,17 @@ const OverviewTab = () => {
                 <Box
                   sx={{
                     display: 'flex',
-                    justifyContent: isResp520?'flex-start':'center',
+                    justifyContent: isResp520?'end':'center',
+                    flex: isResp520?'0 0 40%':'auto',
+                    maxWidth: isResp520?'40%':'initial'
                   }}
                 >
                   2% Daily
                 </Box>
                 <Box
                   sx={{
-                    display: 'flex',
-                    justifyContent: isResp520?'flex-start':'center',
+                    display: isResp520?'none':'flex',
+                    justifyContent: 'center',
                   }}
                 >
                   (on locked value)
@@ -591,9 +707,9 @@ const OverviewTab = () => {
                   sx={{
                     display: 'flex',
                     justifyContent: isResp520?'flex-start':'center',
-                    fontWeight: 'bold',
-                    flex: isResp520?'0 0 50%':'auto',
-                    maxWidth: isResp520?'50%':'initial'
+                    fontWeight: isResp520?'400':'bold',
+                    flex: isResp520?'0 0 60%':'auto',
+                    maxWidth: isResp520?'60%':'initial'
                   }}
                 >
                   Floor Price
@@ -601,9 +717,9 @@ const OverviewTab = () => {
                 <Box
                   sx={{
                     display: 'flex',
-                    justifyContent: isResp520?'flex-start':'center',
-                    flex: isResp520?'0 0 50%':'auto',
-                    maxWidth: isResp520?'50%':'initial'
+                    justifyContent: isResp520?'end':'center',
+                    flex: isResp520?'0 0 40%':'auto',
+                    maxWidth: isResp520?'40%':'initial'
                   }}
                 >
                   65,707
@@ -615,9 +731,9 @@ const OverviewTab = () => {
                   sx={{
                     display: 'flex',
                     justifyContent: isResp520?'flex-start':'center',
-                    fontWeight: 'bold',
-                    flex: isResp520?'0 0 50%':'auto',
-                    maxWidth: isResp520?'50%':'initial'
+                    fontWeight: isResp520?'400':'bold',
+                    flex: isResp520?'0 0 60%':'auto',
+                    maxWidth: isResp520?'60%':'initial'
                   }}
                 >
                   Time until next rebase
@@ -625,9 +741,9 @@ const OverviewTab = () => {
                 <Box
                   sx={{
                     display: 'flex',
-                    justifyContent: isResp520?'flex-start':'center',
-                    flex: isResp520?'0 0 50%':'auto',
-                    maxWidth: isResp520?'50%':'initial'
+                    justifyContent: isResp520?'end':'center',
+                    flex: isResp520?'0 0 40%':'auto',
+                    maxWidth: isResp520?'40%':'initial'
                   }}
                 >
                   23 min

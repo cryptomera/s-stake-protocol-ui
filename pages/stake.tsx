@@ -44,7 +44,7 @@ const Stake: NextPage = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 width:'100%',
-                padding: isResp520?'10px':'auto'
+                padding: isResp520?'0px 0px 10px 0px':'auto'
               }}
             >
               <Link href="/stake?tab=overview">
@@ -114,16 +114,28 @@ const Stake: NextPage = () => {
             </Box>
           </Box>
           <Box>
-            <TabPanel value="overview">
+            <TabPanel value="overview" 
+              sx={{
+                padding:isResp520?'0px':'auto'
+              }}>
               <OverviewTab />
             </TabPanel>
-            <TabPanel value="faucet">
+            <TabPanel value="faucet"
+            sx={{
+              padding:isResp520?'0px':'auto'
+            }}>
               <FaucetTab />
             </TabPanel>
-            <TabPanel value="rebase">
+            <TabPanel value="rebase"
+            sx={{
+              padding:isResp520?'0px':'auto'
+            }}>
               <RebaseTab />
             </TabPanel>
-            <TabPanel value="downline">
+            <TabPanel value="downline"
+            sx={{
+              padding:isResp520?'0px':'auto'
+            }}>
               <ReferralTab/>
             </TabPanel>
           </Box>

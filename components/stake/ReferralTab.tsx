@@ -9,6 +9,9 @@ const ReferralTab = () => {
   const handleTab = (event: React.SyntheticEvent, newValue: string) => {
     setTabValue(newValue);
   }
+  const isResp370 = useMediaQuery({
+    query: '(max-width: 370px)'
+  });
   const isResp520 = useMediaQuery({
     query: '(max-width: 520px)'
   });
@@ -30,13 +33,13 @@ const ReferralTab = () => {
         >
           <Grid container spacing={2}>
             {/* Referral Rewards */}
-            <Grid item xs={12} md={3}>
+            <Grid item xs={isResp370?12:6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: '20px'
+                  fontSize: isResp520?'16px':'20px'
                 }}
               >
                 Referral Rewards
@@ -46,7 +49,7 @@ const ReferralTab = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: isResp520?'18px':'28px'
+                  fontSize: isResp520?'14px':'28px'
                 }}
               >
                 123.3211
@@ -55,19 +58,20 @@ const ReferralTab = () => {
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
+                  fontSize: isResp520?'14px':'initial'
                 }}
               >
                 $9,999.99999
               </Box>
             </Grid>
             {/* Airdrop Sent */}
-            <Grid item xs={12} md={3}>
+            <Grid item xs={isResp370?12:6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: '20px'
+                  fontSize: isResp520?'16px':'20px'
                 }}
               >
                 Airdrop Sent
@@ -77,7 +81,7 @@ const ReferralTab = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: isResp520?'18px':'28px'
+                  fontSize: isResp520?'14px':'28px'
                 }}
               >
                 123.3211
@@ -86,19 +90,20 @@ const ReferralTab = () => {
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
+                  fontSize: isResp520?'14px':'initial'
                 }}
               >
                 $9,999.99999
               </Box>
             </Grid>
             {/* Airdrop received */}
-            <Grid item xs={12} md={3}>
+            <Grid item xs={isResp370?12:6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: '20px'
+                  fontSize: isResp520?'16px':'20px'
                 }}
               >
                 Airdrop Received
@@ -108,7 +113,7 @@ const ReferralTab = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: isResp520?'18px':'28px'
+                  fontSize: isResp520?'14px':'28px'
                 }}
               >
                 123.3211
@@ -117,19 +122,20 @@ const ReferralTab = () => {
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
+                  fontSize: isResp520?'14px':'initial'
                 }}
               >
                 $9,999.99999
               </Box>
             </Grid>
             {/* team */}
-            <Grid item xs={12} md={3}>
+            <Grid item xs={isResp370?12:6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: '20px'
+                  fontSize: isResp520?'16px':'20px'
                 }}
               >
                 Airdrop Sent
@@ -139,7 +145,7 @@ const ReferralTab = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   fontWeight: 'bold',
-                  fontSize: isResp520?'18px':'28px'
+                  fontSize: isResp520?'14px':'28px'
                 }}
               >
                 1/1
@@ -224,7 +230,7 @@ const ReferralTab = () => {
                 fontWeight: isResp520?'400':'bold',
                 fontSize: isResp520?'16px':'20px'
               }} 
-              item xs={6} md={4}>
+              item xs={7} md={4}>
               Directs:
             </Grid>
             <Grid
@@ -232,7 +238,7 @@ const ReferralTab = () => {
                 fontWeight: isResp520?'400':'bold',
                 fontSize: isResp520?'16px':'20px'
               }}
-              item xs={6} md={8}>
+              item xs={5} md={8}>
               1
             </Grid>
             <Grid 
@@ -240,7 +246,7 @@ const ReferralTab = () => {
                 fontWeight: isResp520?'400':'bold',
                 fontSize: isResp520?'16px':'20px'
               }}
-              item xs={6} md={4}>
+              item xs={7} md={4}>
               Team:
             </Grid>
             <Grid
@@ -248,7 +254,7 @@ const ReferralTab = () => {
                 fontWeight: isResp520?'400':'bold',
                 fontSize: isResp520?'16px':'20px'
               }}
-              item xs={6} md={8}>
+              item xs={5} md={8}>
               1
             </Grid>
             <Grid 
@@ -256,7 +262,7 @@ const ReferralTab = () => {
                 fontWeight: isResp520?'400':'bold',
                 fontSize: isResp520?'16px':'20px'
               }}
-              item xs={6} md={4}>
+              item xs={7} md={4}>
               Net Deposits:
             </Grid>
             <Grid
@@ -265,7 +271,7 @@ const ReferralTab = () => {
                 display: isResp520?'flex':'block',
                 alignItems: 'center'
               }}
-              item xs={6} md={8}>
+              item xs={5} md={8}>
               -521
             </Grid>
             <Grid 
@@ -273,7 +279,7 @@ const ReferralTab = () => {
                 fontWeight: isResp520?'400':'bold',
                 fontSize: isResp520?'16px':'20px'
               }}
-              item xs={6} md={4}>
+              item xs={7} md={4}>
               Airdrop Sent/Received:
             </Grid>
             <Grid 
@@ -282,7 +288,7 @@ const ReferralTab = () => {
                 display: isResp520?'flex':'block',
                 alignItems: 'center'
               }} 
-              item xs={6} md={8}>
+              item xs={5} md={8}>
               5.4/61.241 Stake
             </Grid>
             <Grid
@@ -290,7 +296,7 @@ const ReferralTab = () => {
                 fontWeight: isResp520?'400':'bold',
                 fontSize: isResp520?'16px':'20px'
               }}
-              item xs={6} md={4}>
+              item xs={7} md={4}>
               Last Airdrop Sent:
             </Grid>
             <Grid
@@ -299,7 +305,7 @@ const ReferralTab = () => {
                 display: isResp520?'flex':'block',
                 alignItems: 'center'
               }} 
-              item xs={6} md={8}>
+              item xs={5} md={8}>
               4 Months ago
             </Grid>
           </Grid>
@@ -343,7 +349,7 @@ const ReferralTab = () => {
               }}
               value="1"
             >
-              <Box>
+              <Box sx={{width:isResp520?'100%':'auto'}}>
                 <CustomNoIconInput
                   buttonName="show"
                   buttonColor="primary"
