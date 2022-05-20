@@ -25,6 +25,9 @@ const Foundation: NextPage = () => {
     }
     setBuyAmount(e.target.value);
   }
+  const isResp300 = useMediaQuery({
+    query: '(max-width: 300px)'
+  });
   const isResp520 = useMediaQuery({
     query: '(max-width: 520px)'
   });
@@ -44,7 +47,7 @@ const Foundation: NextPage = () => {
         </Box>
         <Box
           sx={{
-            background: '#212121',
+            background: isResp520?'#69696969':'#212121',
             padding: '10px',
             paddingTop: '20px',
             paddingBottom: '20px',
@@ -53,14 +56,14 @@ const Foundation: NextPage = () => {
         >
           <Grid container spacing={2}>
             {/* nfv available */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={2}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={isResp300?12:6} md={2}>
               <Box>
                 <Box
                   sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     fontWeight: 'bold',
-                    fontSize: '18px',
+                    fontSize: isResp520?'16px':'18px',
                     marginBottom: '10px'
                   }}
                 >
@@ -75,14 +78,14 @@ const Foundation: NextPage = () => {
               </Box>
             </Grid>
             {/* deposits */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={2}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={isResp300?12:6} md={2}>
               <Box>
                 <Box
                   sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     fontWeight: 'bold',
-                    fontSize: '18px',
+                    fontSize: isResp520?'16px':'18px',
                     marginBottom: '10px'
                   }}
                 >
@@ -97,14 +100,14 @@ const Foundation: NextPage = () => {
               </Box>
             </Grid>
             {/* Gross Claimed */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={isResp300?12:6} md={3}>
               <Box>
                 <Box
                   sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     fontWeight: 'bold',
-                    fontSize: '18px',
+                    fontSize: isResp520?'16px':'18px',
                     marginBottom: '10px'
                   }}
                 >
@@ -119,14 +122,14 @@ const Foundation: NextPage = () => {
               </Box>
             </Grid>
             {/* max payout */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={isResp300?12:6} md={3}>
               <Box>
                 <Box
                   sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     fontWeight: 'bold',
-                    fontSize: '18px',
+                    fontSize: isResp520?'16px':'18px',
                     marginBottom: '10px'
                   }}
                 >
@@ -147,8 +150,8 @@ const Foundation: NextPage = () => {
                     display: 'flex',
                     justifyContent: 'center',
                     fontWeight: 'bold',
-                    fontSize: '18px',
-                    marginBottom: '10px'
+                    fontSize: isResp520?'16px':'18px',
+                    marginBottom: isResp520?'5px':'10px'
                   }}
                 >
                   Rewards Paid
@@ -165,7 +168,7 @@ const Foundation: NextPage = () => {
         </Box>
         <Box
           sx={{
-            background: '#212121',
+            background: isResp520?'#69696969':'#212121',
             marginTop: '40px',
             padding: '10px',
             borderRadius: '16px'
@@ -177,7 +180,7 @@ const Foundation: NextPage = () => {
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
-                  fontSize: '20px',
+                  fontSize: isResp520?'16px':'20px',
                   marginBottom: '20px'
                 }}
               >
@@ -186,8 +189,7 @@ const Foundation: NextPage = () => {
               {/* buy */}
               <Box
                 sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
+                  
                   marginBottom: '10px'
                 }}
               >
@@ -206,7 +208,6 @@ const Foundation: NextPage = () => {
                   <CustomInput 
                   value={buyAmount} 
                   setValue={e => handleBuyAmount(e)} 
-                  width={isResp520?'100%':"500px"} 
                   icon={<ShoppingBagIcon />} />
                   <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
                     <Button color="secondary" variant="contained">Buy</Button>
@@ -219,7 +220,7 @@ const Foundation: NextPage = () => {
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
-                  fontSize: '20px',
+                  fontSize: isResp520?'16px':'20px',
                   marginBottom: '20px'
                 }}
               >
@@ -228,8 +229,7 @@ const Foundation: NextPage = () => {
               {/* sell */}
               <Box
                 sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
+                  
                   marginBottom: '10px'
                 }}
               >
@@ -245,7 +245,6 @@ const Foundation: NextPage = () => {
                   <CustomInput 
                   value={sellAmount} 
                   setValue={e => handleSellAmount(e)} 
-                  width={isResp520?'100%':"500px"}
                   icon={<SellIcon />} />
                   <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
                     <Button color="secondary" variant="contained">Sell</Button>
@@ -258,7 +257,7 @@ const Foundation: NextPage = () => {
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
-                  fontSize: '20px',
+                  fontSize: isResp520?'16px':'20px',
                   fontWeight: 'bold'
                 }}
               >
@@ -288,7 +287,7 @@ const Foundation: NextPage = () => {
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
-                  fontSize: '20px',
+                  fontSize: isResp520?'16px':'20px',
                   fontWeight: 'bold'
                 }}
               >
@@ -318,7 +317,7 @@ const Foundation: NextPage = () => {
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
-                  fontSize: '20px',
+                  fontSize: isResp520?'16px':'20px',
                   fontWeight: 'bold'
                 }}
               >
@@ -339,7 +338,7 @@ const Foundation: NextPage = () => {
         </Box>
         <Box
           sx={{
-            background: '#212121',
+            background: isResp520?'#69696969':'#212121',
             padding: '10px',
             borderRadius: '16px',
             height: '100px',
