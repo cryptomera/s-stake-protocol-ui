@@ -25,6 +25,9 @@ const Stake: NextPage = () => {
   const isResp520 = useMediaQuery({
     query: '(max-width: 520px)'
   });
+  const isResp600 = useMediaQuery({
+    query: '(max-width: 600px)'
+  });
   return (
     <PageContainer>
       <Box
@@ -116,25 +119,25 @@ const Stake: NextPage = () => {
           <Box>
             <TabPanel value="overview" 
               sx={{
-                padding:isResp520?'0px':'auto'
+                padding:isResp600?'0px':'auto'
               }}>
               <OverviewTab />
             </TabPanel>
             <TabPanel value="faucet"
             sx={{
-              padding:isResp520?'0px':'auto'
+              padding:isResp600?'0px':'auto'
             }}>
               <FaucetTab />
             </TabPanel>
             <TabPanel value="rebase"
             sx={{
-              padding:isResp520?'0px':'auto'
+              padding:isResp600?'0px':'auto'
             }}>
               <RebaseTab />
             </TabPanel>
             <TabPanel value="downline"
             sx={{
-              padding:isResp520?'0px':'auto'
+              padding:isResp600?'0px':'auto'
             }}>
               <ReferralTab/>
             </TabPanel>

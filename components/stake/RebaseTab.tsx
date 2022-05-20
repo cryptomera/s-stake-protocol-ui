@@ -368,7 +368,7 @@ const RebaseTab = () => {
                 0 stake
               </Box>
             </Grid>
-	          <Grid item xs={12} sx={{display:'none'}}>
+	          <Grid item xs={12}>
               <Box style={{display: 'flex', justifyContent: 'center'}}>
                 <ReactSpeedometer />  
               </Box>

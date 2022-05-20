@@ -32,6 +32,9 @@ const OverviewTab = () => {
   const isResp520 = useMediaQuery({
     query: '(max-width: 520px)'
   });
+  const isResp600 = useMediaQuery({
+    query: '(max-width: 600px)'
+  });
   return (
     <Box>
       <Box
@@ -63,7 +66,7 @@ const OverviewTab = () => {
         >
           <Box
             sx={{
-              background: isResp520?'#69696969':'#212121',
+              background: isResp600?'#69696969':'#212121',
               padding: '20px',
               borderRadius: '16px'
             }}
@@ -151,7 +154,7 @@ const OverviewTab = () => {
           <Box
             sx={{
               padding: '20px',
-              background: isResp520?'#69696969':'#212121',
+              background: isResp600?'#69696969':'#212121',
               borderRadius: '16px'
             }}
           >
@@ -235,7 +238,7 @@ const OverviewTab = () => {
         >
           <Box
             sx={{
-              background: isResp520?'#69696969':'#212121',
+              background: isResp600?'#69696969':'#212121',
               padding: '20px',
               borderRadius: '16px'
             }}
@@ -450,7 +453,7 @@ const OverviewTab = () => {
         >
           <Box
             sx={{
-              background: isResp520?'#69696969':'#212121',
+              background: isResp600?'#69696969':'#212121',
               padding: '20px',
               borderRadius: '16px'
             }}
@@ -484,7 +487,7 @@ const OverviewTab = () => {
         >
           <Box
             sx={{
-              background: isResp520?'#69696969':'#212121',
+              background: isResp600?'#69696969':'#212121',
               padding: '20px',
               borderRadius: '16px'
             }}
@@ -762,7 +765,7 @@ const OverviewTab = () => {
         >
           <Box
             sx={{
-              background: isResp520?'#69696969':'#212121',
+              background: isResp600?'#69696969':'#212121',
               padding: '20px',
               borderRadius: '16px'
             }}
