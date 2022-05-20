@@ -157,24 +157,37 @@ const FaucetTab = () => {
               </Box>
             </Grid>
             {/* buttons */}
-            <Grid item xs={4}>
+            
+            <Grid item xs={isResp600?6:4}>
               <Button color="secondary" fullWidth variant="contained"
-                sx={{ fontSize:isResp520?'0.58rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
+                sx={{ fontSize:isResp520?'0.68rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
                 Claim
               </Button>
             </Grid>
-            <Grid item xs={4}>
+            {
+              !isResp600 &&
+              <Grid item xs={4}>
+                <Button color="secondary" fullWidth variant="contained"
+                  sx={{ fontSize:isResp520?'0.58rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
+                    Compound
+                  </Button>
+              </Grid>
+            }
+            <Grid item xs={isResp600?6:4}>
               <Button color="secondary" fullWidth variant="contained"
-                sx={{ fontSize:isResp520?'0.58rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
-                  Compound
-                </Button>
-            </Grid>
-            <Grid item xs={4}>
-              <Button color="secondary" fullWidth variant="contained"
-                sx={{ fontSize:isResp520?'0.58rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
+                sx={{ fontSize:isResp520?'0.68rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
                 Deposit
               </Button>
             </Grid>
+            {
+              isResp600 &&
+              <Grid item xs={12}>
+                <Button color="secondary" fullWidth variant="contained"
+                  sx={{ fontSize:isResp520?'0.68rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
+                    Compound
+                  </Button>
+              </Grid>
+            }
           </Grid>
         </Box>
       </Grid>
