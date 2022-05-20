@@ -31,6 +31,12 @@ const FaucetTab = () => {
   const isResp520 = useMediaQuery({
     query: '(max-width: 520px)'
   });
+  const isResp600 = useMediaQuery({
+    query: '(max-width: 600px)'
+  });
+  const isResp720 = useMediaQuery({
+    query: '(max-width: 720px)'
+  });
   return (
     <Grid container spacing={2}
       sx={{
@@ -41,7 +47,7 @@ const FaucetTab = () => {
       <Grid item xs={12}>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: isResp600?'#69696969':'#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -59,7 +65,8 @@ const FaucetTab = () => {
           </Box>
           <Grid container spacing={3}>
             {/* nfv available */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={isResp300?12:6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item 
+            xs={isResp300?12:isResp600?6:isResp720?12:6} md={3}>
               <Box>
                 <Box
                   sx={{
@@ -81,7 +88,8 @@ const FaucetTab = () => {
               </Box>
             </Grid>
             {/* deposits */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={isResp300?12:6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item 
+            xs={isResp300?12:isResp600?6:isResp720?12:6} md={3}>
               <Box>
                 <Box
                   sx={{
@@ -103,7 +111,8 @@ const FaucetTab = () => {
               </Box>
             </Grid>
             {/* Gross Claimed */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={isResp300?12:6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} 
+            item xs={isResp300?12:isResp600?6:isResp720?12:6} md={3}>
               <Box>
                 <Box
                   sx={{
@@ -125,7 +134,8 @@ const FaucetTab = () => {
               </Box>
             </Grid>
             {/* max payout */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={isResp300?12:6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item 
+            xs={isResp300?12:isResp600?6:isResp720?12:6} md={3}>
               <Box>
                 <Box
                   sx={{
@@ -149,19 +159,19 @@ const FaucetTab = () => {
             {/* buttons */}
             <Grid item xs={4}>
               <Button color="secondary" fullWidth variant="contained"
-                sx={{ fontSize:isResp520?'0.58rem':'0.875rem'}}>
+                sx={{ fontSize:isResp520?'0.58rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
                 Claim
               </Button>
             </Grid>
             <Grid item xs={4}>
               <Button color="secondary" fullWidth variant="contained"
-                sx={{ fontSize:isResp520?'0.58rem':'0.875rem'}}>
+                sx={{ fontSize:isResp520?'0.58rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
                   Compound
                 </Button>
             </Grid>
             <Grid item xs={4}>
               <Button color="secondary" fullWidth variant="contained"
-                sx={{ fontSize:isResp520?'0.58rem':'0.875rem'}}>
+                sx={{ fontSize:isResp520?'0.58rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
                 Deposit
               </Button>
             </Grid>
@@ -171,7 +181,7 @@ const FaucetTab = () => {
       <Grid item xs={12} md={6}>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: isResp600?'#69696969':'#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -231,7 +241,7 @@ const FaucetTab = () => {
       <Grid item xs={12} md={6}>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: isResp600?'#69696969':'#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -242,7 +252,7 @@ const FaucetTab = () => {
       <Grid item xs={12}>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: isResp600?'#69696969':'#212121',
             padding: '20px',
             borderRadius: '16px'
           }}

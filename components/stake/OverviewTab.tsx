@@ -35,6 +35,9 @@ const OverviewTab = () => {
   const isResp600 = useMediaQuery({
     query: '(max-width: 600px)'
   });
+  const isResp720 = useMediaQuery({
+    query: '(max-width: 720px)'
+  });
   return (
     <Box>
       <Box
@@ -244,7 +247,7 @@ const OverviewTab = () => {
             }}
           >
             <Grid container spacing={2}>
-              <Grid item xs={isResp320?12:6} md={6}>
+              <Grid item xs={isResp320?12:isResp600?6:isResp720?12:6} md={6}>
                 <Grid container spacing={1}>
                   <Grid item xs={12} md={12}
                     sx={{
@@ -298,7 +301,7 @@ const OverviewTab = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={isResp320?12:6} md={6}>
+              <Grid item xs={isResp320?12:isResp600?6:isResp720?12:6} md={6}>
                 <Grid container spacing={1}>
                   <Grid item xs={12} md={12}
                     sx={{
@@ -352,7 +355,7 @@ const OverviewTab = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={isResp320?12:6} md={6}>
+              <Grid item xs={isResp320?12:isResp600?6:isResp720?12:6} md={6}>
                 <Grid container spacing={1}>
                   <Grid item xs={12} md={12}
                     sx={{
@@ -396,7 +399,7 @@ const OverviewTab = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={isResp320?12:6} md={6}>
+              <Grid item xs={isResp320?12:isResp600?6:isResp720?12:6} md={6}>
                 <Grid container spacing={1}>
                   <Grid item xs={12} md={12}
                     sx={{
@@ -497,7 +500,7 @@ const OverviewTab = () => {
               sx={{
                 fontSize: isResp520?'13px':'initial'
               }}>
-              <Grid item xs={12} md={2}sx={{ display: isResp520?'flex':'block' }}>
+              <Grid item xs={isResp720?12:6} md={2}sx={{ display: isResp520?'flex':'block' }}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -521,7 +524,7 @@ const OverviewTab = () => {
                 </Box>
               </Grid>
               {/* Total players */}
-              <Grid item xs={12} md={2} sx={{ display: isResp520?'flex':'block' }}>
+              <Grid item xs={isResp720?12:6} md={2} sx={{ display: isResp520?'flex':'block' }}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -545,7 +548,7 @@ const OverviewTab = () => {
                 </Box>
               </Grid>
               {/* faucet returns */}
-              <Grid item xs={12} md={2} sx={{ display: isResp520?'flex':'block' }}>
+              <Grid item xs={isResp720?12:6} md={2} sx={{ display: isResp520?'flex':'block' }}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -577,7 +580,7 @@ const OverviewTab = () => {
                 </Box>
               </Grid>
               {/* Treasury Value */}
-              <Grid item xs={12} md={3} sx={{ display: isResp520?'flex':'block' }}>
+              <Grid item xs={isResp720?12:6} md={3} sx={{ display: isResp520?'flex':'block' }}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -601,7 +604,7 @@ const OverviewTab = () => {
                 </Box>
               </Grid>
               {/* Total POL */}
-              <Grid item xs={12} md={3} sx={{ display: isResp520?'flex':'block' }}>
+              <Grid item xs={isResp720?12:6} md={3} sx={{ display: isResp520?'flex':'block' }}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -625,7 +628,7 @@ const OverviewTab = () => {
                 </Box>
               </Grid>
               {/* total supply */}
-              <Grid item xs={12} md={2} sx={{ display: isResp520?'flex':'block' }}>
+              <Grid item xs={isResp720?12:6} md={2} sx={{ display: isResp520?'flex':'block' }}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -649,7 +652,7 @@ const OverviewTab = () => {
                 </Box>
               </Grid>
               {/* Locked in Vault */}
-              <Grid item xs={12} md={2} sx={{ display: isResp520?'flex':'block' }}>
+              <Grid item xs={isResp720?12:6} md={2} sx={{ display: isResp520?'flex':'block' }}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -673,7 +676,7 @@ const OverviewTab = () => {
                 </Box>
               </Grid>
               {/* rebase returns */}
-              <Grid item xs={12} md={2} sx={{ display: isResp520?'flex':'block' }}>
+              <Grid item xs={isResp720?12:6} md={2} sx={{ display: isResp520?'flex':'block' }}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -705,7 +708,7 @@ const OverviewTab = () => {
                 </Box>
               </Grid>
               {/* floor price */}
-              <Grid item xs={12} md={3} sx={{ display: isResp520?'flex':'block' }}>
+              <Grid item xs={isResp720?12:6} md={3} sx={{ display: isResp520?'flex':'block' }}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -729,7 +732,7 @@ const OverviewTab = () => {
                 </Box>
               </Grid>
               {/* time until next rebase */}
-              <Grid item xs={12} md={3} sx={{ display: isResp520?'flex':'block' }}>
+              <Grid item xs={isResp720?12:6} md={3} sx={{ display: isResp520?'flex':'block' }}>
                 <Box
                   sx={{
                     display: 'flex',

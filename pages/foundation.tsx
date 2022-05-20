@@ -31,6 +31,9 @@ const Foundation: NextPage = () => {
   const isResp520 = useMediaQuery({
     query: '(max-width: 520px)'
   });
+  const isResp600 = useMediaQuery({
+    query: '(max-width: 600px)'
+  });
   return (
     <PageContainer>
       <Box>
@@ -47,7 +50,7 @@ const Foundation: NextPage = () => {
         </Box>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: isResp600?'#69696969':'#212121',
             padding: '10px',
             paddingTop: '20px',
             paddingBottom: '20px',
@@ -168,7 +171,7 @@ const Foundation: NextPage = () => {
         </Box>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: isResp600?'#69696969':'#212121',
             marginTop: '40px',
             padding: '10px',
             borderRadius: '16px'
@@ -338,7 +341,7 @@ const Foundation: NextPage = () => {
         </Box>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: isResp600?'#69696969':'#212121',
             padding: '10px',
             borderRadius: '16px',
             height: '100px',

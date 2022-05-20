@@ -32,6 +32,12 @@ const RebaseTab = () => {
   const isResp520 = useMediaQuery({
     query: '(max-width: 520px)'
   });
+  const isResp600 = useMediaQuery({
+    query: '(max-width: 600px)'
+  });
+  const isResp800 = useMediaQuery({
+    query: '(max-width: 800px)'
+  });
 
   return (
     <Grid container spacing={2}>
@@ -44,7 +50,7 @@ const RebaseTab = () => {
       <Grid item xs={12}>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: isResp600?'#69696969':'#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -64,7 +70,7 @@ const RebaseTab = () => {
                 Gross Faucet Value (GFV)
               </Box>
             </Grid>
-            <Grid item xs={isResp370?12:6} md={3}>
+            <Grid item xs={isResp370?12:isResp600?6:isResp800?12:6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
@@ -97,7 +103,7 @@ const RebaseTab = () => {
               </Box>
             </Grid>
             {/* Airdrop Sent */}
-            <Grid item xs={isResp370?12:6} md={3}>
+            <Grid item xs={isResp370?12:isResp600?6:isResp800?12:6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
@@ -130,7 +136,7 @@ const RebaseTab = () => {
               </Box>
             </Grid>
             {/* Airdrop received */}
-            <Grid item xs={isResp370?12:6} md={3}>
+            <Grid item xs={isResp370?12:isResp600?6:isResp800?12:6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
@@ -163,7 +169,7 @@ const RebaseTab = () => {
               </Box>
             </Grid>
             {/* team */}
-            <Grid item xs={isResp370?12:6} md={3}>
+            <Grid item xs={isResp370?12:isResp600?6:isResp800?12:6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
@@ -213,7 +219,7 @@ const RebaseTab = () => {
         <Box
           sx={{
             padding: '20px',
-            background: isResp520?'#69696969':'#212121',
+            background: isResp600?'#69696969':'#212121',
             borderRadius: '16px'
           }}
         >
@@ -281,7 +287,7 @@ const RebaseTab = () => {
         <Box
           sx={{
             padding: '20px',
-            background: isResp520?'#69696969':'#212121',
+            background: isResp600?'#69696969':'#212121',
             borderRadius: '16px',
             height: '100%'
           }}
@@ -293,7 +299,7 @@ const RebaseTab = () => {
         <Box
           sx={{
             padding: '20px',
-            background: isResp520?'#69696969':'#212121',
+            background: isResp600?'#69696969':'#212121',
             borderRadius: '16px',
             height: '100%'
           }}
@@ -380,7 +386,7 @@ const RebaseTab = () => {
         <Box
           sx={{
             padding: '20px',
-            background: isResp520?'#69696969':'#212121',
+            background: isResp600?'#69696969':'#212121',
             borderRadius: '16px'
           }}
         >

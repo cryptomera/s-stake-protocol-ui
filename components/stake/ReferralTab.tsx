@@ -15,6 +15,15 @@ const ReferralTab = () => {
   const isResp520 = useMediaQuery({
     query: '(max-width: 520px)'
   });
+  const isResp600 = useMediaQuery({
+    query: '(max-width: 600px)'
+  });
+  const isResp720 = useMediaQuery({
+    query: '(max-width: 720px)'
+  });
+  const isResp1200 = useMediaQuery({
+    query: '(max-width: 1200px)'
+  });
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -26,14 +35,14 @@ const ReferralTab = () => {
       <Grid item xs={12}>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: isResp600?'#69696969':'#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
         >
           <Grid container spacing={2}>
             {/* Referral Rewards */}
-            <Grid item xs={isResp370?12:6} md={3}>
+            <Grid item xs={isResp370?12:isResp600?6:isResp720?12:6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
@@ -65,7 +74,7 @@ const ReferralTab = () => {
               </Box>
             </Grid>
             {/* Airdrop Sent */}
-            <Grid item xs={isResp370?12:6} md={3}>
+            <Grid item xs={isResp370?12:isResp600?6:isResp720?12:6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
@@ -97,7 +106,7 @@ const ReferralTab = () => {
               </Box>
             </Grid>
             {/* Airdrop received */}
-            <Grid item xs={isResp370?12:6} md={3}>
+            <Grid item xs={isResp370?12:isResp600?6:isResp720?12:6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
@@ -129,7 +138,7 @@ const ReferralTab = () => {
               </Box>
             </Grid>
             {/* team */}
-            <Grid item xs={isResp370?12:6} md={3}>
+            <Grid item xs={isResp370?12:isResp600?6:isResp720?12:6} md={3}>
               <Box
                 sx={{
                   display: 'flex',
@@ -158,7 +167,7 @@ const ReferralTab = () => {
       <Grid item xs={12}>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: isResp600?'#69696969':'#212121',
             borderRadius: '16px',
             padding: '20px'
           }}
@@ -222,7 +231,7 @@ const ReferralTab = () => {
                 buttonColor="secondary"
                 buttonTextColor="white"
                 placeHolder="0xc70dAF7356bC5f2eF6008E0FaA7e076C47C6e7f"
-                width={isResp520?'100%':"480px"}
+                width={isResp1200?'100%':"480px"}
               />
             </Grid>
             <Grid 
@@ -315,7 +324,7 @@ const ReferralTab = () => {
       <Grid item xs={12}>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: isResp600?'#69696969':'#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -324,19 +333,19 @@ const ReferralTab = () => {
             <TabList onChange={handleTab}>
               <Tab label="Team Viewer" value="1" 
               sx={{
-                width: isResp520?'33%':'auto',
+                width: isResp600?'33%':'auto',
                 minWidth: isResp520?'unset':'90px',
                 padding: isResp520?'12px 3px':'12px 16px'
               }}/>
               <Tab label="Team Airdrop" value="2" 
               sx={{
-                width: isResp520?'33%':'auto',
+                width: isResp600?'33%':'auto',
                 minWidth: isResp520?'unset':'90px',
                 padding: isResp520?'12px 3px':'12px 16px'
               }}/>
               <Tab label="Direct Airdrop" value="3" 
               sx={{
-                width: isResp520?'33%':'auto',
+                width: isResp600?'33%':'auto',
                 minWidth: isResp520?'unset':'90px',
                 padding: isResp520?'12px 3px':'12px 16px'
               }}/>
@@ -349,13 +358,13 @@ const ReferralTab = () => {
               }}
               value="1"
             >
-              <Box sx={{width:isResp520?'100%':'auto'}}>
+              <Box sx={{width:isResp1200?'100%':'auto'}}>
                 <CustomNoIconInput
                   buttonName="show"
                   buttonColor="primary"
                   buttonTextColor="white"
                   placeHolder="0xc70dAF7356bC5f2eF6008E0FaA7e076C47C6e7f"
-                  width={isResp520?'100%':"480px"}
+                  width={isResp1200?'100%':"480px"}
                 />
                 <Box
                   sx={{
@@ -396,7 +405,7 @@ const ReferralTab = () => {
       <Grid item xs={12}>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: isResp600?'#69696969':'#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
