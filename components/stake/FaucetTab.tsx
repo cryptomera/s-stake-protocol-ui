@@ -5,10 +5,31 @@ import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import * as React from 'react';
 import CustomInput from './CustomInput';
 import { useMediaQuery } from 'react-responsive';
+import { address, nerdW3, stakeTokenW3, stakeToken } from '../../utils/ethers.util';
+import { getAccount } from 'utils/account.utils';
+import { parseEther } from 'ethers/lib/utils';
+import { BigNumber } from '@web3-onboard/common/node_modules/ethers';
 
 const FaucetTab = () => {
   const [sellAmount, setSellAmount] = React.useState('0');
   const [buyAmount, setBuyAmount] = React.useState('0');
+
+  const deposit = async () => {
+    const userAddress = getAccount().address;
+    const balance = await stakeToken.balanceOf(userAddress);
+    await stakeTokenW3.approve(address['nerd'], BigNumber.from(balance.toString()));
+    stakeTokenW3.once("Approval", () => {
+      nerdW3.deposit(BigNumber.from(balance.toString()), userAddress);
+    });
+  }
+
+  const claim = async() => {
+    await nerdW3.claim();
+  }
+
+  const compoundFaucet = async () => {
+    await nerdW3.compoundFaucet();
+  }
 
   const handleSellAmount = (e: any) => {
     e.target.value = e.target.value.toString().replace(",", ".").replace(" ", "");
@@ -159,7 +180,7 @@ const FaucetTab = () => {
             {/* buttons */}
             
             <Grid item xs={isResp600?6:4}>
-              <Button color="secondary" fullWidth variant="contained"
+              <Button onClick={claim} color="secondary" fullWidth variant="contained"
                 sx={{ fontSize:isResp520?'0.68rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
                 Claim
               </Button>
@@ -167,14 +188,14 @@ const FaucetTab = () => {
             {
               !isResp600 &&
               <Grid item xs={4}>
-                <Button color="secondary" fullWidth variant="contained"
+                <Button onClick={compoundFaucet} color="secondary" fullWidth variant="contained"
                   sx={{ fontSize:isResp520?'0.58rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
                     Compound
                   </Button>
               </Grid>
             }
             <Grid item xs={isResp600?6:4}>
-              <Button color="secondary" fullWidth variant="contained"
+              <Button onClick={deposit} color="secondary" fullWidth variant="contained"
                 sx={{ fontSize:isResp520?'0.68rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
                 Deposit
               </Button>
