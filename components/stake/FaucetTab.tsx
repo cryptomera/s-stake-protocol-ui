@@ -5,14 +5,30 @@ import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import * as React from 'react';
 import CustomInput from './CustomInput';
 import { useMediaQuery } from 'react-responsive';
-import { address, nerdW3, stakeTokenW3, stakeToken } from '../../utils/ethers.util';
+import { address, nerdW3, stakeTokenW3, stakeToken, nerd } from '../../utils/ethers.util';
 import { getAccount } from 'utils/account.utils';
-import { parseEther } from 'ethers/lib/utils';
+import { formatEther, parseEther } from 'ethers/lib/utils';
 import { BigNumber } from '@web3-onboard/common/node_modules/ethers';
 
 const FaucetTab = () => {
   const [sellAmount, setSellAmount] = React.useState('0');
   const [buyAmount, setBuyAmount] = React.useState('0');
+  const [nfv, setNfv] = React.useState('0');
+  const [deposits, setDeposits] = React.useState('0');
+  const [grossClaimed, setGrossClaimed] = React.useState('0');
+  const [maxPayout, setMaxPayout] = React.useState('0');
+
+  React.useEffect(() => {
+    async function getNerdData() {
+      const userAddress = getAccount().address;
+      const data = await nerd.getNerdData(userAddress);
+      setNfv(formatEther(data[6]));
+      setDeposits(formatEther(data[5]));
+      setGrossClaimed(formatEther(data[3]));
+      setMaxPayout(formatEther(data[0]));
+    }
+    getNerdData();
+  }, []);
 
   const deposit = async () => {
     const userAddress = getAccount().address;
@@ -101,7 +117,7 @@ const FaucetTab = () => {
                   NFV Available
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
-                  123.3211
+                  {nfv}
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
                   $3,532.23432
@@ -124,7 +140,7 @@ const FaucetTab = () => {
                   Deposits
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
-                  123.3211
+                  { deposits }
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
                   $3,532.23432
@@ -147,7 +163,7 @@ const FaucetTab = () => {
                   Gross Claimed
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
-                  123.3211
+                  { grossClaimed }
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
                   $3,532.23432
@@ -170,7 +186,7 @@ const FaucetTab = () => {
                   Max Payout
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
-                  123.3211
+                  { maxPayout }
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
                   $3,532.23432
