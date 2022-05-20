@@ -5,6 +5,7 @@ import SellIcon from '@mui/icons-material/Sell';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import { RedditTextField } from './RedditTextField';
 import { useMediaQuery } from 'react-responsive';
+import ReactSpeedometer from 'react-d3-speedometer';
 
 const RebaseTab = () => {
   const [sellAmount, setSellAmount] = React.useState('0');
@@ -358,6 +359,26 @@ const RebaseTab = () => {
             <Grid item xs={6}>
               <Box>
                 0 stake
+              </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <Box sx={{
+                width: 300,
+                height: 300,
+                margin: "auto"
+              }}>
+                <ReactSpeedometer 
+                  fluidWidth={true}
+                  startColor="#00ff00"
+                  endColor='#ff0000'
+                  customSegmentLabels={[
+                    {text : ''},
+                    {text : ''},
+                    {text : ''},
+                    {text : ''},
+                    {text : ''},
+                  ]}
+                />
               </Box>
             </Grid>
           </Grid>
