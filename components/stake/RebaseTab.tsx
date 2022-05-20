@@ -1,5 +1,6 @@
 import { Grid, Box, Button } from '@mui/material';
 import * as React from 'react';
+import {useEffect, useRef} from "react";
 import CustomInput from './CustomInput';
 import SellIcon from '@mui/icons-material/Sell';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
@@ -10,6 +11,14 @@ import ReactSpeedometer from 'react-d3-speedometer';
 const RebaseTab = () => {
   const [sellAmount, setSellAmount] = React.useState('0');
   const [buyAmount, setBuyAmount] = React.useState('0');
+  const speedoMeter = useRef<any>();
+
+  useEffect(() => {
+    if(speedoMeter.current) {
+      const width = speedoMeter.current.offsetWidth;
+      speedoMeter.current.style.height = width+"px";
+    }
+  },[speedoMeter])
 
   const handleSellAmount = (e: any) => {
     e.target.value = e.target.value.toString().replace(",", ".").replace(" ", "");
@@ -362,10 +371,11 @@ const RebaseTab = () => {
               </Box>
             </Grid>
             <Grid item xs={12}>
-              <Box sx={{
-                width: 300,
-                height: 300,
-                margin: "auto"
+              <Box 
+                ref={speedoMeter}
+                sx={{
+                  margin: "auto",
+                  padding: "10px"
               }}>
                 <ReactSpeedometer 
                   fluidWidth={true}
