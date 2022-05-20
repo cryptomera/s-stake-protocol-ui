@@ -28,6 +28,10 @@ const Foundation: NextPage = () => {
   const isResp520 = useMediaQuery({
     query: '(max-width: 520px)'
   });
+
+  const isResp1300 = useMediaQuery({
+    query: '(max-width: 1300px)'
+  });
   return (
     <PageContainer>
       <Box>
@@ -172,7 +176,7 @@ const Foundation: NextPage = () => {
           }}
         >
           <Grid container spacing={2}>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={12} lg={6}>
               <Box
                 sx={{
                   display: 'flex',
@@ -206,7 +210,7 @@ const Foundation: NextPage = () => {
                   <CustomInput 
                   value={buyAmount} 
                   setValue={e => handleBuyAmount(e)} 
-                  width={isResp520?'100%':"500px"} 
+                  width={isResp1300?'100%':"500px"} 
                   icon={<ShoppingBagIcon />} />
                   <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
                     <Button color="secondary" variant="contained">Buy</Button>
@@ -214,7 +218,7 @@ const Foundation: NextPage = () => {
                 </Box>
               </Box>
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={12} lg={6}>
               <Box
                 sx={{
                   display: 'flex',
@@ -245,7 +249,7 @@ const Foundation: NextPage = () => {
                   <CustomInput 
                   value={sellAmount} 
                   setValue={e => handleSellAmount(e)} 
-                  width={isResp520?'100%':"500px"}
+                  width={isResp1300?'100%':"500px"}
                   icon={<SellIcon />} />
                   <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
                     <Button color="secondary" variant="contained">Sell</Button>
@@ -253,7 +257,7 @@ const Foundation: NextPage = () => {
                 </Box>
               </Box>
             </Grid>
-            <Grid item xs={6} md={4}>
+            <Grid item xs={6} md={6} lg={4}>
               <Box
                 sx={{
                   display: 'flex',
@@ -283,7 +287,7 @@ const Foundation: NextPage = () => {
                 $999,999,999
               </Box>
             </Grid>
-            <Grid item xs={6} md={4}>
+            <Grid item xs={6} md={6} lg={4}>
               <Box
                 sx={{
                   display: 'flex',
@@ -313,7 +317,7 @@ const Foundation: NextPage = () => {
                 $999,999,999
               </Box>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={12} lg={4}>
               <Box
                 sx={{
                   display: 'flex',

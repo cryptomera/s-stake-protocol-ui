@@ -456,25 +456,25 @@ const RebaseTab = () => {
                     />
                   </Box>
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={7} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: 'left'}} item xs={7} md={6}>
                   Faucet APY
                 </Grid>
                 <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={5} md={6}>
                   3,543%
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={7} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: 'left'}} item xs={7} md={6}>
                   Rebase APY
                 </Grid>
                 <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={5} md={6}>
                   3,543%
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={7} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: 'left'}} item xs={7} md={6}>
                   Estimate Rewards
                 </Grid>
                 <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={5} md={6}>
                   3,543%
                 </Grid>
-                <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={7} md={6}>
+                <Grid sx={{display: 'flex', justifyContent: 'left'}} item xs={7} md={6}>
                   ROI
                 </Grid>
                 <Grid sx={{display: 'flex', justifyContent: 'center'}} item xs={5} md={6}>

@@ -18,7 +18,7 @@ const FaucetTab = () => {
     setSellAmount(e.target.value);
   }
 
-  const handleBuyAmount = (e:any) => {
+  const handleBuyAmount = (e: any) => {
     e.target.value = e.target.value.toString().replace(",", ".").replace(" ", "");
     if (isNaN(e.target.value)) {
       return;
@@ -28,17 +28,20 @@ const FaucetTab = () => {
   const isResp520 = useMediaQuery({
     query: '(max-width: 520px)'
   });
+  const isResp750 = useMediaQuery({
+    query: '(max-width: 750px)'
+  });
   return (
     <Grid container spacing={2}
       sx={{
-        display: isResp520?'block':'flex'
+        display: isResp520 ? 'block' : 'flex'
       }}
     >
       {/* net faucet value */}
       <Grid item xs={12}>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: isResp520 ? '#69696969' : '#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -56,7 +59,7 @@ const FaucetTab = () => {
           </Box>
           <Grid container spacing={3}>
             {/* nfv available */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={12} md={6} lg={3}>
               <Box>
                 <Box
                   sx={{
@@ -78,7 +81,7 @@ const FaucetTab = () => {
               </Box>
             </Grid>
             {/* deposits */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={12} md={6} lg={3}>
               <Box>
                 <Box
                   sx={{
@@ -100,7 +103,7 @@ const FaucetTab = () => {
               </Box>
             </Grid>
             {/* Gross Claimed */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={12} md={6} lg={3}>
               <Box>
                 <Box
                   sx={{
@@ -122,7 +125,7 @@ const FaucetTab = () => {
               </Box>
             </Grid>
             {/* max payout */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item xs={12} md={6} lg={3}>
               <Box>
                 <Box
                   sx={{
@@ -144,31 +147,57 @@ const FaucetTab = () => {
               </Box>
             </Grid>
             {/* buttons */}
-            <Grid item xs={4}>
-              <Button color="secondary" fullWidth variant="contained"
-                sx={{ fontSize:isResp520?'0.68rem':'0.875rem'}}>
-                Claim
-              </Button>
-            </Grid>
-            <Grid item xs={4}>
-              <Button color="secondary" fullWidth variant="contained"
-                sx={{ fontSize:isResp520?'0.68rem':'0.875rem'}}>
-                  Compound
-                </Button>
-            </Grid>
-            <Grid item xs={4}>
-              <Button color="secondary" fullWidth variant="contained"
-                sx={{ fontSize:isResp520?'0.68rem':'0.875rem'}}>
-                Deposit
-              </Button>
-            </Grid>
+            {isResp750 ? (
+              <>
+                <Grid item xs={6}>
+                  <Button color="secondary" fullWidth variant="contained"
+                    sx={{ fontSize: isResp520 ? '0.68rem' : '0.875rem' }}>
+                    Claim
+                  </Button>
+                </Grid>
+                <Grid item xs={6}>
+                  <Button color="secondary" fullWidth variant="contained"
+                    sx={{ fontSize: isResp520 ? '0.68rem' : '0.875rem' }}>
+                    Deposit
+                  </Button>
+                </Grid>
+                <Grid item xs={12}>
+                  <Button color="secondary" fullWidth variant="contained"
+                    sx={{ fontSize: isResp520 ? '0.68rem' : '0.875rem' }}>
+                    Compound
+                  </Button>
+                </Grid>
+              </>
+            ) : (
+              <>
+                <Grid item xs={4}>
+                  <Button color="secondary" fullWidth variant="contained"
+                    sx={{ fontSize: isResp520 ? '0.68rem' : '0.875rem' }}>
+                    Claim
+                  </Button>
+                </Grid>
+                <Grid item xs={4}>
+                  <Button color="secondary" fullWidth variant="contained"
+                    sx={{ fontSize: isResp520 ? '0.68rem' : '0.875rem' }}>
+                    Compound
+                  </Button>
+                </Grid>
+                <Grid item xs={4}>
+                  <Button color="secondary" fullWidth variant="contained"
+                    sx={{ fontSize: isResp520 ? '0.68rem' : '0.875rem' }}>
+                    Deposit
+                  </Button>
+                </Grid>
+              </>
+            )}
+
           </Grid>
         </Box>
       </Grid>
       <Grid item xs={12} md={6}>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: isResp520 ? '#69696969' : '#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -192,7 +221,7 @@ const FaucetTab = () => {
                 <Box sx={{ flexGrow: 1 }}></Box>
                 <Box>Stake Balance: 65,707</Box>
               </Box>
-              <CustomInput value={sellAmount} setValue={e=>handleSellAmount(e)} width="100%" icon={<SellIcon />} />
+              <CustomInput value={sellAmount} setValue={e => handleSellAmount(e)} width="100%" icon={<SellIcon />} />
               <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
                 <Button color="secondary" variant="contained">Sell</Button>
               </Box>
@@ -217,7 +246,7 @@ const FaucetTab = () => {
                 <Box sx={{ flexGrow: 1 }}></Box>
                 <Box>BNB Balance: 1.452</Box>
               </Box>
-              <CustomInput value={buyAmount} setValue={e=>handleBuyAmount(e)} width="100%" icon={<ShoppingBagIcon />} />
+              <CustomInput value={buyAmount} setValue={e => handleBuyAmount(e)} width="100%" icon={<ShoppingBagIcon />} />
               <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
                 <Button color="secondary" variant="contained">Buy</Button>
               </Box>
@@ -228,7 +257,7 @@ const FaucetTab = () => {
       <Grid item xs={12} md={6}>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: isResp520 ? '#69696969' : '#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -239,7 +268,7 @@ const FaucetTab = () => {
       <Grid item xs={12}>
         <Box
           sx={{
-            background: isResp520?'#69696969':'#212121',
+            background: isResp520 ? '#69696969' : '#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
