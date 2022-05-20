@@ -6,7 +6,7 @@ import CustomInput from './CustomInput';
 import { useMediaQuery } from 'react-responsive';
 import { address } from '../../utils/ethers.util';
 import { getAccount } from 'utils/account.utils';
-import { formatEther, parseEther } from 'ethers/lib/utils';
+import { formatEther } from 'ethers/lib/utils';
 import { BigNumber } from '@web3-onboard/common/node_modules/ethers';
 import Erc20 from '../../abi/Erc20.json';
 import Nerd from '../../abi/NerdFaucetV2.json';
