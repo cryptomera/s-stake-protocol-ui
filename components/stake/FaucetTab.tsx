@@ -36,6 +36,26 @@ const FaucetTab = () => {
     getNerdData();
   }, []);
 
+  const faucetClaim = async () => {
+    const nerd = new Contract(address['nerd'], Nerd.abi, library?.getSigner());
+    await nerd.faucetClaim();
+  }
+
+  const rebaseClaim = async () => {
+    const nerd = new Contract(address['nerd'], Nerd.abi, library?.getSigner());
+    await nerd.rebaseClaim();
+  }
+
+  const faucetCompound = async () => {
+    const nerd = new Contract(address['nerd'], Nerd.abi, library?.getSigner());
+    await nerd.compoundFaucet();
+  }
+
+  const rebaseCompound = async () => {
+    const nerd = new Contract(address['nerd'], Nerd.abi, library?.getSigner());
+    await nerd.compoundRebase();
+  }
+
   const deposit = async () => {
     const stakeToken = new Contract(address['$stake'], Erc20.abi, library?.getSigner());
     const balance = await stakeToken.balanceOf(account);
@@ -238,22 +258,22 @@ const FaucetTab = () => {
               </Grid>
             }
             <Grid item xs={3}>
-              <Button color="secondary" fullWidth variant="contained">
+              <Button sx={{ fontSize:isResp520?'0.68rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}} onClick={faucetClaim} color="secondary" fullWidth variant="contained">
                 faucet claim
               </Button>
             </Grid>
             <Grid item xs={3}>
-              <Button color="secondary" fullWidth variant="contained">
+              <Button sx={{ fontSize:isResp520?'0.68rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}} onClick={rebaseClaim} color="secondary" fullWidth variant="contained">
                 rebase claim
               </Button>
             </Grid>
             <Grid item xs={3}>
-              <Button color="secondary" fullWidth variant="contained">
+              <Button sx={{ fontSize:isResp520?'0.68rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}} onClick={faucetCompound} color="secondary" fullWidth variant="contained">
                 faucet compound
               </Button>
             </Grid>
             <Grid item xs={3}>
-              <Button color="secondary" fullWidth variant="contained">
+              <Button sx={{ fontSize:isResp520?'0.68rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}} onClick={rebaseCompound} color="secondary" fullWidth variant="contained">
                 rebase compound
               </Button>
             </Grid>
