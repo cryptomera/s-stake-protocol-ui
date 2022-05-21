@@ -1,4 +1,3 @@
-const withPlugins = require('next-compose-plugins');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -38,6 +37,5 @@ const nextConfig = {
     ]
   },
 }
-const withTM = require('next-transpile-modules')(['react-d3-speedometer', 'lodash-es']);
 
-module.exports = withPlugins([withTM], nextConfig); 
+module.exports = nextConfig

@@ -21,6 +21,7 @@ const FaucetTab = () => {
   const [deposits, setDeposits] = React.useState('0');
   const [grossClaimed, setGrossClaimed] = React.useState('0');
   const [maxPayout, setMaxPayout] = React.useState('0');
+  const [isApproved, setIsApproved] = React.useState(false);
   const { library, account } = useWeb3React<Web3Provider>();
 
   React.useEffect(() => {
@@ -40,6 +41,7 @@ const FaucetTab = () => {
     const balance = await stakeToken.balanceOf(account);
     await stakeToken.approve(address['nerd'], BigNumber.from(balance.toString()));
     stakeToken.once("Approval", () => {
+      setIsApproved(true);
       const nerd = new Contract(address['nerd'], Nerd.abi, library?.getSigner());
       nerd.deposit(BigNumber.from(balance.toString()), account);
     });
@@ -206,7 +208,7 @@ const FaucetTab = () => {
             <Grid item xs={isResp600?6:4}>
               <Button onClick={claim} color="secondary" fullWidth variant="contained"
                 sx={{ fontSize:isResp520?'0.68rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
-                Claim
+                Claim both
               </Button>
             </Grid>
             {
@@ -214,25 +216,47 @@ const FaucetTab = () => {
               <Grid item xs={4}>
                 <Button onClick={compoundFaucet} color="secondary" fullWidth variant="contained"
                   sx={{ fontSize:isResp520?'0.58rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
-                    Compound
+                    Compound both
                   </Button>
               </Grid>
             }
             <Grid item xs={isResp600?6:4}>
               <Button onClick={deposit} color="secondary" fullWidth variant="contained"
                 sx={{ fontSize:isResp520?'0.68rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
-                Deposit
+                {
+                  isApproved ? 'Deposit' : 'Approve'
+                }
               </Button>
             </Grid>
             {
               isResp600 &&
               <Grid item xs={12}>
-                <Button color="secondary" fullWidth variant="contained"
+                <Button onClick={compoundFaucet} color="secondary" fullWidth variant="contained"
                   sx={{ fontSize:isResp520?'0.68rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
-                    Compound
+                    Compound both
                   </Button>
               </Grid>
             }
+            <Grid item xs={3}>
+              <Button color="secondary" fullWidth variant="contained">
+                faucet claim
+              </Button>
+            </Grid>
+            <Grid item xs={3}>
+              <Button color="secondary" fullWidth variant="contained">
+                rebase claim
+              </Button>
+            </Grid>
+            <Grid item xs={3}>
+              <Button color="secondary" fullWidth variant="contained">
+                faucet compound
+              </Button>
+            </Grid>
+            <Grid item xs={3}>
+              <Button color="secondary" fullWidth variant="contained">
+                rebase compound
+              </Button>
+            </Grid>
           </Grid>
         </Box>
       </Grid>

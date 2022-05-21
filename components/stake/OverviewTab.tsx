@@ -60,7 +60,7 @@ const OverviewTab = () => {
 
   const claimAll = async () => {
     const nerd = new Contract(address['nerd'], Nerd.abi, library?.getSigner());
-    await nerd.faucetClaim();
+    await nerd.claim();
   }
 
   const handleSellAmount = (e: any) => {
