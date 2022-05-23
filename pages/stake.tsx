@@ -14,10 +14,21 @@ import Link from 'next/link';
 import ReferralTab from 'components/stake/ReferralTab';
 import DownlineTab from 'components/stake/DownlineTab';
 import { useMediaQuery } from 'react-responsive';
+import { getPrice } from 'utils/price.util';
 
 const Stake: NextPage = () => {
   const [tabValue, setTabValue] = React.useState('1');
+  const [tokenPrice, setTokenPrice] = React.useState(0);
   const router = useRouter();
+
+  // get price
+  React.useEffect(() => {
+    async function getTokenPrice () {
+      const price = await getPrice();
+      setTokenPrice(Number(price));
+    }
+    getTokenPrice();
+  }, []);
   // handle router
   React.useEffect(() => {
     setTabValue(String(router.query.tab))
@@ -121,25 +132,25 @@ const Stake: NextPage = () => {
               sx={{
                 padding:isResp600?'0px':'auto'
               }}>
-              <OverviewTab />
+              <OverviewTab tokenPrice={tokenPrice} />
             </TabPanel>
             <TabPanel value="faucet"
             sx={{
               padding:isResp600?'0px':'auto'
             }}>
-              <FaucetTab />
+              <FaucetTab tokenPrice={tokenPrice} />
             </TabPanel>
             <TabPanel value="rebase"
             sx={{
               padding:isResp600?'0px':'auto'
             }}>
-              <RebaseTab />
+              <RebaseTab tokenPrice={tokenPrice} />
             </TabPanel>
             <TabPanel value="downline"
             sx={{
               padding:isResp600?'0px':'auto'
             }}>
-              <ReferralTab/>
+              <ReferralTab tokenPrice={tokenPrice} />
             </TabPanel>
           </Box>
         </TabContext>

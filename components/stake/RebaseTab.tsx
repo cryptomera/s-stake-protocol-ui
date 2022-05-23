@@ -16,8 +16,12 @@ import { address } from 'utils/ethers.util';
 import { BigNumber } from '@web3-onboard/common/node_modules/ethers';
 import { formatEther } from 'ethers/lib/utils';
 
+interface RebaseProps {
+  tokenPrice: number;
+}
 
-const RebaseTab = () => {
+const RebaseTab = (props: RebaseProps) => {
+  const { tokenPrice } = props;
   const [sellAmount, setSellAmount] = React.useState('0');
   const [buyAmount, setBuyAmount] = React.useState('0');
   const [netDeposits, setNetDeposits] = React.useState('');

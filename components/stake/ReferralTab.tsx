@@ -4,7 +4,12 @@ import * as React from 'react';
 import CustomNoIconInput from './CustomNoIconInput';
 import { useMediaQuery } from 'react-responsive';
 
-const ReferralTab = () => {
+interface ReferralProps {
+  tokenPrice: number;
+}
+
+const ReferralTab = (props: ReferralProps) => {
+  const { tokenPrice } = props;
   const [tabValue, setTabValue] = React.useState('1');
   const handleTab = (event: React.SyntheticEvent, newValue: string) => {
     setTabValue(newValue);

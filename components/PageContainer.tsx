@@ -10,6 +10,12 @@ import walletConnectModule from "@web3-onboard/walletconnect";
 import { nodes } from "data/getRpc";
 import { useAuth, ConnectorNames } from "hooks/useAuth";
 import { useMediaQuery } from 'react-responsive';
+import {
+  init,
+  useConnectWallet,
+  useSetChain,
+  useWallets
+} from '@web3-onboard/react'
 
 const drawerWidth = 240;
 const injected = injectedModule();
@@ -30,12 +36,12 @@ const onboard = Onboard({
       label: "Binance Smart Chain",
       rpcUrl: "https://bsc-dataseed.binance.org/",
     },
-    // {
-    //   id: "0xfa",
-    //   token: "FTM",
-    //   label: "Fantom Mainnet",
-    //   rpcUrl: "https://rpc.ftm.tools/",
-    // },
+    {
+      id: "0xfa",
+      token: "FTM",
+      label: "Fantom Mainnet",
+      rpcUrl: "https://rpc.ftm.tools/",
+    },
   ],
   appMetadata: {
     name: "staking app",
@@ -44,12 +50,45 @@ const onboard = Onboard({
     description: "My app using Onboard",
   },
 });
+// const web3Onboard = init({
+//   wallets: [
+//     injected, walletConnect
+//   ],
+//   chains: [
+//     {
+//       id: "0x61",
+//       token: "BNB",
+//       label: "BSC Testnet",
+//       rpcUrl: nodes[ 97 ][ 0 ],
+//     },
+//     {
+//       id: "0x38",
+//       token: "BNB",
+//       label: "Binance Smart Chain",
+//       rpcUrl: "https://bsc-dataseed.binance.org/",
+//     },
+//     {
+//       id: "0xfa",
+//       token: "FTM",
+//       label: "Fantom Mainnet",
+//       rpcUrl: "https://rpc.ftm.tools/",
+//     },
+//   ],
+//   appMetadata: {
+//     name: "staking app",
+//     icon: "/logos/Logo_1.png",
+//     logo: "/logos/Logo_2.png",
+//     description: "My app using Onboard",
+//   },
+// });
 
 const PageContainer = (props: { children: ReactNode }) =>
 {
-  // const [{ chains, connectedChain, settingChain }, setChain] = useSetChain('0x61');
+  // const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
+  // const [{ chains, connectedChain, settingChain }, setChain] = useSetChain();
+  // const connectedWallets = useWallets();
+
   const [ mobileOpen, setMobileOpen ] = useState<boolean>(true);
-  // const [openConnectDlg, setOpenConnectDlg] = useState<boolean>(false);
   const [ userAccount, setUserAccount ] = useState<any>();
   const handleDrawerToggle = useCallback(() =>
   {

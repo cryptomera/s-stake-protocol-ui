@@ -14,10 +14,15 @@ import { address } from 'utils/ethers.util';
 import { BigNumber } from '@web3-onboard/common/node_modules/ethers';
 import { formatEther } from 'ethers/lib/utils';
 
-const OverviewTab = () => {
+interface OverViewProps {
+  tokenPrice: number;
+}
+
+const OverviewTab = (props: OverViewProps) => {
+  const { tokenPrice } = props;
   const [sellAmount, setSellAmount] = React.useState('0');
   const [buyAmount, setBuyAmount] = React.useState('0');
-  const [totalStake, setTotalStake] = React.useState('');
+  const [totalStake, setTotalStake] = React.useState('0');
   const [nfv, setNfv] = React.useState('');
   const [gfv, setGfv] = React.useState('');
   const [refRewards, setRefRewards] = React.useState('');
@@ -153,7 +158,7 @@ const OverviewTab = () => {
                 justifyContent: 'center',
               }}
             >
-              $3,532.23432
+              {`$${Number(totalStake) * tokenPrice}`}
             </Box>
             {/* buttons */}
             <Box
@@ -348,7 +353,7 @@ const OverviewTab = () => {
                             fontWeight: '400',
                             paddingTop: '0px !important'
                           }}>
-                          $65,707
+                          {`$${Number(nfv) * tokenPrice}`}
                         </Grid>
                       </Grid>
                   </Grid>
@@ -403,7 +408,7 @@ const OverviewTab = () => {
                             fontWeight: '400',
                             paddingTop: '0px !important'
                           }}>
-                          $65,707
+                          { `$${Number(gfv) * tokenPrice}` }
                         </Grid>
                       </Grid>
                   </Grid>
@@ -448,7 +453,7 @@ const OverviewTab = () => {
                             fontWeight: '400',
                             paddingTop: '0px !important'
                           }}>
-                          $65,707
+                          { `$${Number(refRewards) * tokenPrice}`}
                         </Grid>
                       </Grid>
                   </Grid>
@@ -493,7 +498,7 @@ const OverviewTab = () => {
                             fontWeight: '400',
                             paddingTop: '0px !important'
                           }}>
-                          $5,707
+                          { `$${Number(flameBalance) * tokenPrice}` }
                         </Grid>
                       </Grid>
                   </Grid>

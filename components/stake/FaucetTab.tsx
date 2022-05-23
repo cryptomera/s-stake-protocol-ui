@@ -13,8 +13,12 @@ import { useWeb3React } from "@web3-react/core";
 import { Web3Provider } from '@ethersproject/providers';
 import { Contract } from "@ethersproject/contracts";
 
+interface FaucetProps {
+  tokenPrice: number;
+}
 
-const FaucetTab = () => {
+const FaucetTab = (props: FaucetProps) => {
+  const { tokenPrice } = props;
   const [sellAmount, setSellAmount] = React.useState('0');
   const [buyAmount, setBuyAmount] = React.useState('0');
   const [nfv, setNfv] = React.useState('0');
@@ -150,7 +154,7 @@ const FaucetTab = () => {
                   {nfv}
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
-                  $3,532.23432
+                  {`$${Number(nfv) * tokenPrice}`}
                 </Box>
               </Box>
             </Grid>
@@ -173,7 +177,7 @@ const FaucetTab = () => {
                   { deposits }
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
-                  $3,532.23432
+                  {`$${Number(deposits) * tokenPrice}`}
                 </Box>
               </Box>
             </Grid>
@@ -196,7 +200,7 @@ const FaucetTab = () => {
                   { grossClaimed }
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
-                  $3,532.23432
+                  {`$${Number(grossClaimed) * tokenPrice}`}
                 </Box>
               </Box>
             </Grid>
@@ -219,7 +223,7 @@ const FaucetTab = () => {
                   { maxPayout }
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
-                  $3,532.23432
+                  {`$${Number(maxPayout) * tokenPrice}`}
                 </Box>
               </Box>
             </Grid>
