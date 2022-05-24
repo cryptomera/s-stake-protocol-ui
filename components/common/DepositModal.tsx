@@ -22,6 +22,10 @@ const DepositModal = (props: DepositModalProps) => {
   const { open, handleClose } = props;
   const { library, account } = useWeb3React<Web3Provider>();
   const deposit = async () => {
+    if(parseEther(amount) < parseEther("1")) {
+      window.alert("You must deposit at least 1 ether.")
+      return;
+    }
     const stakeToken = new Contract(address['$stake'], Erc20.abi, library?.getSigner());
     await stakeToken.approve(address['nerd'], parseEther(amount));
     stakeToken.once("Approval", () => {
