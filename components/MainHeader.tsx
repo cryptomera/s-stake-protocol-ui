@@ -6,6 +6,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { useWeb3React } from "@web3-react/core";
+import { Web3Provider } from '@ethersproject/providers';
 
 // Hooks
 import { useMemo } from "react";
@@ -20,7 +22,8 @@ const MainHeader = (props: {
 }) =>
 {
   const { toggleMenuOpen, connectWallet, userAccount } = props;
-  const { login, account } = useAuth();
+  const { login } = useAuth();
+  const { library, account } = useWeb3React<Web3Provider>();
 
   const shortAddress = (address: string) =>
   {
@@ -36,7 +39,7 @@ const MainHeader = (props: {
     <AppBar
       position="fixed"
       sx={{
-        display: { xs: 'none', md: userAccount ? 'none' : "block" },
+        display: { xs: 'none', md: account ? 'none' : "block" },
         width: { sm: `calc(100% - ${drawerWidth}px)` },
         ml: { sm: `${drawerWidth}px` },
         p: '0 !important',
@@ -56,7 +59,7 @@ const MainHeader = (props: {
         >
           <MenuIcon />
         </Fab>
-        {!userAccount && (
+        {(!userAccount) && (
           <Button variant="contained" color="secondary" onClick={connectWallet}>
             <Typography style={{ fontFamily: "Century-Gothic" }}>
               {account ? displayAccount : "Connect"}

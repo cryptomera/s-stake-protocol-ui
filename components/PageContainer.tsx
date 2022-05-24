@@ -10,12 +10,8 @@ import walletConnectModule from "@web3-onboard/walletconnect";
 import { nodes } from "data/getRpc";
 import { useAuth, ConnectorNames } from "hooks/useAuth";
 import { useMediaQuery } from 'react-responsive';
-import {
-  init,
-  useConnectWallet,
-  useSetChain,
-  useWallets
-} from '@web3-onboard/react'
+import { useWeb3React } from "@web3-react/core";
+import { Web3Provider } from '@ethersproject/providers';
 
 const drawerWidth = 240;
 const injected = injectedModule();
@@ -50,46 +46,12 @@ const onboard = Onboard({
     description: "My app using Onboard",
   },
 });
-// const web3Onboard = init({
-//   wallets: [
-//     injected, walletConnect
-//   ],
-//   chains: [
-//     {
-//       id: "0x61",
-//       token: "BNB",
-//       label: "BSC Testnet",
-//       rpcUrl: nodes[ 97 ][ 0 ],
-//     },
-//     {
-//       id: "0x38",
-//       token: "BNB",
-//       label: "Binance Smart Chain",
-//       rpcUrl: "https://bsc-dataseed.binance.org/",
-//     },
-//     {
-//       id: "0xfa",
-//       token: "FTM",
-//       label: "Fantom Mainnet",
-//       rpcUrl: "https://rpc.ftm.tools/",
-//     },
-//   ],
-//   appMetadata: {
-//     name: "staking app",
-//     icon: "/logos/Logo_1.png",
-//     logo: "/logos/Logo_2.png",
-//     description: "My app using Onboard",
-//   },
-// });
 
 const PageContainer = (props: { children: ReactNode }) =>
 {
-  // const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
-  // const [{ chains, connectedChain, settingChain }, setChain] = useSetChain();
-  // const connectedWallets = useWallets();
-
   const [ mobileOpen, setMobileOpen ] = useState<boolean>(true);
   const [ userAccount, setUserAccount ] = useState<any>();
+  const { library, account } = useWeb3React<Web3Provider>();
   const handleDrawerToggle = useCallback(() =>
   {
     setMobileOpen((p) => !p);
@@ -98,7 +60,8 @@ const PageContainer = (props: { children: ReactNode }) =>
   const connectWallet = async () =>
   {
     const wallets = await onboard.connectWallet();
-    setUserAccount(wallets[ 0 ]);
+    const { accounts, chains, provider } = wallets[0];
+    setUserAccount(accounts[0].address);
   };
 
   //Eager connect
@@ -121,14 +84,17 @@ const PageContainer = (props: { children: ReactNode }) =>
     );
     const connectWallet = async () =>
     {
-      if (previouslyConnectedWallets) {
+      if (!previouslyConnectedWallets) {
         const prevWallet = await onboard.connectWallet({
           autoSelect: {
             label: previouslyConnectedWallets[ 0 ],
             disableModals: true,
           },
         });
-        setUserAccount(prevWallet[ 0 ]);
+        const { accounts, chains, provider } = prevWallet[0];
+        setUserAccount(accounts[0].address);
+      } else {
+        setUserAccount(null);
       }
     };
     connectWallet();
@@ -137,7 +103,7 @@ const PageContainer = (props: { children: ReactNode }) =>
       'MetaMask': ConnectorNames.INJECTED
     }
     previouslyConnectedWallets.length > 0 && wallets[ previouslyConnectedWallets[ 0 ] ] && login(wallets[ previouslyConnectedWallets[ 0 ] ])
-  }, [ login ]);
+  }, []);
   const isResp520 = useMediaQuery({
     query: '(max-width: 520px)'
   });
