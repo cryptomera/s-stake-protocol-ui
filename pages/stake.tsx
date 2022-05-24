@@ -13,6 +13,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import ReferralTab from 'components/stake/ReferralTab';
 import DownlineTab from 'components/stake/DownlineTab';
+import UplineTab from 'components/stake/UplineTab';
 import { useMediaQuery } from 'react-responsive';
 import { getPrice } from 'utils/price.util';
 
@@ -125,6 +126,22 @@ const Stake: NextPage = () => {
                   Downline
                 </a>
               </Link>
+              {/* <Link href="/stake?tab=upline">
+              <a
+                  style={{
+                    fontSize: isResp520?'15px':'20px',
+                    textDecoration: 'none',
+                    fontWeight: 'bold',
+                    color: '#FFFFFC',
+                    margin: isResp520?'0px':'10px',
+                    borderBottom: tabValue === 'upline' ? 'solid 3px' : '',
+                    width: isResp520?'25%':'auto',
+                    textAlign: 'center'
+                  }}
+                >
+                  Upline
+                </a>
+              </Link> */}
             </Box>
           </Box>
           <Box>
@@ -151,6 +168,14 @@ const Stake: NextPage = () => {
               padding:isResp600?'0px':'auto'
             }}>
               <ReferralTab tokenPrice={tokenPrice} />
+            </TabPanel>
+            <TabPanel 
+              sx={{
+                padding: isResp600?'0': 'auto'
+              }}
+              value="upline"
+            >
+              <UplineTab />
             </TabPanel>
           </Box>
         </TabContext>
