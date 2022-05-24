@@ -13,6 +13,7 @@ import { Contract } from "@ethersproject/contracts";
 import { address } from 'utils/ethers.util';
 import { BigNumber } from '@web3-onboard/common/node_modules/ethers';
 import { formatEther } from 'ethers/lib/utils';
+import DepositModal from 'components/common/DepositModal';
 
 interface OverViewProps {
   tokenPrice: number;
@@ -29,6 +30,7 @@ const OverviewTab = (props: OverViewProps) => {
   const [flameBalance, setFlameBalance] = React.useState('');
   const [totalPlayers, setTotalPlayers] = React.useState('');
   const { library, account } = useWeb3React<Web3Provider>();
+  const [openDepositModal, setOpenDepositModal] = React.useState(false);
 
   React.useEffect(() => {
     async function getNerdData() {
@@ -48,15 +50,15 @@ const OverviewTab = (props: OverViewProps) => {
     getNerdData();
   }, []);
 
-  const deposit = async () => {
-    const stakeToken = new Contract(address['$stake'], Erc20.abi, library?.getSigner());
-    const balance = await stakeToken.balanceOf(account);
-    await stakeToken.approve(address['nerd'], BigNumber.from(balance.toString()));
-    stakeToken.once("Approval", () => {
-      const nerd = new Contract(address['nerd'], Nerd.abi, library?.getSigner());
-      nerd.deposit(BigNumber.from(balance.toString()), account);
-    });
-  }
+  // const deposit = async () => {
+  //   const stakeToken = new Contract(address['$stake'], Erc20.abi, library?.getSigner());
+  //   const balance = await stakeToken.balanceOf(account);
+  //   await stakeToken.approve(address['nerd'], BigNumber.from(balance.toString()));
+  //   stakeToken.once("Approval", () => {
+  //     const nerd = new Contract(address['nerd'], Nerd.abi, library?.getSigner());
+  //     nerd.deposit(BigNumber.from(balance.toString()), account);
+  //   });
+  // }
 
   const compoundAll = async () => {
     const nerd = new Contract(address['nerd'], Nerd.abi, library?.getSigner());
@@ -97,6 +99,7 @@ const OverviewTab = (props: OverViewProps) => {
   });
   return (
     <Box>
+      <DepositModal open={openDepositModal} handleClose={()=>setOpenDepositModal(false)}/>
       <Box
         sx={{
           display: 'flex',
@@ -199,7 +202,7 @@ const OverviewTab = (props: OverViewProps) => {
               </Box>
             </Box>
             <Box sx={{ marginTop: '20px' }}>
-              <Button onClick={deposit} size="large" color="secondary" fullWidth variant="contained">Deposit</Button>
+              <Button onClick={()=>setOpenDepositModal(true)} size="large" color="secondary" fullWidth variant="contained">Deposit</Button>
             </Box>
           </Box>
         </Grid>
