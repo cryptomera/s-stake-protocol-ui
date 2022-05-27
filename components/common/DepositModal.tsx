@@ -22,7 +22,7 @@ const DepositModal = (props: DepositModalProps) => {
   const { open, handleClose } = props;
   const { library, account } = useWeb3React<Web3Provider>();
   const deposit = async () => {
-    if(parseEther(amount) < parseEther("1")) {
+    if (parseEther(amount) < parseEther("1")) {
       window.alert("You must deposit at least 1 ether.")
       return;
     }
@@ -35,31 +35,31 @@ const DepositModal = (props: DepositModalProps) => {
   }
   return (
     <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Deposit</DialogTitle>
-        <DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            label="Amount"
-            fullWidth
-            variant="standard"
-            value={amount}
-            onChange={e=>setAmount(e.target.value)}
-          />
-          <TextField
-            margin="dense"
-            label="Upline"
-            fullWidth
-            variant="standard"
-            value={upline}
-            onChange={e=>setUpline(e.target.value)}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button variant="contained" onClick={deposit}>Deposit</Button>
-          <Button onClick={handleClose}>Cancel</Button>
-        </DialogActions>
-      </Dialog>
+      <DialogTitle>Deposit</DialogTitle>
+      <DialogContent>
+        <TextField
+          autoFocus
+          margin="dense"
+          label="Amount"
+          fullWidth
+          variant="standard"
+          value={amount}
+          onChange={e => setAmount(e.target.value)}
+        />
+        <TextField
+          margin="dense"
+          label="Upline"
+          fullWidth
+          variant="standard"
+          value={upline}
+          onChange={e => setUpline(e.target.value)}
+        />
+      </DialogContent>
+      <DialogActions>
+        <Button variant="contained" onClick={deposit}>Deposit</Button>
+        <Button onClick={handleClose}>Cancel</Button>
+      </DialogActions>
+    </Dialog>
   )
 }
 

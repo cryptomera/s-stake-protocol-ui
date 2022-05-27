@@ -8,16 +8,28 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 
 interface TokenDlgProps {
-  open: boolean;
+  open: string;
   handleClose: () => void;
   tokens: Array<any>;
+  setSwapToken: Function;
+  setTargetToken: Function;
 }
 
 const TokenDlg = (props: TokenDlgProps) => {
-  const { open, handleClose, tokens } = props;
+  const { open, handleClose, tokens, setSwapToken, setTargetToken } = props;
+
+  const handleToken = (value: any) => {
+    if(open == 'swapToken') {
+      setSwapToken(value);
+    } else if (open == 'targetToken') {
+      setTargetToken(value);
+    }
+    handleClose();
+  } 
+
   return (
     <Dialog
-      open={open}
+      open={!!open}
       onClose={handleClose}
     >
       <DialogTitle
@@ -45,6 +57,7 @@ const TokenDlg = (props: TokenDlgProps) => {
         {
           tokens.map((token, i) => (
             <ListItem
+              onClick={() => handleToken(token)}
               button
               key={i}
             >
