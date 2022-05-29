@@ -5,13 +5,15 @@ import * as React from 'react';
 import CustomInput from './CustomInput';
 import { useMediaQuery } from 'react-responsive';
 import { address } from '../../utils/ethers.util';
-import { formatEther } from 'ethers/lib/utils';
 import { BigNumber } from '@web3-onboard/common/node_modules/ethers';
 import Erc20 from '../../abi/Erc20.json';
 import Nerd from '../../abi/NerdFaucetV2.json';
+import Foundation from 'abi/StakeFountain.json';
 import { useWeb3React } from "@web3-react/core";
 import { Web3Provider } from '@ethersproject/providers';
 import { Contract } from "@ethersproject/contracts";
+import { formatEther, parseEther } from 'ethers/lib/utils';
+
 
 interface FaucetProps {
   tokenPrice: number;
@@ -27,6 +29,61 @@ const FaucetTab = (props: FaucetProps) => {
   const [maxPayout, setMaxPayout] = React.useState('0');
   const [isApproved, setIsApproved] = React.useState(false);
   const { library, account } = useWeb3React<Web3Provider>();
+  const [stakeBalance, setStakeBalance] = React.useState('0.0');
+  const [bnbBalance, setBnbBalance] = React.useState('0.0');
+
+  const getBalances = async () => {
+    const stake = new Contract(address['$stake'], Erc20.abi, library);
+    const balance = await stake.balanceOf(account);
+    const bnbAmount = await library?.getBalance(String(account));
+    setStakeBalance(formatEther(balance));
+    setBnbBalance(formatEther(String(bnbAmount)));
+    setSellAmount('0');
+    setBuyAmount('0');
+  }
+
+  // sell stake
+  const sellStake = async () => {
+    const foundation = new Contract(address['foundation'], Foundation.abi, library?.getSigner());
+    const stake = new Contract(address['$stake'], Erc20.abi, library?.getSigner());
+    await stake.approve(address['foundation'], parseEther(sellAmount));
+    stake.once("Approval", async () => {
+      let bnbAmount = await foundation.getTokenToBnbInputPrice(parseEther(String(sellAmount)));
+      const tx = await foundation.tokenToBnbSwapInput(parseEther(String(sellAmount)), bnbAmount);
+      await tx.wait();
+      getBalances();
+    });
+  }
+
+  // buy stake
+  const buyStake = async () => {
+    const foundation = new Contract(address['foundation'], Foundation.abi, library?.getSigner());
+    const amountIn = await foundation.getBnbToTokenOutputPrice(parseEther(String(buyAmount)));
+    const minTokenAmount = Number(buyAmount) * (1 - 0.03);
+    const tx =  await foundation.bnbToTokenSwapInput(parseEther(minTokenAmount.toString()), { value: amountIn });
+    await tx.wait();
+    getBalances();
+  }
+
+
+
+  const getMaxTokenOut = async () => {
+    const foundation = new Contract(address['foundation'], Foundation.abi, library);
+    const out = await foundation.getBnbToTokenInputPrice(parseEther(String(bnbBalance)));
+    setBuyAmount(formatEther(out));
+  }
+
+  // stake balance
+  React.useEffect(() => {
+    async function getBalance() {
+      const stake = new Contract(address['$stake'], Erc20.abi, library);
+      const balance = await stake.balanceOf(account);
+      const bnbAmount = await library?.getBalance(String(account));
+      setStakeBalance(formatEther(balance));
+      setBnbBalance(formatEther(String(bnbAmount)));
+    }
+    getBalance();
+  }, []);
 
   React.useEffect(() => {
     async function getNerdData() {
@@ -71,7 +128,7 @@ const FaucetTab = (props: FaucetProps) => {
     });
   }
 
-  const claim = async() => {
+  const claim = async () => {
     const nerd = new Contract(address['nerd'], Nerd.abi, library?.getSigner());
     await nerd.claim();
   }
@@ -89,7 +146,7 @@ const FaucetTab = (props: FaucetProps) => {
     setSellAmount(e.target.value);
   }
 
-  const handleBuyAmount = (e:any) => {
+  const handleBuyAmount = (e: any) => {
     e.target.value = e.target.value.toString().replace(",", ".").replace(" ", "");
     if (isNaN(e.target.value)) {
       return;
@@ -111,14 +168,14 @@ const FaucetTab = (props: FaucetProps) => {
   return (
     <Grid container spacing={2}
       sx={{
-        display: isResp520?'block':'flex'
+        display: isResp520 ? 'block' : 'flex'
       }}
     >
       {/* net faucet value */}
       <Grid item xs={12}>
         <Box
           sx={{
-            background: isResp600?'#69696969':'#212121',
+            background: isResp600 ? '#69696969' : '#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -136,102 +193,102 @@ const FaucetTab = (props: FaucetProps) => {
           </Box>
           <Grid container spacing={3}>
             {/* nfv available */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item 
-            xs={isResp300?12:isResp600?6:isResp720?12:6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item
+              xs={isResp300 ? 12 : isResp600 ? 6 : isResp720 ? 12 : 6} md={3}>
               <Box>
                 <Box
                   sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     fontWeight: 'bold',
-                    fontSize: isResp520?'14px':'18px',
+                    fontSize: isResp520 ? '14px' : '18px',
                     marginBottom: '10px'
                   }}
                 >
                   NFV Available
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center', fontSize: isResp520 ? '13px' : 'initial', }}>
                   {nfv}
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center', fontSize: isResp520 ? '13px' : 'initial', }}>
                   {`$${Number(nfv) * tokenPrice}`}
                 </Box>
               </Box>
             </Grid>
             {/* deposits */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item 
-            xs={isResp300?12:isResp600?6:isResp720?12:6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item
+              xs={isResp300 ? 12 : isResp600 ? 6 : isResp720 ? 12 : 6} md={3}>
               <Box>
                 <Box
                   sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     fontWeight: 'bold',
-                    fontSize: isResp520?'14px':'18px',
+                    fontSize: isResp520 ? '14px' : '18px',
                     marginBottom: '10px'
                   }}
                 >
                   Deposits
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
-                  { deposits }
+                <Box sx={{ display: 'flex', justifyContent: 'center', fontSize: isResp520 ? '13px' : 'initial', }}>
+                  {deposits}
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center', fontSize: isResp520 ? '13px' : 'initial', }}>
                   {`$${Number(deposits) * tokenPrice}`}
                 </Box>
               </Box>
             </Grid>
             {/* Gross Claimed */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} 
-            item xs={isResp300?12:isResp600?6:isResp720?12:6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }}
+              item xs={isResp300 ? 12 : isResp600 ? 6 : isResp720 ? 12 : 6} md={3}>
               <Box>
                 <Box
                   sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     fontWeight: 'bold',
-                    fontSize: isResp520?'14px':'18px',
+                    fontSize: isResp520 ? '14px' : '18px',
                     marginBottom: '10px'
                   }}
                 >
                   Gross Claimed
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
-                  { grossClaimed }
+                <Box sx={{ display: 'flex', justifyContent: 'center', fontSize: isResp520 ? '13px' : 'initial', }}>
+                  {grossClaimed}
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center', fontSize: isResp520 ? '13px' : 'initial', }}>
                   {`$${Number(grossClaimed) * tokenPrice}`}
                 </Box>
               </Box>
             </Grid>
             {/* max payout */}
-            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item 
-            xs={isResp300?12:isResp600?6:isResp720?12:6} md={3}>
+            <Grid sx={{ display: 'flex', justifyContent: 'center' }} item
+              xs={isResp300 ? 12 : isResp600 ? 6 : isResp720 ? 12 : 6} md={3}>
               <Box>
                 <Box
                   sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     fontWeight: 'bold',
-                    fontSize: isResp520?'14px':'18px',
+                    fontSize: isResp520 ? '14px' : '18px',
                     marginBottom: '10px'
                   }}
                 >
                   Max Payout
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
-                  { maxPayout }
+                <Box sx={{ display: 'flex', justifyContent: 'center', fontSize: isResp520 ? '13px' : 'initial', }}>
+                  {maxPayout}
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center',fontSize: isResp520?'13px':'initial', }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center', fontSize: isResp520 ? '13px' : 'initial', }}>
                   {`$${Number(maxPayout) * tokenPrice}`}
                 </Box>
               </Box>
             </Grid>
             {/* buttons */}
-            
-            <Grid item xs={isResp600?6:4}>
+
+            <Grid item xs={isResp600 ? 6 : 4}>
               <Button onClick={claim} color="secondary" fullWidth variant="contained"
-                sx={{ fontSize:isResp520?'0.68rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
+                sx={{ fontSize: isResp520 ? '0.68rem' : isResp600 ? '0.875rem' : isResp720 ? '0.62rem' : '0.875rem' }}>
                 Claim both
               </Button>
             </Grid>
@@ -239,14 +296,14 @@ const FaucetTab = (props: FaucetProps) => {
               !isResp600 &&
               <Grid item xs={4}>
                 <Button onClick={compoundFaucet} color="secondary" fullWidth variant="contained"
-                  sx={{ fontSize:isResp520?'0.58rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
-                    Compound both
-                  </Button>
+                  sx={{ fontSize: isResp520 ? '0.58rem' : isResp600 ? '0.875rem' : isResp720 ? '0.62rem' : '0.875rem' }}>
+                  Compound both
+                </Button>
               </Grid>
             }
-            <Grid item xs={isResp600?6:4}>
+            <Grid item xs={isResp600 ? 6 : 4}>
               <Button onClick={deposit} color="secondary" fullWidth variant="contained"
-                sx={{ fontSize:isResp520?'0.68rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
+                sx={{ fontSize: isResp520 ? '0.68rem' : isResp600 ? '0.875rem' : isResp720 ? '0.62rem' : '0.875rem' }}>
                 {
                   isApproved ? 'Deposit' : 'Approve'
                 }
@@ -256,28 +313,28 @@ const FaucetTab = (props: FaucetProps) => {
               isResp600 &&
               <Grid item xs={12}>
                 <Button onClick={compoundFaucet} color="secondary" fullWidth variant="contained"
-                  sx={{ fontSize:isResp520?'0.68rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}}>
-                    Compound both
-                  </Button>
+                  sx={{ fontSize: isResp520 ? '0.68rem' : isResp600 ? '0.875rem' : isResp720 ? '0.62rem' : '0.875rem' }}>
+                  Compound both
+                </Button>
               </Grid>
             }
             <Grid item xs={3}>
-              <Button sx={{ fontSize:isResp520?'0.68rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}} onClick={faucetClaim} color="secondary" fullWidth variant="contained">
+              <Button sx={{ fontSize: isResp520 ? '0.68rem' : isResp600 ? '0.875rem' : isResp720 ? '0.62rem' : '0.875rem' }} onClick={faucetClaim} color="secondary" fullWidth variant="contained">
                 faucet claim
               </Button>
             </Grid>
             <Grid item xs={3}>
-              <Button sx={{ fontSize:isResp520?'0.68rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}} onClick={rebaseClaim} color="secondary" fullWidth variant="contained">
+              <Button sx={{ fontSize: isResp520 ? '0.68rem' : isResp600 ? '0.875rem' : isResp720 ? '0.62rem' : '0.875rem' }} onClick={rebaseClaim} color="secondary" fullWidth variant="contained">
                 rebase claim
               </Button>
             </Grid>
             <Grid item xs={3}>
-              <Button sx={{ fontSize:isResp520?'0.68rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}} onClick={faucetCompound} color="secondary" fullWidth variant="contained">
+              <Button sx={{ fontSize: isResp520 ? '0.68rem' : isResp600 ? '0.875rem' : isResp720 ? '0.62rem' : '0.875rem' }} onClick={faucetCompound} color="secondary" fullWidth variant="contained">
                 faucet compound
               </Button>
             </Grid>
             <Grid item xs={3}>
-              <Button sx={{ fontSize:isResp520?'0.68rem':isResp600?'0.875rem':isResp720?'0.62rem':'0.875rem'}} onClick={rebaseCompound} color="secondary" fullWidth variant="contained">
+              <Button sx={{ fontSize: isResp520 ? '0.68rem' : isResp600 ? '0.875rem' : isResp720 ? '0.62rem' : '0.875rem' }} onClick={rebaseCompound} color="secondary" fullWidth variant="contained">
                 rebase compound
               </Button>
             </Grid>
@@ -287,7 +344,7 @@ const FaucetTab = (props: FaucetProps) => {
       <Grid item xs={12} md={6}>
         <Box
           sx={{
-            background: isResp600?'#69696969':'#212121',
+            background: isResp600 ? '#69696969' : '#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -309,11 +366,17 @@ const FaucetTab = (props: FaucetProps) => {
                   Sell Stake
                 </Box>
                 <Box sx={{ flexGrow: 1 }}></Box>
-                <Box>Stake Balance: 65,707</Box>
+                <Box>Stake Balance: {stakeBalance}</Box>
               </Box>
-              <CustomInput value={sellAmount} setValue={e=>handleSellAmount(e)} width="100%" icon={<SellIcon />} />
+              <CustomInput
+                value={sellAmount}
+                setValue={e => handleSellAmount(e)}
+                width="100%"
+                icon={<SellIcon />}
+                maxAction={() => setSellAmount(stakeBalance)}
+              />
               <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
-                <Button color="secondary" variant="contained">Sell</Button>
+                <Button onClick={sellStake} color="secondary" variant="contained">Sell</Button>
               </Box>
             </Box>
           </Box>
@@ -334,11 +397,17 @@ const FaucetTab = (props: FaucetProps) => {
                   Buy Stake
                 </Box>
                 <Box sx={{ flexGrow: 1 }}></Box>
-                <Box>BNB Balance: 1.452</Box>
+                <Box>BNB Balance: {bnbBalance}</Box>
               </Box>
-              <CustomInput value={buyAmount} setValue={e=>handleBuyAmount(e)} width="100%" icon={<ShoppingBagIcon />} />
+              <CustomInput
+                value={buyAmount}
+                setValue={e => handleBuyAmount(e)}
+                width="100%"
+                icon={<ShoppingBagIcon />}
+                maxAction={getMaxTokenOut}
+              />
               <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
-                <Button color="secondary" variant="contained">Buy</Button>
+                <Button onClick={buyStake} color="secondary" variant="contained">Buy</Button>
               </Box>
             </Box>
           </Box>
@@ -347,7 +416,7 @@ const FaucetTab = (props: FaucetProps) => {
       <Grid item xs={12} md={6}>
         <Box
           sx={{
-            background: isResp600?'#69696969':'#212121',
+            background: isResp600 ? '#69696969' : '#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -358,7 +427,7 @@ const FaucetTab = (props: FaucetProps) => {
       <Grid item xs={12}>
         <Box
           sx={{
-            background: isResp600?'#69696969':'#212121',
+            background: isResp600 ? '#69696969' : '#212121',
             padding: '20px',
             borderRadius: '16px'
           }}
@@ -383,8 +452,8 @@ const FaucetTab = (props: FaucetProps) => {
             (Net Elastic Rebase Depletion)
           </Box>
           <Grid container spacing={2}>
-            <Grid item xs={12} md={6} sx={{fontSize:isResp520?'13px':'initial'}}>
-              <Grid container spacing={2} sx={{paddingTop:isResp520?'15px':'auto'}}>
+            <Grid item xs={12} md={6} sx={{ fontSize: isResp520 ? '13px' : 'initial' }}>
+              <Grid container spacing={2} sx={{ paddingTop: isResp520 ? '15px' : 'auto' }}>
                 <Grid item xs={8} md={6}>
                   Net Deposits
                 </Grid>
@@ -396,7 +465,7 @@ const FaucetTab = (props: FaucetProps) => {
                     Current Rebase Rate
                   </Box>
                   <Box
-                    sx={{ paddingLeft: isResp520?'0px':'50px' }}
+                    sx={{ paddingLeft: isResp520 ? '0px' : '50px' }}
                   >
                     (daily)
                   </Box>

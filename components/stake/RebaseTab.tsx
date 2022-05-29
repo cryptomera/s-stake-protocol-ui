@@ -9,12 +9,13 @@ import { useMediaQuery } from 'react-responsive';
 import Speedometer from './SpeedoMeter';
 import Erc20 from '../../abi/Erc20.json';
 import Nerd from '../../abi/NerdFaucetV2.json';
+import Foundation from 'abi/StakeFountain.json';
 import { useWeb3React } from "@web3-react/core";
 import { Web3Provider } from '@ethersproject/providers';
 import { Contract } from "@ethersproject/contracts";
 import { address } from 'utils/ethers.util';
 import { BigNumber } from '@web3-onboard/common/node_modules/ethers';
-import { formatEther } from 'ethers/lib/utils';
+import { formatEther, parseEther } from 'ethers/lib/utils';
 
 interface RebaseProps {
   tokenPrice: number;
@@ -28,8 +29,60 @@ const RebaseTab = (props: RebaseProps) => {
   const [grossClaimed, setGrossClaimed] = React.useState('');
   const [rebaseRate, setRebaseRate] = React.useState(0);
   const [gfvDepletion, setGfvDepletion] = React.useState('');
-
+  const [stakeBalance, setStakeBalance] = React.useState('0.0');
+  const [bnbBalance, setBnbBalance] = React.useState('0.0');
   const { library, account } = useWeb3React<Web3Provider>();
+
+  const getBalances = async () => {
+    const stake = new Contract(address['$stake'], Erc20.abi, library);
+    const balance = await stake.balanceOf(account);
+    const bnbAmount = await library?.getBalance(String(account));
+    setStakeBalance(formatEther(balance));
+    setBnbBalance(formatEther(String(bnbAmount)));
+    setSellAmount('0');
+    setBuyAmount('0');
+  }
+
+  // sell stake
+  const sellStake = async () => {
+    const foundation = new Contract(address['foundation'], Foundation.abi, library?.getSigner());
+    const stake = new Contract(address['$stake'], Erc20.abi, library?.getSigner());
+    await stake.approve(address['foundation'], parseEther(sellAmount));
+    stake.once("Approval", async () => {
+      let bnbAmount = await foundation.getTokenToBnbInputPrice(parseEther(String(sellAmount)));
+      bnbAmount = Number(bnbAmount.toString()) * (1 - 0.03);
+      const tx = await foundation.tokenToBnbSwapInput(parseEther(String(sellAmount)), bnbAmount);
+      await tx.wait();
+      getBalances();
+    });
+  }
+
+  // buy stake
+  const buyStake = async () => {
+    const foundation = new Contract(address['foundation'], Foundation.abi, library?.getSigner());
+    const amountIn = await foundation.getBnbToTokenOutputPrice(parseEther(String(buyAmount)));
+    const minTokenAmount = Number(buyAmount) * (1 - 0.03);
+    const tx = await foundation.bnbToTokenSwapInput(parseEther(minTokenAmount.toString()), {value: amountIn});
+    await tx.wait();
+    getBalances();
+  }
+  const getMaxTokenOut = async() => {
+    const foundation = new Contract(address['foundation'], Foundation.abi, library);
+    const out = await foundation.getBnbToTokenInputPrice(parseEther(String(bnbBalance)));
+    setBuyAmount(formatEther(out));
+  }
+  // stake balance
+  React.useEffect(() => {
+    async function getBalance() {
+      const stake = new Contract(address['$stake'], Erc20.abi, library);
+      const balance = await stake.balanceOf(account);
+      const bnbAmount = await library?.getBalance(String(account));
+      setStakeBalance(formatEther(balance));
+      setBnbBalance(formatEther(String(bnbAmount)));
+    }
+    getBalance();
+  }, []);
+
   React.useEffect(() => {
     async function getData() {
       const nerd = new Contract(address['nerd'], Nerd.abi, library);
@@ -278,11 +331,17 @@ const RebaseTab = (props: RebaseProps) => {
                   Sell Stake
                 </Box>
                 <Box sx={{ flexGrow: 1 }}></Box>
-                <Box>Stake Balance: 65,707</Box>
+                <Box>Stake Balance: { stakeBalance }</Box>
               </Box>
-              <CustomInput value={sellAmount} setValue={e=>handleSellAmount(e)} width="100%" icon={<SellIcon />} />
+              <CustomInput 
+                value={sellAmount} 
+                setValue={e=>handleSellAmount(e)} 
+                width="100%" 
+                icon={<SellIcon />}
+                maxAction={() => setSellAmount(stakeBalance)}
+              />
               <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
-                <Button color="secondary" variant="contained">Sell</Button>
+                <Button onClick={sellStake} color="secondary" variant="contained">Sell</Button>
               </Box>
             </Box>
           </Box>
@@ -307,11 +366,17 @@ const RebaseTab = (props: RebaseProps) => {
                   Buy Stake
                 </Box>
                 <Box sx={{ flexGrow: 1 }}></Box>
-                <Box>BNB Balance: 1.452</Box>
+                <Box>BNB Balance: { bnbBalance }</Box>
               </Box>
-              <CustomInput value={buyAmount} setValue={e=>handleBuyAmount(e)} width="100%" icon={<ShoppingBagIcon />} />
+              <CustomInput 
+                value={buyAmount} 
+                setValue={e=>handleBuyAmount(e)} 
+                width="100%" 
+                icon={<ShoppingBagIcon />} 
+                maxAction={getMaxTokenOut} 
+              />
               <Box sx={{ display: 'flex', justifyContent: 'right', marginTop: '10px' }}>
-                <Button color="secondary" variant="contained">Buy</Button>
+                <Button onClick={buyStake} color="secondary" variant="contained">Buy</Button>
               </Box>
             </Box>
           </Box>

@@ -13,6 +13,7 @@ import { useWeb3React } from "@web3-react/core";
 import { Web3Provider } from '@ethersproject/providers';
 import { Contract } from "@ethersproject/contracts";
 import Foundation from 'abi/StakeFountain.json';
+import Erc20 from 'abi/Erc20.json';
 import { formatEther, parseEther } from 'ethers/lib/utils';
 
 const tokenList = [
@@ -43,12 +44,16 @@ const SwapTab = () => {
   // swap
   const swap = async () => {
     const foundation = new Contract(address['foundation'], Foundation.abi, library?.getSigner());
+    const stake = new Contract(address['$stake'], Erc20.abi, library?.getSigner());
     if (swapToken.name === 'BNB') {
       const minTokenAmount = Number(amountOut) * (1 - slippage / 100);
       await foundation.bnbToTokenSwapInput(parseEther(minTokenAmount.toString()), { value: parseEther(amountIn) });
     } else {
-      const bnbAmount = Number(amountOut) * (1 - slippage / 100);
-      await foundation.tokenToBnbSwapInput(parseEther(amountIn), parseEther(bnbAmount.toString()));
+      await stake.approve(address['foundation'], parseEther(amountIn));
+      stake.once("Approval", async() => {
+        const bnbAmount = Number(amountOut) * (1 - slippage / 100);
+        await foundation.tokenToBnbSwapInput(parseEther(amountIn), parseEther(bnbAmount.toString()));
+      });
     }
   }
 
@@ -80,9 +85,9 @@ const SwapTab = () => {
         setAmountIn(formatEther(inBnb.toString()));
         setEditOut(false);
       } else {
-        if(Number(amountOut) > 0 && editOut) {
+        if (Number(amountOut) > 0 && editOut) {
           const inStake = await foundation.getTokenToBnbOutputPrice(parseEther(amountOut));
-          setAmountIn(formatEther((inStake/0.82).toString()));
+          setAmountIn(formatEther((inStake / 0.82).toString()));
           setEditOut(false);
         }
       }

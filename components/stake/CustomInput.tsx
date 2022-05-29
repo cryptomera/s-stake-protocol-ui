@@ -13,10 +13,11 @@ interface ButtonProps {
   width?: string;
   value: string;
   setValue: (e:any) => void;
+  maxAction: () => void;
 }
 
 const CustomInput = (props: ButtonProps) => {
-  const { icon, width, value, setValue } = props;
+  const { icon, width, value, setValue, maxAction } = props;
   return (
     <Paper
       component="form"
@@ -29,7 +30,7 @@ const CustomInput = (props: ButtonProps) => {
         onChange={setValue}
       />
       <Box sx={{ background: 'lightBlue', display: 'flex', borderRadius: '0px 5px 5px 0px' }}>
-        <Button type="submit" sx={{ p: '10px', color: 'black', fontWeight: 'bold' }}>
+        <Button onClick={maxAction} sx={{ p: '10px', color: 'black', fontWeight: 'bold' }}>
           max
         </Button>
         <Divider sx={{ height: 34, m: 0.5 }} orientation="vertical" />
