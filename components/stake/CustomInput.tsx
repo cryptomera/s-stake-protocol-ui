@@ -12,7 +12,7 @@ interface ButtonProps {
   icon: any;
   width?: string;
   value: string;
-  setValue: (e:any) => void;
+  setValue: Function;
   maxAction: () => void;
 }
 
@@ -27,7 +27,7 @@ const CustomInput = (props: ButtonProps) => {
         sx={{ ml: 1, flex: 1, color: 'white', fontWeight: 'bold' }}
         inputProps={{ 'aria-label': 'search google maps' }}
         value={value}
-        onChange={setValue}
+        onChange={e => setValue(e)}
       />
       <Box sx={{ background: 'lightBlue', display: 'flex', borderRadius: '0px 5px 5px 0px' }}>
         <Button onClick={maxAction} sx={{ p: '10px', color: 'black', fontWeight: 'bold' }}>

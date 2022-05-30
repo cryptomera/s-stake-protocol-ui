@@ -290,7 +290,7 @@ const OverviewTab = (props: OverViewProps) => {
                 </Box>
                 <CustomInput
                   value={sellAmount}
-                  setValue={e => handleSellAmount(e)}
+                  setValue={handleSellAmount}
                   width='100%'
                   icon={<SellIcon />}
                   maxAction={() => setSellAmount(stakeBalance)}
@@ -325,7 +325,7 @@ const OverviewTab = (props: OverViewProps) => {
                 </Box>
                 <CustomInput
                   value={buyAmount}
-                  setValue={e => handleBuyAmount(e)}
+                  setValue={handleBuyAmount}
                   width='100%'
                   icon={<ShoppingBagIcon />}
                   maxAction={getMaxTokenOut}

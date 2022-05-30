@@ -370,7 +370,7 @@ const FaucetTab = (props: FaucetProps) => {
               </Box>
               <CustomInput
                 value={sellAmount}
-                setValue={e => handleSellAmount(e)}
+                setValue={handleSellAmount}
                 width="100%"
                 icon={<SellIcon />}
                 maxAction={() => setSellAmount(stakeBalance)}
@@ -401,7 +401,7 @@ const FaucetTab = (props: FaucetProps) => {
               </Box>
               <CustomInput
                 value={buyAmount}
-                setValue={e => handleBuyAmount(e)}
+                setValue={handleBuyAmount}
                 width="100%"
                 icon={<ShoppingBagIcon />}
                 maxAction={getMaxTokenOut}
